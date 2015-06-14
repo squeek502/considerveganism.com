@@ -8,4 +8,4 @@ Built using Middleman
 
 * Clone this repository
 * [Install Middleman](https://middlemanapp.com/basics/install/)
-* Run `middleman server` within the directory you checked out this repository to, and then visit `http://localhost:4567/` in your browser. See [this page](https://middlemanapp.com/basics/development_cycle/) for more info.
+* Run `middleman server` within the directory that you checked out this repository to, and then visit `http://localhost:4567/` in your browser. See [this page](https://middlemanapp.com/basics/development_cycle/) for more info.
