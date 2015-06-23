@@ -109,7 +109,7 @@ title: "Data: Problems Inherent in Dairy Production - Consider Veganism"
   <p><sup>557,600 calves</sup>/<sub>year</sub> * <sup>year</sup>/<sub>31,536,000 seconds</sub> = <sup><%= "%.2f" % (557600.0/31536000.0) %> calves</sup>/<sub>second</sub> = <sup>1 calf</sup>/<sub><%= "%.2f" % (31536000.0/557600.0) %> seconds</sub></p>
 
   <h3>Veal Calves As A Percentage Of All Dairy Bull Calves Born in 2014 in the U.S.</h3>
-  <p>9,207,600 calves * <sup>1 bull calf</sup>/<sub>2 calves</sub> = <%= (9207600/2).to_s.gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,") %> bull calves</p>
+  <p>9,207,600 calves * <sup>1 bull calf</sup>/<sub>2 calves</sub> = <%= number_with_delimiter(9207600/2) %> bull calves</p>
   <p><sup>557,600 vealers</sup>/<sub>4,603,800 bull calves</sub> = <%= "%.2f" % (557600.0/(9207600.0/2.0)*100) %>%</p>
 </div>
 
