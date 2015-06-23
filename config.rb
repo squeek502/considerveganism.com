@@ -5,7 +5,7 @@ set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
 configure :development do
-  activate :livereload
+  activate :livereload, :host => '127.0.0.1'
 end
 
 configure :build do
