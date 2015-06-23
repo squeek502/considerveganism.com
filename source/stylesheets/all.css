@@ -111,7 +111,7 @@ header {
     z-index: 999;
     position: relative;
 }
-header h1 { margin: 0; font-size: 1.5em; font-style: italic; font-weight: normal; text-align: center; }
+header h1 { margin: 0; font-size: 1.5em; font-style: italic; font-weight: normal; text-align: center; margin-bottom: 0.1em; }
 header h1 a { color: inherit; text-decoration: none; }
 header h1 a:hover { color: #284C79; }
 @media only screen {
@@ -188,7 +188,7 @@ nav ul li a { line-height: 1.5em; padding: .15em .5em; display: block; box-sizin
 
   .content-container { padding: 0; }
 
-  header h1 { float: left; text-align: left; }
+  header h1 { float: left; text-align: left; margin: 0; }
   nav ul { float: right; }
   nav ul li { float: left; display: block; }
 }
@@ -323,19 +323,6 @@ h1 {
   text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
-table { border-collapse: separate; border-spacing: 5px; text-align: left; font-size: 90%; }
-table th { padding: .5em .75em; background: #ddd; font-size: 85%; text-align:center; }
-table tbody tr { border-bottom: 1px solid #ccc; padding: 6px 8px; }
-table tbody tr:nth-child(even) { background-color: #eee; }
-table tbody tr:nth-child(odd) { background-color: #f3f3f3; }
-table tbody tr:hover td { background: #fff; }
-table td { padding: .25em .75em; text-align: center; }
-table tbody td:first-child { text-align: left; }
-table tr.parent td { background: #eee; }
-table .indent { text-indent: 2em; }
-table .relevant { outline: 1px solid #444; }
-table caption { font-weight: bold; padding: .25em .75em; }
-
 .source { font-style: italic; font-size: 14px; margin-top: 1em; }
 
 blockquote {
@@ -369,6 +356,173 @@ img { max-width: 100%; }
 /**
 OLD
 **/
+
+/** Responsive table **/
+
+/* make each table separate from other ones */
+table {
+  border: 0;
+  padding-bottom: 0;
+  display: block;
+  width: 100%;
+}
+            
+/* make sure captions are displayed */
+caption {
+  display: block;
+}
+
+/* hide the thead */
+thead {
+  display: none;
+}
+
+/*
+ * make everything display block so it 
+ * aligns vertically
+ */
+tbody, tr, th, td {
+  border: 0;
+  display: block;
+  padding: 0;
+  text-align: left;
+  white-space: normal;
+}
+
+/* Labeling
+ * adding a data-title attribute to the cells
+ * lets us add text before the content to provide
+ * the missing context
+ * 
+ * Markup: 
+ *   <td data-title="Column Header">Content Here</td>
+ * 
+ * Display:
+ *   Column Header: Content Here
+ */
+th[data-title]:before,
+td[data-title]:before {
+  content: attr(data-title) ":\00A0\00A0";
+  font-weight: bold;
+  font-size: 85%;
+}
+
+th:not([data-title]) {
+  font-weight: bold;
+}
+
+/* hide empty cells*/
+td:empty {
+  display: none;
+}
+
+table { border: 1px solid #ddd; }
+table th {  text-align:center; }
+table tbody tr { border-bottom: 1px solid #ccc; padding: 4px 10px; }
+table tbody tr:nth-child(even) { background-color: #eee; }
+table tbody tr:nth-child(odd) { background-color: #f3f3f3; }
+table caption { font-weight: bold; padding: .25em .75em; text-transform: uppercase; }
+table .relevant { outline: 1px solid #444; }
+
+@media only screen and (min-width: 760px) {
+  /* Labeling
+   * Hide the mobile labels */
+  th[data-title]:before,
+  td[data-title]:before {
+    content: "";
+    font-weight: bold;
+  }
+    
+  th:not([data-title]) {
+    font-weight: bold;
+  }
+  
+  /* re-show empty cells*/
+  td:empty {
+    display: table-cell;
+  }
+  
+  /* show the thead again */
+  thead {
+    display: table-header-group;
+  }
+  
+  /* make everything display regularly again */
+  tbody {display: table-header-group  ;}
+  
+  tbody, tr, th, td {
+    border: 0;
+    padding: 0;
+    text-align: left;
+    white-space: normal;
+  }
+
+  th, td {display: table-cell;}
+
+  tr {display: table-row; }
+          
+  table {
+    border-style: none;
+    border-top-width: 0;
+    width: auto;  
+  }
+          
+  tr {
+    border-style: none;
+    border-bottom-width: 0;
+  }
+  th, td {
+    border-style: none;
+    padding-right: 1em;
+    text-align: left;
+    min-width: 50px;
+    vertical-align: top;
+  }
+  
+  th + th,
+  th + td,
+  td + th,
+  td + td {
+    border-left-width: 1px;
+  }
+  
+  thead tr:last-child {
+    border-bottom-width: 2px;
+  }
+  
+  thead th,
+  tr.index th {
+    font-weight: bold;
+    line-height: 1.25;
+    vertical-align: middle;
+  }
+  
+  thead th {
+    padding-bottom: .25em;
+  }
+  
+  tbody:first-of-type tr.index th {
+    padding-top: 1em;
+  }
+  
+  tbody th {
+    font-weight: normal;
+  }
+
+  table { border-collapse: separate; border-spacing: 5px; text-align: left; font-size: 90%; }
+  table th { padding: .5em .75em; background: #ddd; font-size: 85%; text-align:center; }
+  table tbody tr { border-bottom: 1px solid #ccc; padding: 6px 8px; }
+  table tbody tr:nth-child(even) { background-color: #eee; }
+  table tbody tr:nth-child(odd) { background-color: #f3f3f3; }
+  table tbody tr:hover td { background: #fff; }
+  table td { padding: .25em .75em; text-align: center; }
+  table tbody td:first-child { text-align: left; }
+  table tr.parent td { background: #eee; }
+  table .indent { text-indent: 2em; }
+  table .relevant { outline: 1px solid #444; }
+  table caption { font-weight: bold; padding: .25em .75em; display: table-caption; }
+
+}
 
 /* ==========================================================================
    Helper classes

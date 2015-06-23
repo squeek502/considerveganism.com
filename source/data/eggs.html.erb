@@ -80,7 +80,7 @@ title: "Data: Problems Inherent in Egg Production - Consider Veganism"
       num_pullets_added_2013 = data.slaughter.layer_hens.pullets_added.by_month_2013[month]
       num_pullets_added_2014 = data.slaughter.layer_hens.pullets_added.by_month_2014[month]
     %>
-      <tr><td><%= month %></td><td><%= number_with_delimiter num_sold_2013 %></td><td><%= number_with_delimiter num_sold_2014 %></td><td><%= number_with_delimiter num_disappeared_2013 %></td><td><%= number_with_delimiter num_disappeared_2014 %></td><td><%= number_with_delimiter num_pullets_added_2013 %></td><td><%= number_with_delimiter num_pullets_added_2014 %></td></tr>
+      <tr><td data-title="Month"><%= month %></td><td data-title="Layers sold for slaughter (2013)"><%= number_with_delimiter num_sold_2013 %></td><td data-title="Layers sold for slaughter (2014)"><%= number_with_delimiter num_sold_2014 %></td><td data-title="Layers disappeared for any other reason (2013)"><%= number_with_delimiter num_disappeared_2013 %></td><td data-title="Layers disappeared for any other reason (2014)"><%= number_with_delimiter num_disappeared_2014 %></td><td data-title="Pullets added (2013)"><%= number_with_delimiter num_pullets_added_2013 %></td><td data-title="Pullets added (2014)"><%= number_with_delimiter num_pullets_added_2014 %></td></tr>
     <% end %>
     </tbody>
   </table>
@@ -95,14 +95,14 @@ title: "Data: Problems Inherent in Egg Production - Consider Veganism"
     </thead>
     <tbody>
       <tr class="relevant">
-        <td><%= number_with_delimiter data.slaughter.layer_hens.sold.total_2013 %></td>
-        <td><%= number_with_delimiter data.slaughter.layer_hens.sold.total_2014 %></td>
-        <td><%= number_with_delimiter data.slaughter.layer_hens.disappeared.total_2013 %></td>
-        <td><%= number_with_delimiter data.slaughter.layer_hens.disappeared.total_2014 %></td>
-        <td><%= number_with_delimiter data.slaughter.layer_hens.died.total_2013 %></td>
-        <td><%= number_with_delimiter data.slaughter.layer_hens.died.total_2014 %></td>
-        <td><%= number_with_delimiter data.slaughter.layer_hens.pullets_added.total_2013 %></td>
-        <td><%= number_with_delimiter data.slaughter.layer_hens.pullets_added.total_2014 %></td>
+        <td data-title="Layers sold for slaughter (2013)"><%= number_with_delimiter data.slaughter.layer_hens.sold.total_2013 %></td>
+        <td data-title="Layers sold for slaughter (2014)"><%= number_with_delimiter data.slaughter.layer_hens.sold.total_2014 %></td>
+        <td data-title="Layers disappeared for any other reason (2013)"><%= number_with_delimiter data.slaughter.layer_hens.disappeared.total_2013 %></td>
+        <td data-title="Layers disappeared for any other reason (2014)"><%= number_with_delimiter data.slaughter.layer_hens.disappeared.total_2014 %></td>
+        <td data-title="Total layers died for any reason (2013)"><%= number_with_delimiter data.slaughter.layer_hens.died.total_2013 %></td>
+        <td data-title="Total layers died for any reason (2014)"><%= number_with_delimiter data.slaughter.layer_hens.died.total_2014 %></td>
+        <td data-title="Pullets added (2013)"><%= number_with_delimiter data.slaughter.layer_hens.pullets_added.total_2013 %></td>
+        <td data-title="Pullets added (2014)"><%= number_with_delimiter data.slaughter.layer_hens.pullets_added.total_2014 %></td>
       </tr>
     </tbody>
   </table>
