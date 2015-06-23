@@ -1,0 +1,82 @@
+layer_hens:
+  sold:
+    by_month_2014: !omap
+    - December: 14156000
+    - January: 15707000
+    - February: 15877000
+    - March: 13410000
+    - April: 14441000
+    - May: 15207000
+    - June: 14402000
+    - July: 14071000
+    - August: 16393000
+    - September: 15709000
+    - October: 14723000
+    - November: 13483000
+    by_month_2013: !omap
+    - December: 13451000
+    - January: 15629000
+    - February: 13696000
+    - March: 13508000
+    - April: 18128000
+    - May: 15619000
+    - June: 14370000
+    - July: 13126000
+    - August: 14250000
+    - September: 14324000
+    - October: 15191000
+    - November: 13756000
+  disappeared:
+    by_month_2014: !omap
+    - December: 7573000
+    - January: 8222000
+    - February: 8244000
+    - March: 7895000
+    - April: 6942000
+    - May: 8373000
+    - June: 8148000
+    - July: 8284000
+    - August: 7271000
+    - September: 7767000
+    - October: 7111000
+    - November: 7234000
+    by_month_2013: !omap
+    - December: 7882000
+    - January: 7582000
+    - February: 6847000
+    - March: 7085000
+    - April: 7843000
+    - May: 9470000
+    - June: 8006000
+    - July: 6967000
+    - August: 5846000
+    - September: 9021000
+    - October: 7041000
+    - November: 6167000
+  pullets_added:
+    by_month_2014: !omap
+    - December: 23722000
+    - January: 22821000
+    - February: 24543000
+    - March: 24201000
+    - April: 24222000
+    - May: 24570000
+    - June: 23230000
+    - July: 25601000
+    - August: 25047000
+    - September: 23334000
+    - October: 24850000
+    - November: 23639000
+    by_month_2013: !omap
+    - December: 21907000
+    - January: 24992000
+    - February: 23524000
+    - March: 25178000
+    - April: 22953000
+    - May: 25615000
+    - June: 23269000
+    - July: 23864000
+    - August: 21767000
+    - September: 24169000
+    - October: 26380000
+    - November: 23850000
