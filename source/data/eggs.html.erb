@@ -1,10 +1,10 @@
 ---
-title: "Data: Problems Inherent in Egg Production - Consider Veganism"
+title: "Data: Problems Inherent in Egg Production"
 ---
 
 <% load "./#{config[:data_dir]}/process_data.rb" %>
 <% process_slaughter_data data %>
-<% seconds_per_year = (365 * 24 * 60 * 60).to_f %>
+<% SECONDS_PER_YEAR = (365 * 24 * 60 * 60).to_f %>
 
 <div class="padded-page">
 
@@ -71,14 +71,14 @@ title: "Data: Problems Inherent in Egg Production - Consider Veganism"
       <tr><th>2013</th><th>2014</th><th>2013</th><th>2014</th><th>2013</th><th>2014</th></tr>
     </thead>
     <tbody>
-    <% data.slaughter.layer_hens.sold.by_month_2013.each_key do |month| %>
+    <% data.slaughter.chickens.layers.sold.by_month_2013.each_key do |month| %>
     <% 
-      num_sold_2013 = data.slaughter.layer_hens.sold.by_month_2013[month]
-      num_sold_2014 = data.slaughter.layer_hens.sold.by_month_2014[month]
-      num_disappeared_2013 = data.slaughter.layer_hens.disappeared.by_month_2013[month]
-      num_disappeared_2014 = data.slaughter.layer_hens.disappeared.by_month_2014[month]
-      num_pullets_added_2013 = data.slaughter.layer_hens.pullets_added.by_month_2013[month]
-      num_pullets_added_2014 = data.slaughter.layer_hens.pullets_added.by_month_2014[month]
+      num_sold_2013 = data.slaughter.chickens.layers.sold.by_month_2013[month]
+      num_sold_2014 = data.slaughter.chickens.layers.sold.by_month_2014[month]
+      num_disappeared_2013 = data.slaughter.chickens.layers.disappeared.by_month_2013[month]
+      num_disappeared_2014 = data.slaughter.chickens.layers.disappeared.by_month_2014[month]
+      num_pullets_added_2013 = data.slaughter.chickens.layers.pullets_added.by_month_2013[month]
+      num_pullets_added_2014 = data.slaughter.chickens.layers.pullets_added.by_month_2014[month]
     %>
       <tr><td data-title="Month"><%= month %></td><td data-title="Layers sold for slaughter (2013)"><%= number_with_delimiter num_sold_2013 %></td><td data-title="Layers sold for slaughter (2014)"><%= number_with_delimiter num_sold_2014 %></td><td data-title="Layers disappeared for any other reason (2013)"><%= number_with_delimiter num_disappeared_2013 %></td><td data-title="Layers disappeared for any other reason (2014)"><%= number_with_delimiter num_disappeared_2014 %></td><td data-title="Pullets added (2013)"><%= number_with_delimiter num_pullets_added_2013 %></td><td data-title="Pullets added (2014)"><%= number_with_delimiter num_pullets_added_2014 %></td></tr>
     <% end %>
@@ -95,29 +95,29 @@ title: "Data: Problems Inherent in Egg Production - Consider Veganism"
     </thead>
     <tbody>
       <tr class="relevant">
-        <td data-title="Layers sold for slaughter (2013)"><%= number_with_delimiter data.slaughter.layer_hens.sold.total_2013 %></td>
-        <td data-title="Layers sold for slaughter (2014)"><%= number_with_delimiter data.slaughter.layer_hens.sold.total_2014 %></td>
-        <td data-title="Layers disappeared for any other reason (2013)"><%= number_with_delimiter data.slaughter.layer_hens.disappeared.total_2013 %></td>
-        <td data-title="Layers disappeared for any other reason (2014)"><%= number_with_delimiter data.slaughter.layer_hens.disappeared.total_2014 %></td>
-        <td data-title="Total layers died for any reason (2013)"><%= number_with_delimiter data.slaughter.layer_hens.died.total_2013 %></td>
-        <td data-title="Total layers died for any reason (2014)"><%= number_with_delimiter data.slaughter.layer_hens.died.total_2014 %></td>
-        <td data-title="Pullets added (2013)"><%= number_with_delimiter data.slaughter.layer_hens.pullets_added.total_2013 %></td>
-        <td data-title="Pullets added (2014)"><%= number_with_delimiter data.slaughter.layer_hens.pullets_added.total_2014 %></td>
+        <td data-title="Layers sold for slaughter (2013)"><%= number_with_delimiter data.slaughter.chickens.layers.sold.total_2013 %></td>
+        <td data-title="Layers sold for slaughter (2014)"><%= number_with_delimiter data.slaughter.chickens.layers.sold.total_2014 %></td>
+        <td data-title="Layers disappeared for any other reason (2013)"><%= number_with_delimiter data.slaughter.chickens.layers.disappeared.total_2013 %></td>
+        <td data-title="Layers disappeared for any other reason (2014)"><%= number_with_delimiter data.slaughter.chickens.layers.disappeared.total_2014 %></td>
+        <td data-title="Total layers died for any reason (2013)"><%= number_with_delimiter data.slaughter.chickens.layers.total_2013 %></td>
+        <td data-title="Total layers died for any reason (2014)"><%= number_with_delimiter data.slaughter.chickens.layers.total_2014 %></td>
+        <td data-title="Pullets added (2013)"><%= number_with_delimiter data.slaughter.chickens.layers.pullets_added.total_2013 %></td>
+        <td data-title="Pullets added (2014)"><%= number_with_delimiter data.slaughter.chickens.layers.pullets_added.total_2014 %></td>
       </tr>
     </tbody>
   </table>
 
   <h3>2014 Layer Hen Death Interval in the U.S.</h3>
-  <p><sup><%= number_with_delimiter data.slaughter.layer_hens.died.total_2014 %> hens</sup>/<sub>year</sub> * <sup>year</sup>/<sub><%= number_with_delimiter seconds_per_year.to_i %> seconds</sub> = <sup><%= "%.2f" % (data.slaughter.layer_hens.died.total_2014/seconds_per_year) %> hens</sup>/<sub>second</sub> = <sup>1 hen</sup>/<sub><%= "%.2f" % (seconds_per_year/data.slaughter.layer_hens.died.total_2014) %> seconds</sub></p>
+  <p><sup><%= number_with_delimiter data.slaughter.chickens.layers.total_2014 %> hens</sup>/<sub>year</sub> * <sup>year</sup>/<sub><%= number_with_delimiter SECONDS_PER_YEAR.to_i %> seconds</sub> = <sup><%= "%.2f" % (data.slaughter.chickens.layers.total_2014/SECONDS_PER_YEAR) %> hens</sup>/<sub>second</sub> = <sup>1 hen</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.slaughter.chickens.layers.total_2014) %> seconds</sub></p>
 </div>
 
 <div class="padded z-depth-1">
   <h2>Number of Male Chicks Hatched/Culled Per Year</h2>
 
-  <p>It can be assumed that for each layer pullet added to the flock, a male chick was hatched. That is, there were around <%= number_with_delimiter data.slaughter.male_chicks.total_2014 %> male chicks hatched in 2014 (see <strong>Total Number Slaughtered, Lost, and Added &mdash; United States: 2013 and 2014</strong> above), and it can be assumed that nearly 100% of those were culled.</p>
+  <p>It can be assumed that for each layer pullet added to the flock, a male chick was hatched. That is, there were around <%= number_with_delimiter data.slaughter.chickens.layers.male_chicks.total_2014 %> male chicks hatched in 2014 (see <strong>Total Number Slaughtered, Lost, and Added &mdash; United States: 2013 and 2014</strong> above), and it can be assumed that nearly 100% of those were culled.</p>
 
   <h3>2014 Male Chick Cull Interval in the U.S.</h3>
-  <p><sup><%= number_with_delimiter data.slaughter.male_chicks.total_2014 %> chicks</sup>/<sub>year</sub> * <sup>year</sup>/<sub><%= number_with_delimiter seconds_per_year.to_i %> seconds</sub> = <sup><%= "%.2f" % (data.slaughter.male_chicks.total_2014/seconds_per_year) %> chicks</sup>/<sub>second</sub> = <sup>1 chick</sup>/<sub><%= "%.2f" % (seconds_per_year/data.slaughter.male_chicks.total_2014) %> seconds</sub></p>
+  <p><sup><%= number_with_delimiter data.slaughter.chickens.layers.male_chicks.total_2014 %> chicks</sup>/<sub>year</sub> * <sup>year</sup>/<sub><%= number_with_delimiter SECONDS_PER_YEAR.to_i %> seconds</sub> = <sup><%= "%.2f" % (data.slaughter.chickens.layers.male_chicks.total_2014/SECONDS_PER_YEAR) %> chicks</sup>/<sub>second</sub> = <sup>1 chick</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.slaughter.chickens.layers.male_chicks.total_2014) %> seconds</sub></p>
 </div>
 
 </div>
