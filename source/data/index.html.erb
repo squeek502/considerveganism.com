@@ -1,0 +1,22 @@
+---
+title: "Data, Sources, and Calculations"
+---
+
+<%
+def sub_pages(dir, ignore)
+  sitemap.resources.select do |resource|
+    resource != ignore and resource.path.start_with?(dir) and resource.path.end_with?("html")
+  end
+end
+%>
+
+<div class="padded-page">
+
+<h2>Data, Sources, and Calculations</h2>
+<ul>
+<% sub_pages('data', current_page).each do |resource| %>
+	<li><%= link_to resource.data.title, resource.url %></li>
+<% end %>
+</ul>
+
+</div>
