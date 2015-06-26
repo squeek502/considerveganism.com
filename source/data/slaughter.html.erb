@@ -27,14 +27,15 @@ end
       <tr><th>2014 Total</th><th>2013 Total</th></tr>
     </thead>
     <tbody>
-      <tr><td data-title="Commodity">Chickens</td><td data-title="Number slaughtered (2014)"><%= number_with_delimiter data.slaughter.chickens.broilers.total_2014 %></td><td data-title="Number slaughtered (2013)"><%= number_with_delimiter data.slaughter.chickens.broilers.total_2013 %></td></tr>
+      <tr><td><b>Chickens</b></td></tr>
+      <tr><td data-title="Commodity">Young</td><td data-title="Number slaughtered (2014)"><%= number_with_delimiter data.slaughter.chickens.young.total_inspected_2014 %></td><td data-title="Number slaughtered (2013)"><%= number_with_delimiter data.slaughter.chickens.young.total_inspected_2013 %></td></tr>
     </tbody>
   </table>
   <div class="source">Source: <%= link_to "Poultry Slaughter Annual Summary, 02.25.2015 (NASS)", "http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497" %></div>
   </blockquote>
 
   <h3>2014 Broiler Chicken Slaughter Interval in the U.S.</h3>
-  <%= slaughter_interval(data.slaughter.chickens.broilers.total_2014, "chicken", "chickens") %>
+  <%= slaughter_interval(data.slaughter.chickens.young.total_inspected_2014, "chicken", "chickens") %>
 </div>
 
 <div class="padded z-depth-1">

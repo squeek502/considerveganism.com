@@ -76,11 +76,20 @@ ducks:
   total_2013: 24575000
 
 chickens:
-  broilers:
+  sources: !omap
+  - 'Poultry Slaughter Annual Summary, 02.25.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497'
+  total_inspected_2014: 8666662000
+  total_inspected_2013: 8648756000
+  young:
     sources: !omap
     - 'Poultry Slaughter Annual Summary, 02.25.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497'
-    total_2014: 8666662000
-    total_2013: 8648756000
+    total_inspected_2014: 8522427000
+    total_inspected_2013: 8503750000
+  mature:
+    sources: !omap
+    - 'Poultry Slaughter Annual Summary, 02.25.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497'
+    total_inspected_2014: 144235000
+    total_inspected_2013: 145006000
   layers:
     sources: !omap
     - 'Chickens and Eggs Annual Summary, 02.26.2015_correction (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1509'
