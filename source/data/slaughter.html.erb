@@ -37,6 +37,62 @@ end
   <%= slaughter_interval(data.slaughter.chickens.broilers.total_2014, "chicken", "chickens") %>
 </div>
 
+<div class="padded z-depth-1">
+  <h2>Male Chick Slaughter Interval</h2>
+
+  <p>The calculations for male chicks culled per year can be found in <%= link_to "Data: Problems Inherent In Egg Production", "/data/eggs/" %></p>
+
+  <h3>2014 Male Chick Cull Interval in the U.S.</h3>
+  <%= slaughter_interval(data.slaughter.chickens.layers.male_chicks.total_2014, "chick", "chicks") %>
+</div>
+
+<div class="padded z-depth-1 margined">
+  <h2>Layer Hen Slaughter Interval</h2>
+
+  <blockquote>
+  <table>
+    <caption>Number Slaughtered, Lost, and Added During the Month &mdash; United States: 2013-2014</caption>
+    <thead>
+      <tr><th rowspan="2">Month</th><th colspan="2">Layers sold for slaughter</th><th colspan="2">Layers rendered, died,<br/> destroyed, composted, or<br/> disappeared for any other reason<br/> (other than sold)</th></tr>
+      <tr><th>2013</th><th>2014</th><th>2013</th><th>2014</th></tr>
+    </thead>
+    <tbody>
+    <% data.slaughter.chickens.layers.sold.by_month_2013.each_key do |month| %>
+    <% 
+      num_sold_2013 = data.slaughter.chickens.layers.sold.by_month_2013[month]
+      num_sold_2014 = data.slaughter.chickens.layers.sold.by_month_2014[month]
+      num_disappeared_2013 = data.slaughter.chickens.layers.disappeared.by_month_2013[month]
+      num_disappeared_2014 = data.slaughter.chickens.layers.disappeared.by_month_2014[month]
+    %>
+      <tr><td data-title="Month"><%= month %></td><td data-title="Layers sold for slaughter (2013)"><%= number_with_delimiter num_sold_2013 %></td><td data-title="Layers sold for slaughter (2014)"><%= number_with_delimiter num_sold_2014 %></td><td data-title="Layers disappeared for any other reason (2013)"><%= number_with_delimiter num_disappeared_2013 %></td><td data-title="Layers disappeared for any other reason (2014)"><%= number_with_delimiter num_disappeared_2014 %></td></tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div class="source">Source: <%= link_to "Chickens and Eggs Annual Summary, 02.26.2015_correction (NASS)", "http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1509" %></div>
+  </blockquote>
+
+  <table>
+    <caption>Total Number Slaughtered and Lost &mdash; United States: 2013 and 2014</caption>
+    <thead>
+      <tr><th colspan="2">Layers sold for slaughter</th><th colspan="2">Layers rendered, died,<br/> destroyed, composted, or<br/> disappeared for any other reason<br/> (other than sold)</th><th colspan="2">Total layers died for any reason</th></tr>
+      <tr><th>2013</th><th>2014</th><th>2013</th><th>2014</th><th>2013</th><th>2014</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-title="Layers sold for slaughter (2013)"><%= number_with_delimiter data.slaughter.chickens.layers.sold.total_2013 %></td>
+        <td data-title="Layers sold for slaughter (2014)"><%= number_with_delimiter data.slaughter.chickens.layers.sold.total_2014 %></td>
+        <td data-title="Layers disappeared for any other reason (2013)"><%= number_with_delimiter data.slaughter.chickens.layers.disappeared.total_2013 %></td>
+        <td data-title="Layers disappeared for any other reason (2014)"><%= number_with_delimiter data.slaughter.chickens.layers.disappeared.total_2014 %></td>
+        <td data-title="Total layers died for any reason (2013)"><%= number_with_delimiter data.slaughter.chickens.layers.total_2013 %></td>
+        <td data-title="Total layers died for any reason (2014)"><%= number_with_delimiter data.slaughter.chickens.layers.total_2014 %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>2014 Layer Hen Slaughter Interval in the U.S.</h3>
+  <%= slaughter_interval(data.slaughter.chickens.layers.total_2014, "hen", "hens") %>
+</div>
+
 <div class="padded z-depth-1 margined">
   <h2>Turkey Slaughter Interval</h2>
 
@@ -59,65 +115,6 @@ end
 </div>
 
 <div class="padded z-depth-1 margined">
-  <h2>Duck Slaughter Interval</h2>
-
-  <blockquote>
-  <table>
-    <caption>Number Slaughtered, Total Live Weight, and Average Live Weight by Type and Month &mdash; United States: 2013 and 2014 Total</caption>
-    <thead>
-      <tr><th rowspan="2">Commodity</th><th colspan="2">Number slaughtered</th></tr>
-      <tr><th>2014 Total</th><th>2013 Total</th></tr>
-    </thead>
-    <tbody>
-      <tr><td data-title="Commodity">Ducks</td><td data-title="Number slaughtered (2014)"><%= number_with_delimiter data.slaughter.ducks.total_2014 %></td><td data-title="Number slaughtered (2013)"><%= number_with_delimiter data.slaughter.ducks.total_2013 %></td></tr>
-    </tbody>
-  </table>
-  <div class="source">Source: <%= link_to "Poultry Slaughter Annual Summary, 02.25.2015 (NASS)", "http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497" %></div>
-  </blockquote>
-
-  <h3>2014 Duck Slaughter Interval in the U.S.</h3>
-  <%= slaughter_interval(data.slaughter.ducks.total_2014, "duck", "ducks") %>
-</div>
-
-<div class="padded z-depth-1 margined">
-  <h2>Lamb Slaughter Interval</h2>
-
-  <blockquote>
-  <table>
-    <caption>Commerical and Farm, Number of Head Slaughtered By Species &mdash; United States: 2013 and 2014</caption>
-    <thead>
-      <tr><th rowspan="2">Species</th><th colspan="2">Total slaughter</th></tr>
-      <tr><th>2013</th><th>2014</th></tr>
-    </thead>
-    <tbody>
-      <tr><td data-title="Species">Sheep</td><td data-title="Total slaughter (2013)"><%= number_with_delimiter data.slaughter.sheep.total_2013 %></td><td data-title="Total slaughter (2014)"><%= number_with_delimiter data.slaughter.sheep.total_2014 %></td></tr>
-    </tbody>
-  </table>
-
-  <table>
-    <caption>Federally Inspected Number of Head Slaughtered and Percent by Classification and Month &mdash; United States: 2014 and 2013 Total</caption>
-    <thead>
-      <tr><th>Classification</th><th>2014 Total</th><th>2013 Total</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><b>Sheep</b></td></tr>
-      <tr><td data-title="Classification">Mature sheep</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.sheep.mature_sheep.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.sheep.mature_sheep.total_inspected_2013 %></td></tr>
-      <tr><td data-title="Classification">Lambs and yearlings</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.sheep.lambs.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.sheep.lambs.total_inspected_2013 %></td></tr>
-      <tr><td data-title="Classification">Total</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.sheep.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.sheep.total_inspected_2013 %></td></tr>
-    </tbody>
-  </table>
-  <div class="source">Source: <%= link_to "Poultry Slaughter Annual Summary, 02.25.2015 (NASS)", "http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497" %></div>
-  </blockquote>
-
-  <h3>Total Number of Lambs Slaughtered in 2014</h3>
-  <p><sup><%= number_with_delimiter data.slaughter.sheep.lambs.total_inspected_2014 %> federally inspected lambs slaughtered</sup>/<sub><%= number_with_delimiter data.slaughter.sheep.total_inspected_2014 %> federally inspected sheep slaughtered</sub> = <%= "%.5f" % (data.slaughter.sheep.lambs.total_inspected_2014/data.slaughter.sheep.total_inspected_2014.to_f) %></p>
-  <p><%= "%.5f" % (data.slaughter.sheep.lambs.total_inspected_2014/data.slaughter.sheep.total_inspected_2014.to_f) %> * <%= number_with_delimiter data.slaughter.sheep.total_2014 %> <small>sheep slaughtered</small> = <%= number_with_delimiter data.slaughter.sheep.lambs.total_2014 %> <small>lambs slaughtered</small></p>
-
-  <h3>2014 Lamb Slaughter Interval in the U.S.</h3>
-  <%= slaughter_interval(data.slaughter.sheep.lambs.total_2014, "lamb", "lambs") %>
-</div>
-
-<div class="padded z-depth-1 margined">
   <h2>Hog Slaughter Interval</h2>
 
   <blockquote>
@@ -136,6 +133,27 @@ end
 
   <h3>2014 Hog Slaughter Interval in the U.S.</h3>
   <%= slaughter_interval(data.slaughter.hogs.total_2014, "hog", "hogs") %>
+</div>
+
+<div class="padded z-depth-1 margined">
+  <h2>Duck Slaughter Interval</h2>
+
+  <blockquote>
+  <table>
+    <caption>Number Slaughtered, Total Live Weight, and Average Live Weight by Type and Month &mdash; United States: 2013 and 2014 Total</caption>
+    <thead>
+      <tr><th rowspan="2">Commodity</th><th colspan="2">Number slaughtered</th></tr>
+      <tr><th>2014 Total</th><th>2013 Total</th></tr>
+    </thead>
+    <tbody>
+      <tr><td data-title="Commodity">Ducks</td><td data-title="Number slaughtered (2014)"><%= number_with_delimiter data.slaughter.ducks.total_2014 %></td><td data-title="Number slaughtered (2013)"><%= number_with_delimiter data.slaughter.ducks.total_2013 %></td></tr>
+    </tbody>
+  </table>
+  <div class="source">Source: <%= link_to "Poultry Slaughter Annual Summary, 02.25.2015 (NASS)", "http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497" %></div>
+  </blockquote>
+
+  <h3>2014 Duck Slaughter Interval in the U.S.</h3>
+  <%= slaughter_interval(data.slaughter.ducks.total_2014, "duck", "ducks") %>
 </div>
 
 <div class="padded z-depth-1 margined">
@@ -188,59 +206,41 @@ end
 </div>
 
 <div class="padded z-depth-1 margined">
-  <h2>Layer Hen Slaughter Interval</h2>
+  <h2>Lamb Slaughter Interval</h2>
 
   <blockquote>
   <table>
-    <caption>Number Slaughtered, Lost, and Added During the Month &mdash; United States: 2013-2014</caption>
+    <caption>Commerical and Farm, Number of Head Slaughtered By Species &mdash; United States: 2013 and 2014</caption>
     <thead>
-      <tr><th rowspan="2">Month</th><th colspan="2">Layers sold for slaughter</th><th colspan="2">Layers rendered, died,<br/> destroyed, composted, or<br/> disappeared for any other reason<br/> (other than sold)</th></tr>
-      <tr><th>2013</th><th>2014</th><th>2013</th><th>2014</th></tr>
+      <tr><th rowspan="2">Species</th><th colspan="2">Total slaughter</th></tr>
+      <tr><th>2013</th><th>2014</th></tr>
     </thead>
     <tbody>
-    <% data.slaughter.chickens.layers.sold.by_month_2013.each_key do |month| %>
-    <% 
-      num_sold_2013 = data.slaughter.chickens.layers.sold.by_month_2013[month]
-      num_sold_2014 = data.slaughter.chickens.layers.sold.by_month_2014[month]
-      num_disappeared_2013 = data.slaughter.chickens.layers.disappeared.by_month_2013[month]
-      num_disappeared_2014 = data.slaughter.chickens.layers.disappeared.by_month_2014[month]
-    %>
-      <tr><td data-title="Month"><%= month %></td><td data-title="Layers sold for slaughter (2013)"><%= number_with_delimiter num_sold_2013 %></td><td data-title="Layers sold for slaughter (2014)"><%= number_with_delimiter num_sold_2014 %></td><td data-title="Layers disappeared for any other reason (2013)"><%= number_with_delimiter num_disappeared_2013 %></td><td data-title="Layers disappeared for any other reason (2014)"><%= number_with_delimiter num_disappeared_2014 %></td></tr>
-    <% end %>
+      <tr><td data-title="Species">Sheep</td><td data-title="Total slaughter (2013)"><%= number_with_delimiter data.slaughter.sheep.total_2013 %></td><td data-title="Total slaughter (2014)"><%= number_with_delimiter data.slaughter.sheep.total_2014 %></td></tr>
     </tbody>
   </table>
-  <div class="source">Source: <%= link_to "Chickens and Eggs Annual Summary, 02.26.2015_correction (NASS)", "http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1509" %></div>
-  </blockquote>
 
   <table>
-    <caption>Total Number Slaughtered and Lost &mdash; United States: 2013 and 2014</caption>
+    <caption>Federally Inspected Number of Head Slaughtered and Percent by Classification and Month &mdash; United States: 2014 and 2013 Total</caption>
     <thead>
-      <tr><th colspan="2">Layers sold for slaughter</th><th colspan="2">Layers rendered, died,<br/> destroyed, composted, or<br/> disappeared for any other reason<br/> (other than sold)</th><th colspan="2">Total layers died for any reason</th></tr>
-      <tr><th>2013</th><th>2014</th><th>2013</th><th>2014</th><th>2013</th><th>2014</th></tr>
+      <tr><th>Classification</th><th>2014 Total</th><th>2013 Total</th></tr>
     </thead>
     <tbody>
-      <tr>
-        <td data-title="Layers sold for slaughter (2013)"><%= number_with_delimiter data.slaughter.chickens.layers.sold.total_2013 %></td>
-        <td data-title="Layers sold for slaughter (2014)"><%= number_with_delimiter data.slaughter.chickens.layers.sold.total_2014 %></td>
-        <td data-title="Layers disappeared for any other reason (2013)"><%= number_with_delimiter data.slaughter.chickens.layers.disappeared.total_2013 %></td>
-        <td data-title="Layers disappeared for any other reason (2014)"><%= number_with_delimiter data.slaughter.chickens.layers.disappeared.total_2014 %></td>
-        <td data-title="Total layers died for any reason (2013)"><%= number_with_delimiter data.slaughter.chickens.layers.total_2013 %></td>
-        <td data-title="Total layers died for any reason (2014)"><%= number_with_delimiter data.slaughter.chickens.layers.total_2014 %></td>
-      </tr>
+      <tr><td><b>Sheep</b></td></tr>
+      <tr><td data-title="Classification">Mature sheep</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.sheep.mature_sheep.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.sheep.mature_sheep.total_inspected_2013 %></td></tr>
+      <tr><td data-title="Classification">Lambs and yearlings</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.sheep.lambs.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.sheep.lambs.total_inspected_2013 %></td></tr>
+      <tr><td data-title="Classification">Total</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.sheep.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.sheep.total_inspected_2013 %></td></tr>
     </tbody>
   </table>
+  <div class="source">Source: <%= link_to "Poultry Slaughter Annual Summary, 02.25.2015 (NASS)", "http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497" %></div>
+  </blockquote>
 
-  <h3>2014 Layer Hen Slaughter Interval in the U.S.</h3>
-  <%= slaughter_interval(data.slaughter.chickens.layers.total_2014, "hen", "hens") %>
-</div>
+  <h3>Total Number of Lambs Slaughtered in 2014</h3>
+  <p><sup><%= number_with_delimiter data.slaughter.sheep.lambs.total_inspected_2014 %> federally inspected lambs slaughtered</sup>/<sub><%= number_with_delimiter data.slaughter.sheep.total_inspected_2014 %> federally inspected sheep slaughtered</sub> = <%= "%.5f" % (data.slaughter.sheep.lambs.total_inspected_2014/data.slaughter.sheep.total_inspected_2014.to_f) %></p>
+  <p><%= "%.5f" % (data.slaughter.sheep.lambs.total_inspected_2014/data.slaughter.sheep.total_inspected_2014.to_f) %> * <%= number_with_delimiter data.slaughter.sheep.total_2014 %> <small>sheep slaughtered</small> = <%= number_with_delimiter data.slaughter.sheep.lambs.total_2014 %> <small>lambs slaughtered</small></p>
 
-<div class="padded z-depth-1">
-  <h2>Male Chick Slaughter Interval</h2>
-
-  <p>The calculations for male chicks culled per year can be found in <%= link_to "Data: Problems Inherent In Egg Production", "/data/eggs/" %></p>
-
-  <h3>2014 Male Chick Cull Interval in the U.S.</h3>
-  <%= slaughter_interval(data.slaughter.chickens.layers.male_chicks.total_2014, "chick", "chicks") %>
+  <h3>2014 Lamb Slaughter Interval in the U.S.</h3>
+  <%= slaughter_interval(data.slaughter.sheep.lambs.total_2014, "lamb", "lambs") %>
 </div>
 
 </div>
