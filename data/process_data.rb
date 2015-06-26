@@ -27,6 +27,12 @@ def process_slaughter_data(data)
   data.slaughter.cattle["beef_cattle"] = data.slaughter.cattle.dairy_cows.dup.clear
   data.slaughter.cattle.beef_cattle["total_2014"] = data.slaughter.cattle.total_2014 - data.slaughter.cattle.dairy_cows.total_2014
   data.slaughter.cattle.beef_cattle["total_2013"] = data.slaughter.cattle.total_2013 - data.slaughter.cattle.dairy_cows.total_2013
+
+  # get total lambs slaughtered, as only the inspected slaughter data is broken into classifications
+  data.slaughter.sheep.lambs["percent_of_total_2014"] = data.slaughter.sheep.lambs.total_inspected_2014 / data.slaughter.sheep.total_inspected_2014.to_f
+  data.slaughter.sheep.lambs["percent_of_total_2013"] = data.slaughter.sheep.lambs.total_inspected_2013 / data.slaughter.sheep.total_inspected_2013.to_f
+  data.slaughter.sheep.lambs["total_2014"] = (data.slaughter.sheep.lambs.percent_of_total_2014 * data.slaughter.sheep.total_2014).to_i
+  data.slaughter.sheep.lambs["total_2013"] = (data.slaughter.sheep.lambs.percent_of_total_2013 * data.slaughter.sheep.total_2013).to_i
 end
 
 def process_inventory_data(data)

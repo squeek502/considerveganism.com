@@ -80,6 +80,44 @@ end
 </div>
 
 <div class="padded z-depth-1 margined">
+  <h2>Lamb Slaughter Interval</h2>
+
+  <blockquote>
+  <table>
+    <caption>Commerical and Farm, Number of Head Slaughtered By Species &mdash; United States: 2013 and 2014</caption>
+    <thead>
+      <tr><th rowspan="2">Species</th><th colspan="2">Total slaughter</th></tr>
+      <tr><th>2013</th><th>2014</th></tr>
+    </thead>
+    <tbody>
+      <tr><td data-title="Species">Sheep</td><td data-title="Total slaughter (2013)"><%= number_with_delimiter data.slaughter.sheep.total_2013 %></td><td data-title="Total slaughter (2014)"><%= number_with_delimiter data.slaughter.sheep.total_2014 %></td></tr>
+    </tbody>
+  </table>
+
+  <table>
+    <caption>Federally Inspected Number of Head Slaughtered and Percent by Classification and Month &mdash; United States: 2014 and 2013 Total</caption>
+    <thead>
+      <tr><th>Classification</th><th>2014 Total</th><th>2013 Total</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>Sheep</b></td></tr>
+      <tr><td data-title="Classification">Mature sheep</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.sheep.mature_sheep.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.sheep.mature_sheep.total_inspected_2013 %></td></tr>
+      <tr><td data-title="Classification">Lambs and yearlings</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.sheep.lambs.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.sheep.lambs.total_inspected_2013 %></td></tr>
+      <tr><td data-title="Classification">Total</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.sheep.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.sheep.total_inspected_2013 %></td></tr>
+    </tbody>
+  </table>
+  <div class="source">Source: <%= link_to "Poultry Slaughter Annual Summary, 02.25.2015 (NASS)", "http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497" %></div>
+  </blockquote>
+
+  <h3>Total Number of Lambs Slaughtered in 2014</h3>
+  <p><sup><%= number_with_delimiter data.slaughter.sheep.lambs.total_inspected_2014 %> federally inspected lambs slaughtered</sup>/<sub><%= number_with_delimiter data.slaughter.sheep.total_inspected_2014 %> federally inspected sheep slaughtered</sub> = <%= "%.5f" % (data.slaughter.sheep.lambs.total_inspected_2014/data.slaughter.sheep.total_inspected_2014.to_f) %></p>
+  <p><%= "%.5f" % (data.slaughter.sheep.lambs.total_inspected_2014/data.slaughter.sheep.total_inspected_2014.to_f) %> * <%= number_with_delimiter data.slaughter.sheep.total_2014 %> <small>sheep slaughtered</small> = <%= number_with_delimiter data.slaughter.sheep.lambs.total_2014 %> <small>lambs slaughtered</small></p>
+
+  <h3>2014 Lamb Slaughter Interval in the U.S.</h3>
+  <%= slaughter_interval(data.slaughter.sheep.lambs.total_2014, "lamb", "lambs") %>
+</div>
+
+<div class="padded z-depth-1 margined">
   <h2>Hog Slaughter Interval</h2>
 
   <blockquote>
@@ -111,8 +149,8 @@ end
       <tr><th>2013</th><th>2014</th></tr>
     </thead>
     <tbody>
-      <tr><td data-title="Species">Cattle</td><td data-title="Total slaughter (2013)">32,564,800</td><td data-title="Total slaughter (2014)">30,268,300</td></tr>
-      <tr><td data-title="Species">Calves</td><td data-title="Total slaughter (2013)">787,700</td><td data-title="Total slaughter (2014)">591,300</td></tr>
+      <tr><td data-title="Species">Cattle</td><td data-title="Total slaughter (2013)"><%= number_with_delimiter data.slaughter.cattle.total_2013 %></td><td data-title="Total slaughter (2014)"><%= number_with_delimiter data.slaughter.cattle.total_2014 %></td></tr>
+      <tr><td data-title="Species">Calves</td><td data-title="Total slaughter (2013)"><%= number_with_delimiter data.slaughter.cattle.veal_calves.total_2013 %></td><td data-title="Total slaughter (2014)"><%= number_with_delimiter data.slaughter.cattle.veal_calves.total_2014 %></td></tr>
     </tbody>
   </table>
 
@@ -123,9 +161,9 @@ end
     </thead>
     <tbody>
       <tr><td><b>Cattle</b></td></tr>
-      <tr><td data-title="Classification">Dairy cows</td><td data-title="2014 Total">2,815,600</td><td data-title="2013 Total">3,124,900</td></tr>
-      <tr><td data-title="Classification">Calves and vealers</td><td data-title="2014 Total">557,600</td><td data-title="2013 Total">751,000</td></tr>
-      <tr><td data-title="Classification">Total</td><td data-title="2014 Total">29,684,100</td><td data-title="2013 Total">31,947,000</td></tr>
+      <tr><td data-title="Classification">Dairy cows</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.cattle.dairy_cows.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.cattle.dairy_cows.total_inspected_2013 %></td></tr>
+      <tr><td data-title="Classification">Calves and vealers</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.cattle.veal_calves.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.cattle.veal_calves.total_inspected_2013 %></td></tr>
+      <tr><td data-title="Classification">Total</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.cattle.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.cattle.total_inspected_2013 %></td></tr>
     </tbody>
   </table>
   <div class="source">Source: <%= link_to "Livestock Slaughter Annual Summary, 04.27.2015 (NASS)", "http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1097" %></div>
