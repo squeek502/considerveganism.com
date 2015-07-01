@@ -11,8 +11,6 @@ def slaughter_interval(per_year, singular, plural)
 end
 %>
 
-<div class="padded-page">
-
 <h1>Data: Animal Slaughter Interval in the U.S.</h1>
 <p>The data, sources, and calculations used in the <%= link_to "Animal Slaughter Interval in the U.S. infographic", "/info/slaughter-interval.jpg" %></p>
 
@@ -242,6 +240,4 @@ end
 
   <h3>2014 Lamb Slaughter Interval in the U.S.</h3>
   <%= slaughter_interval(data.slaughter.sheep.lambs.total_2014, "lamb", "lambs") %>
-</div>
-
 </div>

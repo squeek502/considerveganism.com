@@ -289,6 +289,14 @@ nav .about a:hover, nav .current.about a { background-color: #333; color: #fff; 
 .section-footer-links a { display:block; background: rgba(0,0,0,.1); padding: .5em 1em; margin: .5em 0; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
 .section-footer-links a:hover { background: rgba(255,255,255,.05); }
 
+body.data footer, body.info footer { padding: 1em 1em; }
+.footer-link { display: inline-block; background: rgba(0,0,0,.1); padding: .5em 1em; margin: 0em 1em; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
+.footer-link:hover { background: rgba(255,255,255,.05); }
+.footer-link-big { padding: 2em 2em; }
+
+.pull-left { float: left; }
+.pull-right { float: right; }
+
 .z-depth-1 {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); z-index: 100;
 }

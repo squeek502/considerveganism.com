@@ -6,8 +6,6 @@ title: "Data: Problems Inherent in Egg Production"
 <% process_slaughter_data data %>
 <% SECONDS_PER_YEAR = (365 * 24 * 60 * 60).to_f %>
 
-<div class="padded-page">
-
 <h1>Data: Problems Inherent in Egg Production</h1>
 <p>The data, sources, and calculations used in the <%= link_to "Problems Inherent in Egg Production infographic", "/info/egg-problems.jpg" %></p>
 
@@ -118,6 +116,4 @@ title: "Data: Problems Inherent in Egg Production"
 
   <h3>2014 Male Chick Cull Interval in the U.S.</h3>
   <p><sup><%= number_with_delimiter data.slaughter.chickens.layers.male_chicks.total_2014 %> chicks</sup>/<sub>year</sub> * <sup>year</sup>/<sub><%= number_with_delimiter SECONDS_PER_YEAR.to_i %> seconds</sub> = <sup><%= "%.2f" % (data.slaughter.chickens.layers.male_chicks.total_2014/SECONDS_PER_YEAR) %> chicks</sup>/<sub>second</sub> = <sup>1 chick</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.slaughter.chickens.layers.male_chicks.total_2014) %> seconds</sub></p>
-</div>
-
 </div>

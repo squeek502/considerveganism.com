@@ -30,6 +30,7 @@
     </header>
     <%= yield %>
     <footer class="clearfix">
+      <%= yield_content :footer %>
     </footer>
 
     <% if config[:environment] != :"development" then %>
