@@ -12,7 +12,7 @@ Uses the [Middleman](https://middlemanapp.com/) static site framework.
 
 ## Contributing
 
-When gathering data, make an effort to only use sources that are either from within the industry itself or are from a unbiased third-party. Pro-vegan websites should be avoided when sourcing information.
+When gathering data, make an effort to only use sources that are either from within the industry itself or are from an unbiased third-party. Pro-vegan websites should be avoided when sourcing information.
 
 Some good sources:
 
