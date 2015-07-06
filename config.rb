@@ -28,7 +28,8 @@ helpers do
       :twitter => "https://twitter.com/intent/tweet?url=#{CGI.escape(external_url)}&text=#{CGI.escape(title)}",
       :googleplus => "https://plus.google.com/share?url=#{CGI.escape(external_url)}",
       :tumblr => "https://www.tumblr.com/widgets/share/tool?posttype=photo&content=#{CGI.escape(external_url)}&caption=#{CGI.escape(title)}&canonicalUrl=#{CGI.escape(absolute_url("/"))}",
-      :reddit => "https://www.reddit.com/submit?url=#{CGI.escape(external_url)}&title=#{CGI.escape(title)}"
+      :reddit => "https://www.reddit.com/submit?url=#{CGI.escape(external_url)}&title=#{CGI.escape(title)}",
+      :vk => "http://vk.com/share.php?url=#{CGI.escape(external_url)}"
       # facebook doesn't have support for plain link image sharing via URL
     }
   end
@@ -39,7 +40,8 @@ helpers do
       :twitter => "https://twitter.com/intent/tweet?url=#{CGI.escape(url)}&text=#{CGI.escape(title)}",
       :googleplus => "https://plus.google.com/share?url=#{CGI.escape(url)}",
       :tumblr => "https://www.tumblr.com/widgets/share/tool?posttype=link&content=#{CGI.escape(url)}&title=#{CGI.escape(title)}&caption=#{CGI.escape(description)}",
-      :reddit => "https://www.reddit.com/submit?url=#{CGI.escape(url)}&title=#{CGI.escape(title)}"
+      :reddit => "https://www.reddit.com/submit?url=#{CGI.escape(url)}&title=#{CGI.escape(title)}",
+      :vk => "http://vk.com/share.php?url=#{CGI.escape(url)}"
     }
   end
 end
