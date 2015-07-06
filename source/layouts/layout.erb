@@ -8,6 +8,7 @@
     <% if current_page.data.description %>
     <meta name="description" content="<%= current_page.data.description %>" />
     <% end %>
+    <meta property="og:image" content="<%= current_page.data.og_image ? current_page.data.og_image : absolute_url("/images/opengraph_default.jpg") %>" />
 
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
     <%= stylesheet_link_tag "normalize", "all" %>
