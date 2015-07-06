@@ -283,8 +283,6 @@ nav .about a:hover, nav .current.about a { background-color: #333; color: #fff; 
 .arg-premise .arg-symbol { left: 2em; }
 .arg-conclusion .arg-symbol { font-size: 2em;}
 
-.page-content { height: 100vh; border-right: 3em solid #222; position: fixed; right: 0; top: 0; z-index: -1; }
-
 .section-footer-links { list-style: none; margin: 1em 0; padding: 0; }
 .section-footer-links a { display:block; background: rgba(0,0,0,.1); padding: .5em 1em; margin: .5em 0; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
 .section-footer-links a:hover { background: rgba(255,255,255,.05); }
