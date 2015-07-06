@@ -1,6 +1,14 @@
 <div class="padded z-depth-1 margined">
   <h2><%= title %></h2>
   <p style="text-align:center"><%= link_to (image_tag ("/info/" + img), :height => "600px"), ("/info/" + img) %></p>
+  <div class="share-links">
+    Share to:
+    <ul class="share-links-list">
+      <% share_image_to(imgur, absolute_url("info/" + img), title, "").each do |site, link| %>
+      <li><%= link_to (image_tag ("#{site}-24.png"), :class => site), link %></li>
+      <% end %>
+    </ul>
+  </div>
   <ul class="section-footer-links clearfix">
     <li><%= link_to "Data, sources, and calculations", data %></li>
     <li><%= link_to "Imgur mirror", imgur %></li>
