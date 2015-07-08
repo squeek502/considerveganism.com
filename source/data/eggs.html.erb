@@ -109,11 +109,22 @@ title: "Data: Problems Inherent in Egg Production"
   <p><sup><%= number_with_delimiter data.slaughter.chickens.layers.total_2014 %> hens</sup>/<sub>year</sub> * <sup>year</sup>/<sub><%= number_with_delimiter SECONDS_PER_YEAR.to_i %> seconds</sub> = <sup><%= "%.2f" % (data.slaughter.chickens.layers.total_2014/SECONDS_PER_YEAR) %> hens</sup>/<sub>second</sub> = <sup>1 hen</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.slaughter.chickens.layers.total_2014) %> seconds</sub></p>
 </div>
 
-<div class="padded z-depth-1">
+<div class="padded z-depth-1 margined">
   <h2>Number of Male Chicks Hatched/Culled Per Year</h2>
 
   <p>It can be assumed that for each layer pullet added to the flock, a male chick was hatched. That is, there were around <%= number_with_delimiter data.slaughter.chickens.layers.male_chicks.total_2014 %> male chicks hatched in 2014 (see <strong>Total Number Slaughtered, Lost, and Added &mdash; United States: 2013 and 2014</strong> above), and it can be assumed that nearly 100% of those were culled.</p>
 
   <h3>2014 Male Chick Cull Interval in the U.S.</h3>
   <p><sup><%= number_with_delimiter data.slaughter.chickens.layers.male_chicks.total_2014 %> chicks</sup>/<sub>year</sub> * <sup>year</sup>/<sub><%= number_with_delimiter SECONDS_PER_YEAR.to_i %> seconds</sub> = <sup><%= "%.2f" % (data.slaughter.chickens.layers.male_chicks.total_2014/SECONDS_PER_YEAR) %> chicks</sup>/<sub>second</sub> = <sup>1 chick</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.slaughter.chickens.layers.male_chicks.total_2014) %> seconds</sub></p>
+</div>
+
+<div class="padded z-depth-1 margined">
+  <h2>Quality of Meat from Spent Hens</h2>
+
+  <blockquote>
+    <p>
+      "Traditionally, processors have  bought spent fowl from egg producers  and slaughtered them  for use in food products  such as soups and further processed meats. Egg companies were able to put the income from the sale of these birds  against the cost of replacement chicks. Recently this market  for spent fowl has declined. The modern White Leghorn hen is a small-framed chicken with a minimum of muscle mass and yields little meat upon processing. Moreover, the bones of spent layers  often shatter  during  slaughter. When this happens, bone fragments can penetrate the meat and reduce its value as a marketable  product. The expansion in numbers of broiler breeders  to  keep pace with the enormous growth of the broiler industry has also affected the market for spent commercial layers. A broiler  breeder hen is larger  than a White Leghorn hen and yields considerably more  meat. The availability of spent broiler breeders with the relative  efficiencies to be had processing these buds, as well as the increased use of broiler meat in products that once used fowl meat, have led processors to restrict their commitments to buy spent laying hens."
+    </p>
+    <div class="source">Source: <%= link_to "Humane On-Farm Killing of Spent Hens (Applied Poultly Science, Inc.)", "http://japr.oxfordjournals.org/content/5/2/191.full.pdf" %></div>
+  </blockquote>
 </div>
