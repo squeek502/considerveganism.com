@@ -1,0 +1,46 @@
+<% load "./#{config[:data_dir]}/process_data.rb" %>
+<% process_usa_slaughter_data data %>
+<script>
+window.addEventListener('DOMContentLoaded',function(){
+  var updatesPerSecond = 20;
+  var animalsKilledPerYear = {
+    "wild_caught_fish": <%=data.slaughter.world.fishes.wild_caught.min_1999_2007%>,
+    "chickens": <%=data.slaughter.world.chickens.total_2013%>,
+    "farmed_fish": <%=data.slaughter.world.fishes.farmed.min_2011%>,
+    "ducks": <%=data.slaughter.world.ducks.total_2013%>,
+    "pigs": <%=data.slaughter.world.pigs.total_2013%>,
+    "rabbits": <%=data.slaughter.world.rabbits.total_2013%>,
+    "geese": <%=data.slaughter.world.geese.total_2013%>,
+    "turkeys": <%=data.slaughter.world.turkeys.total_2013%>,
+    "sheep": <%=data.slaughter.world.sheep.total_2013%>,
+    "goats": <%=data.slaughter.world.goats.total_2013%>,
+    "cattle": <%=data.slaughter.world.cattle.total_2013%>,
+    "rodents": <%=data.slaughter.world.rodents.total_2013%>,
+    "other_birds": <%=data.slaughter.world.other_birds.total_2013%>,
+    "buffalo": <%=data.slaughter.world.buffalo.total_2013%>,
+    "horses": <%=data.slaughter.world.horses.total_2013%>,
+    "donkeys": <%=(data.slaughter.world.donkeys.total_2013+data.slaughter.world.mules.total_2013)%>,
+    "camels": <%=(data.slaughter.world.camels.total_2013+data.slaughter.world.camelids.total_2013)%>,
+  };
+
+  var secondsPerYear = 365 * 24 * 60 * 60;
+  var interval = 1000/ updatesPerSecond;
+  var count = 0, start = new Date().getTime();
+
+  function update(intervalCount) {
+    for (var subset in animalsKilledPerYear) {
+      var numKilled = animalsKilledPerYear[subset];
+      var countElement = document.getElementById("akc-" + subset);
+      if (countElement) {
+        countElement.innerHTML = Math.round(intervalCount * (numKilled/secondsPerYear) / updatesPerSecond).toLocaleString();
+      }
+    }
+  }
+
+  function selfCorrectingTimeoutInterval() {
+    update(++count);
+    window.setTimeout(selfCorrectingTimeoutInterval, interval - (new Date().getTime() - start - count * interval));
+  }
+  window.setTimeout(selfCorrectingTimeoutInterval, interval);
+});
+</script>

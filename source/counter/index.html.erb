@@ -1,0 +1,78 @@
+---
+title: "Animal Kill Counter"
+description: "An updated version of the ADAPTT Animal Kill Counter."
+---
+
+<div class="padded-page">
+
+<h1><%=current_page.data.title%></h1>
+<p>An updated version of the <%= link_to "ADAPTT Animal Kill Counter", "http://www.adaptt.org/killcounter.html" %>.</p>
+
+<div class="padded z-depth-1 margined">
+  <%= partial(:html) %>
+  <%= partial(:javascript) %>
+</div>
+
+<div class="padded z-depth-1 margined">
+  <h2>Source Code</h2>
+  <p>Anyone is free to copy, modify, publish, use, or distribute the following code for any purpose.</p>
+  <h3>HTML</h3>
+  <pre><code><%=h partial(:html) %></code></pre>
+  <h3>Javascript</h3>
+  <pre><code><%=h partial(:javascript) %></code></pre>
+</div>
+
+<div class="padded z-depth-1 margined">
+  <h2>Data Used</h2>
+  <h3>Number of Land Animals Killed in 2013</h3>
+  <p>In total, approximately 69,429,244,409 (69.4 billion) land animals were killed for meat in 2013.</p>
+  <blockquote>
+    <table>
+      <caption>Region: <i>World + (Total)</i>, Element: <i>Producing Animals/Slaughtered</i>, Items Aggregated: <i>Meat, Total > (List)</i>, Year: <i>2013</i></caption>
+      <thead>
+        <tr><th>Item</th><th>Unit</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        <tr><td data-title="Item">Meat, cattle</td><td data-title="Unit">Head</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.cattle.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, buffalo</td><td data-title="Unit">Head</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.buffalo.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, sheep</td><td data-title="Unit">Head</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.sheep.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, goat</td><td data-title="Unit">Head</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.goats.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, pig</td><td data-title="Unit">Head</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.pigs.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, horse</td><td data-title="Unit">Head</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.horses.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, ass</td><td data-title="Unit">Head</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.donkeys.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, mule</td><td data-title="Unit">Head</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.mules.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, camel</td><td data-title="Unit">Head</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.camels.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, other camelids</td><td data-title="Unit">Head</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.camelids.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, chicken</td><td data-title="Unit">Head*</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.chickens.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, duck</td><td data-title="Unit">Head*</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.ducks.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, goose and guinea fowl</td><td data-title="Unit">Head*</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.geese.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, turkey</td><td data-title="Unit">Head*</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.turkeys.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, bird nes</td><td data-title="Unit">Head*</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.other_birds.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, rabbit</td><td data-title="Unit">Head*</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.rabbits.total_2013 %></td></tr>
+        <tr><td data-title="Item">Meat, other rodents</td><td data-title="Unit">Head*</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.rodents.total_2013 %></td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td colspan="3">* converted from '1000 Head' to 'Head'</td></tr>
+      </tfoot>
+    </table>
+    <div class="source">Source: <%= link_to "FAOSTAT [Region: <i>World + (Total)</i>, Element: <i>Producing Animals/Slaughtered</i>, Items Aggregated: <i>Meat, Total > (List)</i>, Year: <i>2013</i>]", "http://faostat3.fao.org/download/Q/QL/E" %></div>
+  </blockquote>
+
+  <h3>Number of Wild Fish Caught Per Year Between 1999-2007</h3>
+  <blockquote>
+    <p>"In this study it is estimated that between 0.97 and 2.7 trillion* fish (ie 970,000,000,000 to 2,700,000,000,000) were caught from the wild globally each year for 1999-2007."</p>
+    <div class="source">Source: <%= link_to "Fish count estimates (fishcount.org.uk)", "http://fishcount.org.uk/fish-count-estimates" %></div>
+  </blockquote>
+
+  <h3>Number of Farmed Fish Killed in 2011</h3>
+  <blockquote>
+    <p>"Using the same method of estimating fish numbers from reported aquaculture production tonnages, it is estimated that between 38 and 128 billion farmed fish were killed for food globally in 2011."</p>
+    <div class="source">Source: <%= link_to "Fish count estimates (fishcount.org.uk)", "http://fishcount.org.uk/fish-count-estimates" %></div>
+  </blockquote>
+</div>
+
+</div>
+
+<% content_for :footer do %>
+  <%= link_to "&laquo; Home", "/", :class => "footer-link footer-link-big" %>
+<% end %>

@@ -307,6 +307,17 @@ img.vk { background:  rgb(69,102,142) !important; }
 .pull-left { float: left; }
 .pull-right { float: right; }
 
+code {
+  font-family: monospace;
+  font-size: 12px;
+  display: block; unicode-bidi: embed;
+  white-space:pre;
+  overflow: auto;
+  tab-size: 4;
+  border: 1px solid #aaa;
+  padding: 1em;
+}
+
 .z-depth-1 {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); z-index: 100;
 }
@@ -533,12 +544,13 @@ table .relevant { outline: 1px solid #444; }
   table tbody tr:nth-child(even) { background-color: #eee; }
   table tbody tr:nth-child(odd) { background-color: #f3f3f3; }
   table tbody tr:hover td { background: #fff; }
-  table td { padding: .25em .75em; text-align: center; }
+  table tbody td { padding: .25em .75em; text-align: center; }
   table tbody td:first-child { text-align: left; }
   table tr.parent td { background: #eee; }
   table .indent { text-indent: 2em; }
   table .relevant { outline: 1px solid #444; }
   table caption { font-weight: bold; padding: .25em .75em; display: table-caption; }
+  table tfoot td { padding: .5em .75em; background: #ddd; font-size: 85%; }
 
 }
 
