@@ -1,3 +1,52 @@
+world:
+  sources: !omap
+  - 'FAOSTAT [Region: World + (Total), Element: Producing Animals/Slaughtered, Items Aggregated: Meat, Total > (List), Year: 2013]': 'http://faostat3.fao.org/download/Q/QL/E'
+  cattle:
+    total_2013: 298799160.08
+  buffalo:
+    total_2013: 25798819
+  sheep:
+    total_2013: 536742256.33
+  goats:
+    total_2013: 438320370.99
+  pigs:
+    total_2013: 1451856889.38
+  horses:
+    total_2013: 4863367
+  donkeys:
+    total_2013: 2689800
+  mules: 
+    total_2013: 523600
+  camels:
+    total_2013: 2568266.03
+  camelids:
+    total_2013: 675000
+  chickens:
+    total_2013: 61171973510
+  ducks:
+    total_2013: 2887594480
+  geese:
+    total_2013: 687147000
+  turkeys:
+    total_2013: 618086890
+  other_birds:
+    total_2013: 59656000
+  rabbits:
+    total_2013: 1171578000
+  rodents:
+    total_2013: 70371000
+  fishes:
+    sources: !omap
+    - 'Fish count estimates (fishcount.org.uk)': 'http://fishcount.org.uk/fish-count-estimates'
+    wild_caught:
+      min_1999_2007: 970000000000
+      max_1999_2007: 2700000000000
+    farmed:
+      min_2010: 37000000000
+      max_2010: 120000000000
+      min_2011: 38000000000
+      max_2011: 128000000000
+
 usa:
   cattle:
     sources: !omap
