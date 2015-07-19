@@ -3,8 +3,8 @@ title: "Data: Problems Inherent in Dairy Production"
 ---
 
 <% load "./#{config[:data_dir]}/process_data.rb" %>
-<% process_slaughter_data data %>
-<% process_inventory_data data %>
+<% process_usa_slaughter_data data %>
+<% process_usa_inventory_data data %>
 <% SECONDS_PER_YEAR = (365 * 24 * 60 * 60).to_f %>
 
 <h1>Data: Problems Inherent in Dairy Production</h1>
@@ -74,9 +74,9 @@ title: "Data: Problems Inherent in Dairy Production"
     </thead>
     <tbody>
       <tr><td data-title="Class">Cows and heifers that have calved</td><td>...</td><td>...</td></tr>
-      <tr class="relevant"><td class="indent" data-title="Class">Milk cows</td><td data-title="2014"><%= number_with_delimiter data.inventory.cattle.dairy_cows.total_2014 %></td><td data-title="2015"><%= number_with_delimiter data.inventory.cattle.dairy_cows.total_2015 %></td></tr>
+      <tr class="relevant"><td class="indent" data-title="Class">Milk cows</td><td data-title="2014"><%= number_with_delimiter data.inventory.usa.cattle.dairy_cows.total_2014 %></td><td data-title="2015"><%= number_with_delimiter data.inventory.usa.cattle.dairy_cows.total_2015 %></td></tr>
       <tr><td data-title="Class">Heifers 500 pounds and over</td><td>...</td><td>...</td></tr>
-      <tr><td class="indent" data-title="Class">For milk cow replacement</td><td data-title="2014"><%= number_with_delimiter data.inventory.cattle.dairy_heifers.total_2014 %></td><td data-title="2015"><%= number_with_delimiter data.inventory.cattle.dairy_heifers.total_2015 %></td></tr>
+      <tr><td class="indent" data-title="Class">For milk cow replacement</td><td data-title="2014"><%= number_with_delimiter data.inventory.usa.cattle.dairy_heifers.total_2014 %></td><td data-title="2015"><%= number_with_delimiter data.inventory.usa.cattle.dairy_heifers.total_2015 %></td></tr>
     </tbody>
   </table>
   <div class="source">Source: <%= link_to "Cattle, 01.30.2015 (NASS)", "http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1017" %></div>
@@ -85,11 +85,11 @@ title: "Data: Problems Inherent in Dairy Production"
   <p>The goal calving interval of a dairy cow is 12 months<sup><%= link_to "[1]", "http://www.epa.gov/oecaagct/ag101/dairyphases.html" %></sup>, so it can be assumed that all cows in the dairy herd that have given birth at least once will then give birth to a calf each year afterwards until they are culled. It can also be assumed that half of these calves will be male.</p>
 
   <h3>2015 Dairy Calf Birth Interval in the U.S.</h3>
-  <p><%= number_with_delimiter data.inventory.cattle.dairy_cows.total_2015 %> dairy cows * <sup>1 calf born</sup>/<sub>dairy cow / year</sub> = <sup><%= data.inventory.cattle.dairy_calves_born.total_2015 %> calves born</sup>/<sub>year</sub></p>
-  <p><sup>9,306,900 calves</sup>/<sub>year</sub> * <sup>year</sup>/<sub><%= number_with_delimiter SECONDS_PER_YEAR.to_i %> seconds</sub> = <sup><%= "%.2f" % (data.inventory.cattle.dairy_calves_born.total_2015/SECONDS_PER_YEAR) %> calves</sup>/<sub>second</sub> = <sup>1 calf</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.inventory.cattle.dairy_calves_born.total_2015) %> seconds</sub></p>
+  <p><%= number_with_delimiter data.inventory.usa.cattle.dairy_cows.total_2015 %> dairy cows * <sup>1 calf born</sup>/<sub>dairy cow / year</sub> = <sup><%= data.inventory.usa.cattle.dairy_calves_born.total_2015 %> calves born</sup>/<sub>year</sub></p>
+  <p><sup>9,306,900 calves</sup>/<sub>year</sub> * <sup>year</sup>/<sub><%= number_with_delimiter SECONDS_PER_YEAR.to_i %> seconds</sub> = <sup><%= "%.2f" % (data.inventory.usa.cattle.dairy_calves_born.total_2015/SECONDS_PER_YEAR) %> calves</sup>/<sub>second</sub> = <sup>1 calf</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.inventory.usa.cattle.dairy_calves_born.total_2015) %> seconds</sub></p>
 
   <h3>2015 Dairy Bull Calf Birth Interval in the U.S.</h3>
-  <p><sup>1 calf</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.inventory.cattle.dairy_calves_born.total_2015) %> seconds</sub> * <sup>1 bull calf</sup>/<sub>2 calves</sub> = <sup>1 bull calf</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.inventory.cattle.dairy_calves_born.total_2015*2) %> seconds</sub></p>
+  <p><sup>1 calf</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.inventory.usa.cattle.dairy_calves_born.total_2015) %> seconds</sub> * <sup>1 bull calf</sup>/<sub>2 calves</sub> = <sup>1 bull calf</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.inventory.usa.cattle.dairy_calves_born.total_2015*2) %> seconds</sub></p>
 </div>
 
 <div class="padded z-depth-1 margined">
@@ -102,18 +102,18 @@ title: "Data: Problems Inherent in Dairy Production"
       <tr><th>Classification</th><th>2014 Total</th><th>2013 Total</th></tr>
     </thead>
     <tbody>
-      <tr class="relevant"><td data-title="Classification">Calves and vealers</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.cattle.veal_calves.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.cattle.veal_calves.total_inspected_2013 %></td></tr>
+      <tr class="relevant"><td data-title="Classification">Calves and vealers</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.usa.cattle.veal_calves.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.usa.cattle.veal_calves.total_inspected_2013 %></td></tr>
     </tbody>
   </table>
   <div class="source">Source: <%= link_to "Livestock Slaughter Annual Summary, 04.27.2015 (NASS)", "http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1097" %></div>
   </blockquote>
 
   <h3>2014 Veal Calf Slaughter Interval in the U.S.</h3>
-  <p><sup><%= number_with_delimiter data.slaughter.cattle.veal_calves.total_inspected_2014 %> calves</sup>/<sub>year</sub> * <sup>year</sup>/<sub><%= number_with_delimiter SECONDS_PER_YEAR.to_i %> seconds</sub> = <sup><%= "%.2f" % (data.slaughter.cattle.veal_calves.total_inspected_2014/SECONDS_PER_YEAR) %> calves</sup>/<sub>second</sub> = <sup>1 calf</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.slaughter.cattle.veal_calves.total_inspected_2014) %> seconds</sub></p>
+  <p><sup><%= number_with_delimiter data.slaughter.usa.cattle.veal_calves.total_inspected_2014 %> calves</sup>/<sub>year</sub> * <sup>year</sup>/<sub><%= number_with_delimiter SECONDS_PER_YEAR.to_i %> seconds</sub> = <sup><%= "%.2f" % (data.slaughter.usa.cattle.veal_calves.total_inspected_2014/SECONDS_PER_YEAR) %> calves</sup>/<sub>second</sub> = <sup>1 calf</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.slaughter.usa.cattle.veal_calves.total_inspected_2014) %> seconds</sub></p>
 
   <h3>Veal Calves As A Percentage Of All Dairy Bull Calves Born in 2014 in the U.S.</h3>
-  <p><%= number_with_delimiter data.inventory.cattle.dairy_calves_born.total_2014 %> calves * <sup>1 bull calf</sup>/<sub>2 calves</sub> = <%= number_with_delimiter(data.inventory.cattle.dairy_calves_born.total_2014/2) %> bull calves</p>
-  <p><sup><%= number_with_delimiter data.slaughter.cattle.veal_calves.total_inspected_2014 %> vealers</sup>/<sub><%= number_with_delimiter(data.inventory.cattle.dairy_calves_born.total_2014/2) %> bull calves</sub> = <%= "%.2f" % (data.slaughter.cattle.veal_calves.total_inspected_2014/(data.inventory.cattle.dairy_calves_born.total_2014/2.0)*100) %>%</p>
+  <p><%= number_with_delimiter data.inventory.usa.cattle.dairy_calves_born.total_2014 %> calves * <sup>1 bull calf</sup>/<sub>2 calves</sub> = <%= number_with_delimiter(data.inventory.usa.cattle.dairy_calves_born.total_2014/2) %> bull calves</p>
+  <p><sup><%= number_with_delimiter data.slaughter.usa.cattle.veal_calves.total_inspected_2014 %> vealers</sup>/<sub><%= number_with_delimiter(data.inventory.usa.cattle.dairy_calves_born.total_2014/2) %> bull calves</sub> = <%= "%.2f" % (data.slaughter.usa.cattle.veal_calves.total_inspected_2014/(data.inventory.usa.cattle.dairy_calves_born.total_2014/2.0)*100) %>%</p>
 </div>
 
 <div class="padded z-depth-1 margined">
@@ -126,12 +126,12 @@ title: "Data: Problems Inherent in Dairy Production"
       <tr><th>Classification</th><th>2014 Total</th><th>2013 Total</th></tr>
     </thead>
     <tbody>
-      <tr class="relevant"><td data-title="Classification">Dairy cows</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.cattle.dairy_cows.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.cattle.dairy_cows.total_inspected_2013 %></td></tr>
+      <tr class="relevant"><td data-title="Classification">Dairy cows</td><td data-title="2014 Total"><%= number_with_delimiter data.slaughter.usa.cattle.dairy_cows.total_inspected_2014 %></td><td data-title="2013 Total"><%= number_with_delimiter data.slaughter.usa.cattle.dairy_cows.total_inspected_2013 %></td></tr>
     </tbody>
   </table>
   <div class="source">Source: <%= link_to "Livestock Slaughter Annual Summary, 04.27.2015 (NASS)", "http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1097" %></div>
   </blockquote>
 
   <h3>2014 Dairy Cow Slaughter Interval in the U.S.</h3>
-  <p><sup><%= number_with_delimiter data.slaughter.cattle.dairy_cows.total_inspected_2014 %> cows</sup>/<sub>year</sub> * <sup>year</sup>/<sub><%= number_with_delimiter SECONDS_PER_YEAR.to_i %> seconds</sub> = <sup><%= "%.2f" % (data.slaughter.cattle.dairy_cows.total_inspected_2014/SECONDS_PER_YEAR) %> cows</sup>/<sub>second</sub> = <sup>1 cow</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.slaughter.cattle.dairy_cows.total_inspected_2014) %> seconds</sub></p>
+  <p><sup><%= number_with_delimiter data.slaughter.usa.cattle.dairy_cows.total_inspected_2014 %> cows</sup>/<sub>year</sub> * <sup>year</sup>/<sub><%= number_with_delimiter SECONDS_PER_YEAR.to_i %> seconds</sub> = <sup><%= "%.2f" % (data.slaughter.usa.cattle.dairy_cows.total_inspected_2014/SECONDS_PER_YEAR) %> cows</sup>/<sub>second</sub> = <sup>1 cow</sup>/<sub><%= "%.2f" % (SECONDS_PER_YEAR/data.slaughter.usa.cattle.dairy_cows.total_inspected_2014) %> seconds</sub></p>
 </div>
