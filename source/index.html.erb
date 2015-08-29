@@ -2,7 +2,7 @@
 description: Plainly presenting the case for veganism.
 ---
 
-<section id="intro" class="section-container clearfix z-depth-2">
+<section id="intro" class="section-container dark clearfix z-depth-2">
   <h2 class="section-header">Intro</h2>
   <div id="what-is-veganism" class="content-container clearfix">
     <h3>What Is Veganism?</h3>
@@ -14,7 +14,7 @@ description: Plainly presenting the case for veganism.
   </div>
 </section>
 
-<section id="ethics" class="section-container clearfix z-depth-2">
+<section id="ethics" class="section-container dark clearfix z-depth-2">
   <h2 class="section-header">Ethics</h2>
   <div id="core-argument" class="content-container clearfix">
     <h3>The Core Argument</h3>
@@ -112,7 +112,7 @@ description: Plainly presenting the case for veganism.
   </div>
 </section>
 
-<section id="health" class="section-container clearfix z-depth-2">
+<section id="health" class="section-container dark clearfix z-depth-2">
   <h2 class="section-header">Health</h2>
   <div id="healthier" class="content-container clearfix">
     <h3>The Healthfulness Of Veganism</h3>
@@ -139,7 +139,7 @@ description: Plainly presenting the case for veganism.
 </section>
 
 <!--
-<section id="environment" class="section-container clearfix z-depth-2">
+<section id="environment" class="section-container dark clearfix z-depth-2">
   <h2 class="section-header">Environment</h2>
   <div id="fcr" class="content-container clearfix">
     <h3>The Inefficiency Of Animal Agriculture</h3>
@@ -149,7 +149,7 @@ description: Plainly presenting the case for veganism.
 -->
 
 <!--
-<section id="how" class="section-container clearfix z-depth-2">
+<section id="how" class="section-container dark clearfix z-depth-2">
   <h2 class="section-header">How</h2>
   <div id="how-to-go-vegan" class="content-container clearfix">
     <h3>How To Go Vegan</h3>
@@ -158,16 +158,26 @@ description: Plainly presenting the case for veganism.
 </section>
 -->
 
-<div class="share-links">
-  Share this website to:
-  <ul class="share-links-list">
-    <% share_link_to(absolute_url("/"), "", "").each do |site, link| %>
-    <li><%= link_to (image_tag ("#{site}-24.png"), :class => site), link %></li>
-    <% end %>
-  </ul>
-</div>
+<section id="more" class="section-container clearfix z-depth-2">
+  <h2 class="section-header">More</h2>
+    <h3>Share This Website On...</h3>
+    <ul class="share-links-list">
+      <% share_link_to(absolute_url("/"), "", "").each do |site, link| %>
+      <li><%= link_to (image_tag ("#{site}-24.png"), :class => site), link %></li>
+      <% end %>
+    </ul>
 
-<section id="blog" class="section-container clearfix z-depth-2">
+  <div id="more-resources" class="content-container clearfix">
+    <h3>More Resources</h3>
+    <ul>
+      <li><%= link_to "Infographics", "/info" %></li>
+      <li><%= link_to "Data, sources, and calculations", "/data" %></li>
+      <li><%= link_to "Animal kill counter", "/counter" %></li>
+    </ul>
+  </div>
+</section>
+
+<section id="blog" class="section-container dark clearfix z-depth-2">
   <h2 class="section-header">Blog</h2>
   <div id="latest-blog-post" class="content-container clearfix">
     <h3>Latest Blog Post</h3>
@@ -182,7 +192,7 @@ description: Plainly presenting the case for veganism.
   </div>
 </section>
 
-<section id="about" class="section-container clearfix z-depth-2">
+<section id="about" class="section-container dark clearfix z-depth-2">
   <h2 class="section-header">About</h2>
   <div id="about-consider-veganism" class="content-container clearfix">
     <h3>About</h3>
@@ -191,13 +201,6 @@ description: Plainly presenting the case for veganism.
       <li>Rational</li>
       <li>Factual</li>
       <li>Concise</li>
-    </ul>
-
-    <h3>Resources</h3>
-    <ul>
-      <li><%= link_to "Infographics", "/info" %></li>
-      <li><%= link_to "Data, sources, and calculations", "/data" %></li>
-      <li><%= link_to "Animal kill counter", "/counter" %></li>
     </ul>
 
     <h3>Contributing</h3>

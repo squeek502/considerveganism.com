@@ -132,24 +132,30 @@ nav .separator { display:block; }
   /* Make a little room */
   padding-bottom: 2em;
 
-  color: #fff;
-  background: #333;
-
   box-sizing: border-box;
 }
 
-.section-container a { color: #B2D8FF; }
-.section-container a:visited { color: #CDC9DB; }
-.section-container a:hover { color: #74BBF2; }
+.section-container.dark {
+  color: #fff;
+  background: #333;
+}
+
+.section-container.dark a { color: #B2D8FF; }
+.section-container.dark a:visited { color: #CDC9DB; }
+.section-container.dark a:hover { color: #74BBF2; }
 
 .section-header {
-    padding: .25em 1em;
-    margin: 0;
-    background: #222;
-    text-align: center;
-    font-weight: normal;
-    color: #fff;
-    line-height: 2em;
+  padding: .25em 1em;
+  margin: 0;
+  text-align: center;
+  font-weight: normal;
+  line-height: 2em;
+  background: #ddd;
+}
+
+.section-container.dark .section-header {
+  background: #222;
+  color: #fff;
 }
 
 .content-container { padding: 0 .5em; }
@@ -219,14 +225,16 @@ nav .separator { display:block; }
 #how .section-header { background-color: #593107; }
 #about .section-header { }
 #blog .section-header { background-color: #105f5e; }
+#more .section-header { background-color: transparent; color: rgba(0,0,0,.9); display: none; }
 
-#intro.section-container { border-color: #004d99; background-color: #369; z-index: 106; }
-#ethics.section-container { border-color: #370759; background-color: #60347f; z-index: 105; }
-#health.section-container { border-color: #5f101c; background-color: #732d37; z-index: 104; }
-#environment.section-container { border-color: #3d5907; background-color: #658626; z-index: 103; }
-#how.section-container { border-color: #593107; background-color: #7f5b34; z-index: 102; }
+#intro.section-container { border-color: #004d99; background-color: #369; z-index: 160; }
+#ethics.section-container { border-color: #370759; background-color: #60347f; z-index: 150; }
+#health.section-container { border-color: #5f101c; background-color: #732d37; z-index: 140; }
+#environment.section-container { border-color: #3d5907; background-color: #658626; z-index: 130; }
+#how.section-container { border-color: #593107; background-color: #7f5b34; z-index: 120; }
 #about.section-container { z-index: 100; }
-#blog.section-container { border-color: #105f5e; background-color: #2d736f; z-index: 101; }
+#blog.section-container { border-color: #105f5e; background-color: #2d736f; z-index: 110; }
+#more.section-container { border-color: transparent; background-color: #fff; color: rgba(0,0,0,.9); z-index: 115; }
 
 nav .intro a { border-color: #004d99; }
 nav .ethics a { border-color: #370759; }
