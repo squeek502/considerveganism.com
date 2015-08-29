@@ -26,7 +26,7 @@
           <!--<li class="environment"><%= link_to "Environment", "/#environment" %></li>-->
           <!--<li class="how"><%= link_to "How", "/#how" %></li>-->
           <li class="separator"></li>
-          <li class="blog"><%= link_to "Blog", "/blog" %></li>
+          <li class="blog<%= (current_page.url.start_with?("/blog") ? " current" : "") %>"><%= link_to "Blog", "/blog" %></li>
           <li class="about"><%= link_to "About", "/#about" %></li>
         </ul>
       </nav>

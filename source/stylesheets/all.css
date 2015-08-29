@@ -234,7 +234,7 @@ nav .health a { border-color: #5f101c; }
 nav .environment a { border-color: #3d5907; }
 nav .how a { border-color: #5f5510; }
 nav .about a { }
-nav .blog a { border-color: #105f5c; }
+nav .blog a { border-color: #105f5e; }
 nav .intro a:hover, nav .current.intro a { border-color: #004d99; background-color: #369; color: #fff; }
 nav .ethics a:hover, nav .current.ethics a { border-color: #370759; background-color: #60347f; color: #fff; }
 nav .health a:hover, nav .current.health a { border-color: #5f101c; background-color: #732d37; color: #fff; }
