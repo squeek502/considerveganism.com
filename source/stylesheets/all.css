@@ -289,6 +289,14 @@ nav .blog a:hover, nav .current.blog a { border-color: #105f5e; background-color
   .infographic-label { font-size: 1.5em; }
 }
 
+#contributing { position:relative; }
+#contributing .github-logo {position:absolute; top:-.5em; right:0; height: 64px; width: 64px; opacity: .75; background: #222; border-radius: 50%; }
+#contributing .github-logo:hover {opacity: 1;}
+
+@media only screen and (min-width: 600px) {
+  #contributing .github-logo {right:-5%;}
+}
+
 .argument { margin-bottom: 1em; }
 .argument-list { list-style: none; margin-left: 0; padding: 0; }
 .argument-list li { position: relative; list-style: none; font-size: 1em; line-height: 1.15em; margin-bottom: .25em; padding: 0; background: rgba(255,255,255,.1); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
