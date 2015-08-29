@@ -158,6 +158,30 @@ description: Plainly presenting the case for veganism.
 </section>
 -->
 
+<div class="share-links">
+  Share this website to:
+  <ul class="share-links-list">
+    <% share_link_to(absolute_url("/"), "", "").each do |site, link| %>
+    <li><%= link_to (image_tag ("#{site}-24.png"), :class => site), link %></li>
+    <% end %>
+  </ul>
+</div>
+
+<section id="blog" class="section-container clearfix z-depth-2">
+  <h2 class="section-header">Blog</h2>
+  <div id="latest-blog-post" class="content-container clearfix">
+    <h3>Latest Blog Post</h3>
+<% if blog.articles.length > 0 then %>
+  <% article = blog.articles.first %>
+    <h4><%= link_to article.title, article %> <small style="font-weight:normal"><%= article.date.strftime('%b %e') %></small></h4>
+    <%= article.body %>
+    <p><%= link_to 'Read more…', article %></p>
+<% else %>
+    <p>No blog posts yet</p>
+<% end %>
+  </div>
+</section>
+
 <section id="about" class="section-container clearfix z-depth-2">
   <h2 class="section-header">About</h2>
   <div id="about-consider-veganism" class="content-container clearfix">
@@ -184,14 +208,3 @@ description: Plainly presenting the case for veganism.
     <p><%= link_to "Submit a pull request", "https://github.com/squeek502/considerveganism.com/pulls" %></p>
   </div>
 </section>
-
-<% content_for :footer do %>
-<div class="share-links">
-  Share to:
-  <ul class="share-links-list">
-    <% share_link_to(absolute_url("/"), "", "").each do |site, link| %>
-    <li><%= link_to (image_tag ("#{site}-24.png"), :class => site), link %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>

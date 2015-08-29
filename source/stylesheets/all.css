@@ -122,8 +122,9 @@ header h1 a:hover { color: #284C79; }
 }
 
 nav ul { list-style: none; margin: 0; padding: 0; text-align: center; }
-nav ul li { display: inline-block; margin: 0 0.1em; }
+nav ul li { display: inline-block; margin: 0.25em 0.1em; }
 nav ul li a { line-height: 1.5em; padding: .15em .5em; display: block; box-sizing: border-box; vertical-align: middle; color: rgba(0,0,0,.87); text-decoration: none; border-bottom: 2px solid #222; }
+nav .separator { display:block; }
 
 .section-container {
   position: relative;
@@ -150,13 +151,6 @@ nav ul li a { line-height: 1.5em; padding: .15em .5em; display: block; box-sizin
     color: #fff;
     line-height: 2em;
 }
-
-#intro .section-header { background-color: #004d99; }
-#ethics .section-header { background-color: #370759; }
-#health .section-header { background-color: #5f101c; }
-#environment .section-header { background-color: #3d5907; }
-#how .section-header { background-color: #593107; }
-#about .section-header { }
 
 .content-container { padding: 0 .5em; }
 
@@ -190,7 +184,8 @@ nav ul li a { line-height: 1.5em; padding: .15em .5em; display: block; box-sizin
 
   header h1 { float: left; text-align: left; margin: 0; }
   nav ul { float: right; }
-  nav ul li { float: left; display: block; }
+  nav ul li { float: left; display: block; margin-top: 0; margin-bottom: 0; }
+  nav .separator { width: 1em; min-height: 1px; }
 }
 
 .section-container h3 {
@@ -217,12 +212,21 @@ nav ul li a { line-height: 1.5em; padding: .15em .5em; display: block; box-sizin
   }
 }
 
-#intro.section-container { border-color: #004d99; background-color: #369; z-index: 105; }
-#ethics.section-container { border-color: #370759; background-color: #60347f; z-index: 104; }
-#health.section-container { border-color: #5f101c; background-color: #732d37; z-index: 103; }
-#environment.section-container { border-color: #3d5907; background-color: #658626; z-index: 102; }
-#how.section-container { border-color: #593107; background-color: #7f5b34; z-index: 101; }
+#intro .section-header { background-color: #004d99; }
+#ethics .section-header { background-color: #370759; }
+#health .section-header { background-color: #5f101c; }
+#environment .section-header { background-color: #3d5907; }
+#how .section-header { background-color: #593107; }
+#about .section-header { }
+#blog .section-header { background-color: #105f5e; }
+
+#intro.section-container { border-color: #004d99; background-color: #369; z-index: 106; }
+#ethics.section-container { border-color: #370759; background-color: #60347f; z-index: 105; }
+#health.section-container { border-color: #5f101c; background-color: #732d37; z-index: 104; }
+#environment.section-container { border-color: #3d5907; background-color: #658626; z-index: 103; }
+#how.section-container { border-color: #593107; background-color: #7f5b34; z-index: 102; }
 #about.section-container { z-index: 100; }
+#blog.section-container { border-color: #105f5e; background-color: #2d736f; z-index: 101; }
 
 nav .intro a { border-color: #004d99; }
 nav .ethics a { border-color: #370759; }
@@ -230,12 +234,14 @@ nav .health a { border-color: #5f101c; }
 nav .environment a { border-color: #3d5907; }
 nav .how a { border-color: #5f5510; }
 nav .about a { }
+nav .blog a { border-color: #105f5c; }
 nav .intro a:hover, nav .current.intro a { border-color: #004d99; background-color: #369; color: #fff; }
 nav .ethics a:hover, nav .current.ethics a { border-color: #370759; background-color: #60347f; color: #fff; }
 nav .health a:hover, nav .current.health a { border-color: #5f101c; background-color: #732d37; color: #fff; }
 nav .environment a:hover, nav .current.environment a { border-color: #3d5907; background-color: #658626; color: #fff; }
 nav .how a:hover, nav .current.how a { border-color: #5f5510; background-color: #736c2d; color: #fff; }
 nav .about a:hover, nav .current.about a { background-color: #333; color: #fff; }
+nav .blog a:hover, nav .current.blog a { border-color: #105f5e; background-color: #2d736f; color: #fff; }
 
 .info-section { padding: 1em; box-sizing: border-box; margin-top: 1em; }
 .info-section p {text-align:justify;}
