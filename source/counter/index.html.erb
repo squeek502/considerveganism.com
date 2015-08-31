@@ -1,9 +1,8 @@
 ---
 title: "Animal Kill Counter"
 description: "An updated version of the ADAPTT Animal Kill Counter."
+layout: padded_layout
 ---
-
-<div class="padded-page">
 
 <h1><%=current_page.data.title%></h1>
 <p>An updated version of the <%= link_to "ADAPTT Animal Kill Counter", "http://www.adaptt.org/killcounter.html" %>.</p>
@@ -71,8 +70,6 @@ description: "An updated version of the ADAPTT Animal Kill Counter."
   </blockquote>
 </div>
 
-</div>
-
 <% content_for :footer do %>
-  <%= link_to "&laquo; Home", "/", :class => "footer-link footer-link-big" %>
+  <%= link_to "&laquo; More resources", "/resources", :class => "footer-link footer-link-big" %>
 <% end %>

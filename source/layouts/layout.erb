@@ -15,7 +15,7 @@
     <%= javascript_include_tag  "all", :defer => true %>
   </head>
 
-  <body class="<%= page_classes %>">
+  <body class="<%= page_classes %><% if content_for?(:body_classes) %> <%= yield_content :body_classes %><% end %>">
     <header id="sticky-header" class="clearfix z-depth-2">
       <h1><%= link_to "Consider Veganism", "/" %></h1>
       <nav class="clearfix">

@@ -1,7 +1,5 @@
-<% wrap_layout :layout do %>
-  <div class="padded-page">
-    <%= yield %>
-  </div>
+<% wrap_layout :padded_layout do %>
+  <%= yield %>
   <% content_for :footer do %>
     <%= link_to "&laquo; All data", "/data/", :class => "footer-link footer-link-big" %>
   <% end %>

@@ -1,6 +1,6 @@
 ---
 title: "Data, Sources, and Calculations"
-layout: layout
+layout: padded_layout
 ---
 
 <%
@@ -11,8 +11,6 @@ def sub_pages(dir, ignore)
 end
 %>
 
-<div class="padded-page">
-
 <h1>Data, Sources, and Calculations</h1>
 <ul>
 <% sub_pages('data', current_page).each do |resource| %>
@@ -20,8 +18,6 @@ end
 <% end %>
 </ul>
 
-</div>
-
 <% content_for :footer do %>
-	<%= link_to "&laquo; Home", "/", :class => "footer-link" %>
+	<%= link_to "&laquo; More resources", "/resources", :class => "footer-link footer-link-big" %>
 <% end %>

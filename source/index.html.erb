@@ -171,11 +171,8 @@ description: Plainly presenting the case for veganism.
 
   <div id="more-resources" class="content-container clearfix">
     <h3>More Resources</h3>
-    <ul class="tile-list clearfix">
-      <li class="tile-info z-depth-1"><%= link_to "Infographics", "/info" %></li>
-      <li class="tile-data z-depth-1"><%= link_to "Data, sources, and calculations", "/data" %></li>
-      <li class="tile-akc z-depth-1"><%= link_to "Animal kill counter", "/counter" %></li>
-    </ul>
+    <%= partial('resources/resources') %>
+    <p><%= link_to 'All resources &raquo;', '/resources' %></p>
   </div>
 </section>
 

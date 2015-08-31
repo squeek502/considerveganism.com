@@ -1,0 +1,6 @@
+<% wrap_layout :layout do %>
+  <div class="padded-page">
+    <%= yield %>
+  </div>
+  <% content_for :body_classes do "padded_page" end %>
+<% end %>

@@ -1,8 +1,7 @@
 ---
 title: "Infographics"
+layout: padded_layout
 ---
-
-<div class="padded-page">
 
 <h1>Infographics</h1>
 
@@ -10,8 +9,6 @@ title: "Infographics"
 <%= partial(:infographic, :locals => { :title => "Problems Inherent In Egg Production", :img => "egg-problems.jpg", :data => "/data/eggs", :imgur => "http://i.imgur.com/rEOXgH7.jpg" }) %>
 <%= partial(:infographic, :locals => { :title => "Animal Slaughter Interval in the U.S.", :img => "slaughter-interval.jpg", :data => "/data/slaughter", :imgur => "http://i.imgur.com/YgFH9kD.jpg" }) %>
 
-</div>
-
 <% content_for :footer do %>
-	<%= link_to "&laquo; Home", "/", :class => "footer-link footer-link-big" %>
+	<%= link_to "&laquo; More resources", "/resources", :class => "footer-link footer-link-big" %>
 <% end %>
