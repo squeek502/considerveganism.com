@@ -297,6 +297,25 @@ nav .blog a:hover, nav .current.blog a { border-color: #105f5e; background-color
   #contributing .github-logo {right:-5%;}
 }
 
+.tile-list { list-style: none; margin-left: 0; padding: 0; }
+.tile-list li { margin-bottom: 1em; }
+
+@media only screen and (min-width: 600px) {
+  .tile-list li { width: 48%; float: left; }
+  .tile-list li:nth-child(2) { margin-left: 2%; }
+}
+
+@media only screen and (min-width: 768px) {
+  .tile-list li { width: 31.333333%; float: left; }
+  .tile-list li:nth-child(2) { margin: 0 2%; }
+}
+
+.tile-list li a { height: 128px; display: block; display: flex; justify-content: center; align-items: center; font-size: 1.75em; font-weight: bold; padding: .5em; text-align: center; box-sizing: border-box; text-decoration: none; }
+.tile-list li a:hover { outline: 1px solid #fff; background-color: #fafafa; }
+.tile-info a { background: url('../images/icon-infographics.png') no-repeat center center; }
+.tile-data a { background: url('../images/icon-data.png') no-repeat center center; }
+.tile-akc a { background: url('../images/icon-animal-kill-counter.png') no-repeat center center; }
+
 .argument { margin-bottom: 1em; }
 .argument-list { list-style: none; margin-left: 0; padding: 0; }
 .argument-list li { position: relative; list-style: none; font-size: 1em; line-height: 1.15em; margin-bottom: .25em; padding: 0; background: rgba(255,255,255,.1); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }

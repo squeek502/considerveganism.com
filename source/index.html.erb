@@ -160,19 +160,21 @@ description: Plainly presenting the case for veganism.
 
 <section id="more" class="section-container clearfix z-depth-2">
   <h2 class="section-header">More</h2>
+  <div id="share" class="content-container clearfix">
     <h3>Share This Website On...</h3>
     <ul class="share-links-list">
       <% share_link_to(absolute_url("/"), "", "").each do |site, link| %>
       <li><%= link_to (image_tag ("#{site}-24.png"), :class => site), link %></li>
       <% end %>
     </ul>
+  </div>
 
   <div id="more-resources" class="content-container clearfix">
     <h3>More Resources</h3>
-    <ul>
-      <li><%= link_to "Infographics", "/info" %></li>
-      <li><%= link_to "Data, sources, and calculations", "/data" %></li>
-      <li><%= link_to "Animal kill counter", "/counter" %></li>
+    <ul class="tile-list clearfix">
+      <li class="tile-info z-depth-1"><%= link_to "Infographics", "/info" %></li>
+      <li class="tile-data z-depth-1"><%= link_to "Data, sources, and calculations", "/data" %></li>
+      <li class="tile-akc z-depth-1"><%= link_to "Animal kill counter", "/counter" %></li>
     </ul>
   </div>
 </section>
