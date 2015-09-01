@@ -307,7 +307,7 @@ nav .blog a:hover, nav .current.blog a { border-color: #105f5e; background-color
 
 @media only screen and (min-width: 768px) {
   .tile-list li { width: 31.333333%; float: left; }
-  .tile-list li:nth-child(2) { margin: 0 2%; }
+  .tile-list li:nth-child(2) { margin: 0 3%; }
 }
 
 .tile-list li a { height: 128px; display: block; display: flex; justify-content: center; align-items: center; font-size: 1.75em; font-weight: bold; padding: .5em; text-align: center; box-sizing: border-box; text-decoration: none; }
@@ -419,9 +419,17 @@ img { max-width: 100%; }
 
 .padded-page { padding: 1em 1em; }
 
-@media only screen and (min-width: 600px) {
-  .padded-page { padding: 1em 4em; }
+@media only screen and (min-width: 768px) {
+  .padded-page { padding-left: 12%; padding-right: 12%; margin: 0 auto; }
+  body.padded_page footer { padding-left: 7%; padding-right: 7%; }
 }
+
+.blog-title { margin-bottom: 0; text-transform: uppercase; }
+h4.blog-title { margin: 0; margin-top: 0.5em; font-size: 1.5em; text-transform: uppercase; }
+.blog-date { margin-bottom: 1.5em; font-style: italic; display: block; }
+.rss-subscribe { float: right; width: 32px; height: 32px; margin: 0.2em; background: #FF8300 url('../images/rss-32.png') no-repeat; }
+
+#disqus_thread { margin-top: 1.5em; }
 
 /**
 OLD

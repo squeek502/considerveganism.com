@@ -10,6 +10,7 @@
     <% end %>
     <meta property="og:image" content="<%= current_page.data.og_image ? current_page.data.og_image : absolute_url("/images/opengraph_default.jpg") %>" />
 
+    <link rel="alternate" type="application/rss+xml" title="Consider Veganism" href="<%= config.feed_url %>" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
     <%= stylesheet_link_tag "normalize", "all" %>
     <%= javascript_include_tag  "all", :defer => true %>

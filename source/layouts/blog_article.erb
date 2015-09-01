@@ -1,0 +1,28 @@
+<% wrap_layout :padded_layout do %>
+  <% article = current_article %>
+  <div class="margined">
+	  <h1 class="blog-title"><%= link_to article.title, article %></h1>
+	  <span class="blog-date">Posted <%= article.date.strftime('%B %e, %Y') %></span>
+  </div>
+  <div class="highlight padded z-depth-1 clearfix blog-content">
+  	<%= article.body %>
+  </div>
+  <div id="disqus_thread"><p><a href="javascript:loadDisqus()">Load Comments...</a></p></div>
+  <script type="text/javascript">
+  function loadDisqus() {
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'considerveganism';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  }
+  </script>
+  <noscript>Please enable JavaScript to view the comments.</noscript>
+  <% content_for :footer do %>
+    <%= link_to "&laquo; All blog posts", "/blog", :class => "footer-link footer-link-big" %>
+  <% end %>
+<% end %>

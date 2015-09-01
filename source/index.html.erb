@@ -180,14 +180,18 @@ description: Plainly presenting the case for veganism.
   <h2 class="section-header">Blog</h2>
   <div id="latest-blog-post" class="content-container clearfix">
     <h3>Latest Blog Post</h3>
+    <div class="padded margined highlight z-depth-1">
 <% if blog.articles.length > 0 then %>
   <% article = blog.articles.first %>
-    <h4><%= link_to article.title, article %> <small style="font-weight:normal"><%= article.date.strftime('%b %e') %></small></h4>
-    <%= article.body %>
-    <p><%= link_to 'Read more…', article %></p>
+      <h4 class="blog-title"><%= link_to article.title, article %></h4>
+      <span class="blog-date"><%= article.date.strftime('%B %e, %Y') %></span>
+      <%= article.body %>
+      <p><%= link_to 'Read more &raquo;', article %></p>
 <% else %>
-    <p>No blog posts yet</p>
+      <p><%= partial 'blog/noposts' %></p>
 <% end %>
+    </div>
+    <p><%= link_to 'All blog posts &raquo;', '/blog' %></p>
   </div>
 </section>
 

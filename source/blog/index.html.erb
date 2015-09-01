@@ -11,15 +11,20 @@ layout: blog_layout
   <% end %>
 <% end %>
 
-<% page_articles.each_with_index do |article, i| %>
-  <h2><%= link_to article.title, article %> <span><%= article.date.strftime('%b %e') %></span></h2>
-  <!-- use article.summary(250) if you have Nokogiri available to show just
-       the first 250 characters -->
-  <%= article.body %>
+<% if page_articles.length > 0 %>
+  <% page_articles.each_with_index do |article, i| %>
+    <%= partial('blog/article', :locals => { :article => article }) %>
+  <% end %>
+<% else %>
+  <p><%= partial 'blog/noposts' %></p>
 <% end %>
 
 <% if paginate %>
   <% if next_page %>
     <p><%= link_to 'Next page', next_page %></p>
   <% end %>
+<% end %>
+
+<% content_for :footer do %>
+  <%= link_to "&laquo; Home", "/", :class => "footer-link footer-link-big" %>
 <% end %>
