@@ -53,7 +53,13 @@ activate :blog do |blog|
 end
 
 page "/feed.xml", layout: false
-set :feed_url, "/feed.xml"
+
+configure :development do
+  set :feed_url, "/feed.xml"
+end
+configure :build do
+  set :feed_url, "http://feeds.feedburner.com/ConsiderVeganism"
+end
 
 ###
 # Helpers
