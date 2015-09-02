@@ -77,7 +77,7 @@ for year in first_year..last_year
     :slaughter_data => slaughter_data[year], 
     :slaughter_categories => slaughter_categories[year], 
     :world_data => world_data[year]
-    })
+    }, :ignore => true)
 end
 
 ###
