@@ -40,7 +40,7 @@ def process_usa_inventory_data(data)
 end
 
 def process_fao_slaughter_data()
-  require 'CSV'
+  require 'csv'
 
   parsed_data = {}
   unique_items = {}
