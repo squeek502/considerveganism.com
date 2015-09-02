@@ -1,0 +1,119 @@
+---
+title: "Data: World Slaughter Stats"
+layout: layout
+---
+
+<% 
+page_title = "#{current_page.data.title} (#{year})"
+content_for :page_title do page_title end
+content_for :charts_js do javascript_include_tag "//www.google.com/jsapi", "chartkick" end
+
+missing = []
+geo_chart_data = []
+slaughter_data.each do |country, data|
+  country_code = fao_to_iso3166_code country
+  geo_chart_data.push [{:v => country_code, :f => country}, data[:total], (number_with_delimiter data[:total]) + ' land animals slaughtered']
+end
+
+species_to_keep = ["Meat, cattle", "Meat, pig", "Meat, duck", "Meat, turkey", "Meat, chicken", "Meat, sheep", "Meat, goat", "Meat, goose and guinea fowl", "Meat, rabbit"]
+pie_chart_data = {}
+pie_chart_data["Other"] = 0
+world_data.each do |species, total|
+  next unless species != :total
+  if species.in? species_to_keep
+    pie_chart_data[species] = total
+  else
+    pie_chart_data["Other"] += total
+  end
+end
+
+unfiltered_pie_chart_data = world_data.dup
+unfiltered_pie_chart_data.delete :total
+
+sorted_country_slaughter_data = slaughter_data.sort_by {|country, data| -data[:total]}
+%>
+
+<div class="padded-page relative">
+  <h1><%= page_title %></h1>
+
+  <% if year > 1961 %>
+    <%= link_to "&laquo; Previous year", "/data/world-slaughter/#{year - 1}", :class => "footer-link", :style => "margin-top: 1em; position: absolute; left: 0.5em; top: 0.5em;" %>
+  <% end %>
+  <% if year < 2013 %>
+    <%= link_to "Next year &raquo;", "/data/world-slaughter/#{year + 1}", :class => "footer-link", :style => "margin-top: 1em; position: absolute; right: 0.5em; top: 0.5em;" %>
+  <% end %>
+
+  <div class="padded z-depth-1 margined">
+    <h2>At a glance</h2>
+    <p style="font-size: 2em; background: #640000; color: #fff; padding: 0.25em .5em; font-style: italic; display: inline-block;"><%= number_with_delimiter world_data[:total] %> land animals slaughtered</p>
+    <ol style="font-size: 1.5em;">
+    <% 
+    for i in 0..2 do
+      country = fao_to_iso3166_name sorted_country_slaughter_data[i][0]
+      total = sorted_country_slaughter_data[i][1][:total]
+      color = i == 0 ? "#FF9696" : (i == 1 ? "#FFCF8A" : "#FFF587")
+    %>
+      <li><%= country %>: <span style="background-color:<%= color %>; padding: 0.05em;"><%= number_with_delimiter total %> land animals slaughtered</span></li>
+    <% end %>
+    </ol>
+  </div>
+
+  <div class="padded z-depth-1 margined">
+    <h2>Visualizations</h2>
+    <h3>Slaughter by Country</h3>
+    <%= geo_chart geo_chart_data, colors: ['#EDE15E', '#610000'], height: "600px", valueLabel: "Head Slaughtered", legend: { :numberFormat => "#,###" }, customTooltip: true %>
+
+    <h3>Slaughter by Species</h3>
+    <%= bar_chart pie_chart_data, library: {}, height: "600px" %>
+  </div>
+
+  <div class="padded z-depth-1 margined">
+    <h2>Data</h2>
+    <table>
+      <caption>Slaughter Totals By Country &mdash; <%= year %></caption>
+      <thead>
+        <tr><th>Country</th><th>Total Head Slaughtered</th></tr>
+      </thead>
+      <tbody>
+      <% slaughter_data.each do |country, categories| %>
+        <tr>
+          <td data-title="Country"><%= country %></td>
+          <% slaughter_total = slaughter_data[country] ? slaughter_data[country][:total] || 0 : 0 %>
+          <td data-title="Total Head Slaughtered"><%= number_with_delimiter slaughter_total %></td>
+        </tr>
+      <% end %>
+      </tbody>
+      <tfoot>
+        <tr style="font-weight: bold;">
+          <td data-title="Country">World</td>
+          <td data-title="Total Head Slaughtered"><%= number_with_delimiter world_data[:total] %></td>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+<table>
+  <caption>Slaughter Totals By Country and Species &mdash; <%=year%></caption>
+  <thead>
+    <tr><th rowspan="2">Country</th><th colspan="<%= slaughter_categories.length %>">Head Slaughtered</th></tr>
+    <tr><% slaughter_categories.each do |slaughter_category| %><th><%=slaughter_category%></th><% end %></tr>
+  </thead>
+  <tbody>
+  <%
+  slaughter_data.each do |country, categories|
+  %>
+    <tr>
+      <td data-title="Country"><%= country %></td>
+      <% 
+      slaughter_categories.each do |slaughter_category|
+        category_total = categories[slaughter_category] ? categories[slaughter_category][:value] : 0
+      %>
+      <td data-title="<%= slaughter_category %>" style="font-size: 85%"><%= number_with_delimiter category_total %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+  <tfoot>
+    <tr style="font-weight: bold;"><td data-title="Country">World</td><% slaughter_categories.each do |slaughter_category| %><td data-title="<%=slaughter_category%>" style="font-size: 85%"><%= number_with_delimiter world_data[slaughter_category] %></td><% end %>
+  </tfoot>
+</table>

@@ -51,7 +51,7 @@ layout: padded_layout
         <tr><td data-title="Item">Meat, other rodents</td><td data-title="Unit">Head*</td><td data-title="Value"><%= number_with_delimiter data.slaughter.world.rodents.total_2013 %></td></tr>
       </tbody>
       <tfoot>
-        <tr><td colspan="3">* converted from '1000 Head' to 'Head'</td></tr>
+        <tr><td colspan="3" class="footnote">* converted from '1000 Head' to 'Head'</td></tr>
       </tfoot>
     </table>
     <div class="source">Source: <%= link_to "FAOSTAT [Region: <i>World + (Total)</i>, Element: <i>Producing Animals/Slaughtered</i>, Items Aggregated: <i>Meat, Total > (List)</i>, Year: <i>2013</i>]", "http://faostat3.fao.org/download/Q/QL/E" %></div>

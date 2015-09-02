@@ -499,8 +499,8 @@ td:empty {
 }
 
 table { border: 1px solid #ddd; margin: .5em 0; }
-table th {  text-align:center; }
-table tbody tr { border-bottom: 1px solid #ccc; padding: 4px 10px; }
+table th { text-align:center; }
+table tbody tr, table tfoot tr { border-bottom: 1px solid #ccc; padding: 4px 10px; }
 table tbody tr:nth-child(even) { background-color: #eee; }
 table tbody tr:nth-child(odd) { background-color: #f3f3f3; }
 table caption { font-weight: bold; padding: .25em .75em; text-transform: uppercase; background: #fafafa; }
@@ -603,7 +603,8 @@ table .relevant { outline: 1px solid #444; }
   table .indent { text-indent: 2em; }
   table .relevant { outline: 1px solid #444; }
   table caption { font-weight: bold; padding: .25em .75em; display: table-caption; }
-  table tfoot td { padding: .5em .75em; background: #ddd; font-size: 85%; }
+  table tfoot td { padding: .5em .75em; background: #ddd; }
+  table .footnote { font-size: 85%; }
 
 }
 

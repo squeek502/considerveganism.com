@@ -4,9 +4,12 @@ layout: padded_layout
 ---
 
 <%
+def is_not_nested_too_deep(resource, dir)
+  return File.dirname(resource.path) == dir || (File.dirname(File.dirname(resource.path)) == dir && resource.path.end_with?("index.html"))
+end
 def sub_pages(dir, ignore)
   sitemap.resources.select do |resource|
-    resource != ignore and resource.path.start_with?(dir) and resource.path.end_with?("html")
+    resource != ignore and resource.path.start_with?(dir) and resource.path.end_with?("html") and is_not_nested_too_deep(resource, dir)
   end
 end
 %>

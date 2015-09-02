@@ -1,0 +1,14 @@
+---
+title: "Data: World Slaughter Stats"
+---
+
+<h1><%= current_page.data.title %></h1>
+
+<h2>By Year</h2>
+<ul>
+<% for year in 2013.downto 1961 %>
+  <li><%= link_to "#{year}", "/data/world-slaughter/#{year}" %></li>
+<% end %>
+</ul>
+
+<h2>By Country</h2>
