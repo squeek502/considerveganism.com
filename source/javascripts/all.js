@@ -36,6 +36,15 @@ Element.prototype.toggleClass = function (className) {
 	return this;
 };
 
+// modified version of fastest from http://jsperf.com/compare-two-format-thousands
+Number.prototype.withDelimiter = function (precision, separator) {
+	precision = precision || 2;
+	separator = separator || ',';
+	var s = ''+(Math.floor(this)), d = this % 1, i = s.length, r = '';
+	while ( (i -= 3) > 0 ) { r = separator + s.substr(i, 3) + r; }
+	return s.substr(0, i + 3) + r + (d ? '.' + Math.round(d * Math.pow(10,precision)) : '');
+}
+
 function clamp(num, min, max) {
 	return Math.min(Math.max(num, min), max);
 };
