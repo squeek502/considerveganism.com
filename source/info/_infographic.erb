@@ -1,7 +1,7 @@
 <div class="padded z-depth-1 margined">
   <h2><%= title %></h2>
   <p style="text-align:center"><%= link_to (image_tag ("/info/" + img), :style => "max-height: 1000px;"), ("/info/" + img) %></p>
-  <div class="share-links">
+  <div class="share-links text-center">
     Share to:
     <ul class="share-links-list">
       <% share_image_to(imgur, absolute_url("info/" + img), title, "").each do |site, link| %>

@@ -333,7 +333,7 @@ body.padded_page footer { padding: 1em 1em; }
 .footer-link:hover { background: rgba(255,255,255,.05); }
 .footer-link-big { padding: 2em 2em; }
 
-.share-links { display:block; padding: .5em 1em; margin: .5em 0; text-align: center; }
+.share-links { display:block; padding: .5em 1em; margin: .5em 0; }
 .share-links-list { list-style: none; display: inline-block; margin: 0; padding: 0; margin-left: .5em; }
 .share-links-list li { display: inline-block; }
 .share-links-list li a img { background: #222; }
@@ -345,6 +345,7 @@ img.twitter { background: rgb(0,172,237) !important; }
 img.reddit { background: rgb(255,69,0) !important; }
 img.vk { background:  rgb(69,102,142) !important; }
 
+.text-center { text-align: center; }
 .pull-left { float: left; }
 .pull-right { float: right; }
 

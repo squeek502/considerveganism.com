@@ -24,10 +24,10 @@ READMORE
 
 <p>In 2014, the egg industry in the United States killed approximately <%= egg_industry_total.humanize %> animals.
 <ul>
-<li><%= data.slaughter.usa.chickens.layers.total_2014.humanize %> (<%= "%.1f" % (data.slaughter.usa.chickens.layers.total_2014/egg_industry_total.to_f*100) %>%) of those were 'spent layer hens'&mdash;egg-laying hens that are slaughtered because their egg production declines as they age.</li>
+<li><%= data.slaughter.usa.chickens.layers.total_2014.humanize %> (<%= "%.1f" % (data.slaughter.usa.chickens.layers.total_2014/egg_industry_total.to_f*100) %>%) of those were 'spent layer hens'&mdash;egg-laying hens that are slaughtered because their egg production declines as they age and are no longer profitable.</li>
 <li><%= data.slaughter.usa.chickens.layers.male_chicks.total_2014.humanize %> (<%= "%.1f" % (data.slaughter.usa.chickens.layers.male_chicks.total_2014/egg_industry_total.to_f*100) %>%) of those were male chicks, whom are killed shortly after birth because they are useless to the egg industry and unwanted by the chicken meat industry.</li>
 </ul>
-For more information, see <%= link_to "Problems Inherent In Egg Production", "/info/egg-problems.jpg" %>.
+For more information, see the <%= link_to "Problems Inherent In Egg Production", "/info/egg-problems.jpg" %> infographic.
 </p>
 
 <h3>Putting that into context</h3>
@@ -37,38 +37,44 @@ For more information, see <%= link_to "Problems Inherent In Egg Production", "/i
 <div style="margin: 1.5em 5%; text-align: center;">
 <h4>Animals Killed For Food Per Year in the U.S. by the Egg and All Non-Chicken Meat Industries</h4>
 <div id="treemap_full" style="max-width: 700px; width: 100%; height: 350px; margin: auto;"></div>
+<small><i>Note: Left-click to move down the tree, and right-click to move back up.</i></small>
 </div>
 
-<p>To put this into further context, we can add in the chicken meat industry. The chicken meat industry kills a total of <%= chicken_industry_total.humanize %> animals per year, which is <%= (chicken_industry_total - egg_industry_total + non_chicken_meat_industry_total).humanize %> (<%= "%.0f" % (chicken_industry_total/(egg_industry_total + non_chicken_meat_industry_total).to_f) %>x) more animals than the egg, turkey, duck, lamb, beef, and pork industries combined.</p>
+<p>To put this into further context, we can add in the chicken meat industry. The U.S. chicken meat industry kills a total of <%= chicken_industry_total.humanize %> animals per year, which is <%= (chicken_industry_total - egg_industry_total + non_chicken_meat_industry_total).humanize %> (<%= "%.0f" % (chicken_industry_total/(egg_industry_total + non_chicken_meat_industry_total).to_f) %>x) more animals than the egg, turkey, duck, lamb, beef, and pork industries combined.</p>
 
 <div style="margin: 1.5em 5%; text-align: center;">
 <h4>Land Animals Killed For Food Per Year in the U.S.</h4>
 <div id="treemap_land" style="max-width: 700px; width: 100%; height: 350px; margin: auto;"></div>
+<small><i>Note: Left-click to move down the tree, and right-click to move back up.</i></small>
 </div>
 
-<p>And to put <i>that</i> into context, we can add in the fishing industry. The fishing industry kills a total of <%= fishing_industry_total.humanize %> animals per year, which is <%= (fishing_industry_total - chicken_industry_total + egg_industry_total + non_chicken_meat_industry_total).humanize %> (<%= "%.0f" % (fishing_industry_total/(chicken_industry_total + egg_industry_total + non_chicken_meat_industry_total).to_f) %>x) more animals than the chicken, egg, turkey, duck, lamb, beef, and pork industries combined.</p>
+<p>And to put <i>that</i> into context, we can add in the fishing industry. The U.S. fishing industry kills a total of <%= fishing_industry_total.humanize %> animals per year, which is <%= (fishing_industry_total - chicken_industry_total + egg_industry_total + non_chicken_meat_industry_total).humanize %> (<%= "%.0f" % (fishing_industry_total/(chicken_industry_total + egg_industry_total + non_chicken_meat_industry_total).to_f) %>x) more animals than the chicken, egg, turkey, duck, lamb, beef, and pork industries combined.</p>
 
 <div style="margin: 1.5em 5%; text-align: center;">
 <h4>All Animals Killed For Food Per Year in the U.S.</h4>
 <div id="treemap_all" style="max-width: 700px; width: 100%; height: 350px; margin: auto;"></div>
+<small><i>Note: Left-click to move down the tree, and right-click to move back up.</i></small>
 </div>
 
 <h3>What this all means</h3>
 
 <p>Fish and shellfish make up <%= "%.1f" % (fishing_industry_total / total_animals_killed.to_f * 100) %>% of the total number of animals killed each year in the U.S., while chickens raised for meat make up <%= "%.1f" % (chicken_industry_total / total_animals_killed.to_f * 100) %>%. The egg industry kills <%= "%.1f" % (egg_industry_total / total_animals_killed.to_f * 100) %>% of the total number of animals killed each year, and all other non-chicken meat industries combined kill <%= "%.1f" % (non_chicken_meat_industry_total / total_animals_killed.to_f * 100) %>%.</p>
 
-<p>This means that, when considering the impact on the number of animals killed, if everyone simply removed fish, chicken, and eggs from their diet, <b><%= "%.1f" % (100 - (non_chicken_meat_industry_total / total_animals_killed.to_f) * 100) %>%</b> of the total number of animals killed for food each year would be spared. The unfortunate part of this statistic is that (anecdotally) fish, chicken, and eggs are generally the animal products that people are <i>least</i> likely to give up; that is, they are usually the <i>last</i> animal products people remove from their diet once they start reducing their consumption of animal products overall (see phrases like, "I'm vegetarian but I eat chicken/fish").</p>
+<p>This means that, if everyone simply removed fish, chicken, and eggs from their diet, <b><%= "%.1f" % (100 - (non_chicken_meat_industry_total / total_animals_killed.to_f) * 100) %>%</b> of the total number of animals killed for food each year would be spared. Of course, this would also mean that the remaining <%= "%.1f" % (non_chicken_meat_industry_total / total_animals_killed.to_f * 100) %>%&mdash;<%= non_chicken_meat_industry_total.humanize %> animals&mdash;would still be killed each year for food. However, the point remains: when looking purely at the number of animals killed, the most impactful single change that omnivores could make would be to remove seafood from their diet, followed by removing chicken meat, followed by removing eggs.</p>
 
-<p>So, to sum up, when looking purely at the number of animals killed, the most impactful single change that omnivores could make would be to remove seafood from their diet, followed by removing chicken meat, followed by removing eggs.</p>
+<p>The unfortunate part of this is that, at least anecdotally, fish, chicken, and eggs are generally the animal products that people are <i>least</i> likely to give up; that is, they are usually the <i>last</i> animal products people remove from their diet once they start reducing their consumption of animal products overall (see phrases like, "I'm vegetarian but I eat chicken/fish"). Therefore, it's important to note that the 'traditional path' that most vegetarians take&mdash;cutting out mammal meat first, followed by bird meat, followed by seafood, followed by eggs/dairy&mdash;is almost completely backwards if the goal is to reduce the number of animals killed for food.</p>
 
 <h3>What this means for advocates</h3>
 
-<p>Recently, <%= link_to "Matt Ball has argued that animal advocates should focus on getting people to reduce their chicken consumption in order to have the most impact", "http://www.mattball.org/2015/08/understanding-numbers-for-better.html" %>, but the same argument may apply to fish/shellfish, and on a much larger scale. It seems like the amount of sea-life killed for food is an oft-ignored topic, even within vegan circles. Two possible factors that could influence this phenomenon are: 1) the only numbers available for marine animals killed per year are estimates based on the total weights of fish caught/farmed, and 2) those estimates are not widely publicized. However, if the numbers used in this post are accurate, then at the very least we should seek to make them more well known.
+<p>Recently, <%= link_to "Matt Ball has argued that animal advocates should focus on getting people to reduce their chicken consumption in order to have the most impact", "http://www.mattball.org/2015/08/understanding-numbers-for-better.html" %> and <%= link_to "that getting people to reduce their red meat consumption could lead to more animals being killed overall", "http://www.mattball.org/2015/08/seeing-full-picture-previously-advocacy.html" %>, but the same arguments may apply to fish/shellfish, and on a much larger scale. It seems like the amount of sea-life killed for food is an oft-ignored topic, even within vegan circles. Two possible factors that could influence this phenomenon are: 1) the only numbers available for marine animals killed per year are estimates based on the total weights of fish caught/farmed, and 2) those estimates are not widely publicized. However, if the numbers used in this post are accurate, then at the very least we should seek to make them more well known.
+</p>
+
 <ul>
 	<li>The U.S. fish/shellfish numbers used in this post are <%= link_to "based on the work of Harish of the Counting Animals blog", "http://countinganimals.com/how-many-animals-does-a-vegetarian-save/" %> (see <i>Table 4</i>)</li>
 	<li>For world-wide numbers, <%= link_to "see fishcount.org.uk's estimates", "http://fishcount.org.uk/fish-count-estimates" %></li>
 </ul>
-</p>
+
+<p>Note: reducing human consumption of seafood may not lead to a directly proportional decrease in the number of fish killed per year. According to <%= link_to "The fish we kill to feed the fish we eat (Counting Animals)", "http://countinganimals.com/the-fish-we-kill-to-feed-the-fish-we-eat/" %>, "20% of the world's production of fishmeal in 2010 was used to feed weaning pigs and an additional 5% was used to feed day-old chicks in the poultry industry."</p>
 
 <hr />
 
