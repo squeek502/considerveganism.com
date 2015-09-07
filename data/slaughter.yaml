@@ -125,6 +125,25 @@ usa:
     total_2014: 26368000
     total_2013: 24575000
 
+  sealife:
+    sources: !omap
+    - 'How many animals does a vegetarian save? (Counting Animals)': 'http://countinganimals.com/how-many-animals-does-a-vegetarian-save/'
+    min_2013: 106900000000
+    max_2013: 172031000000
+    total_2013: 106900000000
+    finfishes:
+      total_2013: 3797000000
+    shellfish:
+      total_2013: 43109000000
+    feed_fish:
+      min_2013: 45513000000
+      max_2013: 92313000000
+      total_2013: 45513000000
+    bycatch:
+      min_2013: 14481000000
+      max_2013: 32812000000
+      total_2013: 14481000000
+
   chickens:
     sources: !omap
     - 'Poultry Slaughter Annual Summary, 02.25.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497'
