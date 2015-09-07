@@ -92,4 +92,14 @@ helpers do
       :vk => "http://vk.com/share.php?url=#{CGI.escape(url)}"
     }
   end
+
+  @should_include_googlechart = false
+
+  def needs_googlechart()
+    return @should_include_googlechart
+  end
+
+  def uses_googlechart()
+    @should_include_googlechart = true
+  end
 end

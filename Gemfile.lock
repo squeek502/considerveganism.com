@@ -90,6 +90,7 @@ GEM
       sprockets-sass (~> 1.3.0)
     minitest (5.8.0)
     multi_json (1.11.2)
+    numeric_humanize (0.0.0)
     padrino-helpers (0.12.5)
       i18n (~> 0.6, >= 0.6.7)
       padrino-support (= 0.12.5)
@@ -139,6 +140,7 @@ DEPENDENCIES
   middleman (~> 3.3.11)
   middleman-blog (~> 3.5.3)
   middleman-livereload (~> 3.1.0)
+  numeric_humanize
   therubyracer
   tzinfo-data
   wdm (~> 0.1.0)

@@ -1,0 +1,220 @@
+---
+title: "Which dietary changes have the most impact?"
+date: 2015-09-07
+tags:
+---
+<% uses_googlechart %>
+
+<% load "./#{config[:data_dir]}/process_data.rb" %>
+<% process_usa_slaughter_data data %>
+
+<%
+non_chicken_meat_industry_total = data.slaughter.usa.turkeys.total_2014 + data.slaughter.usa.ducks.total_2014 + data.slaughter.usa.sheep.total_2014 + data.slaughter.usa.cattle.total_2014 + data.slaughter.usa.hogs.total_2014
+egg_industry_total = data.slaughter.usa.chickens.layers.total_2014 + data.slaughter.usa.chickens.layers.male_chicks.total_2014
+chicken_industry_total = data.slaughter.usa.chickens.young.total_inspected_2014
+fishing_industry_total = data.slaughter.usa.sealife.total_2013
+total_animals_killed = non_chicken_meat_industry_total + egg_industry_total + chicken_industry_total + fishing_industry_total
+%>
+
+<p>When looking at the total number of animals killed by each animal-based-food industry in the United States, we arrive at a somewhat unintuitive result right away: the egg industry kills far more animals per year than might be expected. However, it doesn't stop there.</p>
+
+READMORE
+
+<h3>How many animals does the U.S. egg industry kill per year?</h3>
+
+<p>In 2014, the egg industry in the United States killed approximately <%= egg_industry_total.humanize %> animals.
+<ul>
+<li><%= data.slaughter.usa.chickens.layers.total_2014.humanize %> (<%= "%.1f" % (data.slaughter.usa.chickens.layers.total_2014/egg_industry_total.to_f*100) %>%) of those were 'spent layer hens'&mdash;egg-laying hens that are slaughtered because their egg production declines as they age.</li>
+<li><%= data.slaughter.usa.chickens.layers.male_chicks.total_2014.humanize %> (<%= "%.1f" % (data.slaughter.usa.chickens.layers.male_chicks.total_2014/egg_industry_total.to_f*100) %>%) of those were male chicks, whom are killed shortly after birth because they are useless to the egg industry and unwanted by the chicken meat industry.</li>
+</ul>
+For more information, see <%= link_to "Problems Inherent In Egg Production", "/info/egg-problems.jpg" %>.
+</p>
+
+<h3>Putting that into context</h3>
+
+<p>In 2014, all non-chicken meat industries in the U.S. killed a total of <%= non_chicken_meat_industry_total.humanize %> animals, meaning that the egg industry killed <%= (egg_industry_total - non_chicken_meat_industry_total).humanize %> (<%= "%.1f" % (egg_industry_total/non_chicken_meat_industry_total.to_f) %>x) more animals than the turkey, duck, lamb, beef, and pork industries combined.</p>
+
+<div style="margin: 1.5em 5%; text-align: center;">
+<h4>Animals Killed For Food Per Year in the U.S. by the Egg and All Non-Chicken Meat Industries</h4>
+<div id="treemap_full" style="max-width: 700px; width: 100%; height: 350px; margin: auto;"></div>
+</div>
+
+<p>To put this into further context, we can add in the chicken meat industry. The chicken meat industry kills a total of <%= chicken_industry_total.humanize %> animals per year, which is <%= (chicken_industry_total - egg_industry_total + non_chicken_meat_industry_total).humanize %> (<%= "%.0f" % (chicken_industry_total/(egg_industry_total + non_chicken_meat_industry_total).to_f) %>x) more animals than the egg, turkey, duck, lamb, beef, and pork industries combined.</p>
+
+<div style="margin: 1.5em 5%; text-align: center;">
+<h4>Land Animals Killed For Food Per Year in the U.S.</h4>
+<div id="treemap_land" style="max-width: 700px; width: 100%; height: 350px; margin: auto;"></div>
+</div>
+
+<p>And to put <i>that</i> into context, we can add in the fishing industry. The fishing industry kills a total of <%= fishing_industry_total.humanize %> animals per year, which is <%= (fishing_industry_total - chicken_industry_total + egg_industry_total + non_chicken_meat_industry_total).humanize %> (<%= "%.0f" % (fishing_industry_total/(chicken_industry_total + egg_industry_total + non_chicken_meat_industry_total).to_f) %>x) more animals than the chicken, egg, turkey, duck, lamb, beef, and pork industries combined.</p>
+
+<div style="margin: 1.5em 5%; text-align: center;">
+<h4>All Animals Killed For Food Per Year in the U.S.</h4>
+<div id="treemap_all" style="max-width: 700px; width: 100%; height: 350px; margin: auto;"></div>
+</div>
+
+<h3>What this all means</h3>
+
+<p>Fish and shellfish make up <%= "%.1f" % (fishing_industry_total / total_animals_killed.to_f * 100) %>% of the total number of animals killed each year in the U.S., while chickens raised for meat make up <%= "%.1f" % (chicken_industry_total / total_animals_killed.to_f * 100) %>%. The egg industry kills <%= "%.1f" % (egg_industry_total / total_animals_killed.to_f * 100) %>% of the total number of animals killed each year, and all other non-chicken meat industries combined kill <%= "%.1f" % (non_chicken_meat_industry_total / total_animals_killed.to_f * 100) %>%.</p>
+
+<p>This means that, when considering the impact on the number of animals killed, if everyone simply removed fish, chicken, and eggs from their diet, <b><%= "%.1f" % (100 - (non_chicken_meat_industry_total / total_animals_killed.to_f) * 100) %>%</b> of the total number of animals killed for food each year would be spared. The unfortunate part of this statistic is that (anecdotally) fish, chicken, and eggs are generally the animal products that people are <i>least</i> likely to give up; that is, they are usually the <i>last</i> animal products people remove from their diet once they start reducing their consumption of animal products overall (see phrases like, "I'm vegetarian but I eat chicken/fish").</p>
+
+<p>So, to sum up, when looking purely at the number of animals killed, the most impactful single change that omnivores could make would be to remove seafood from their diet, followed by removing chicken meat, followed by removing eggs.</p>
+
+<h3>What this means for advocates</h3>
+
+<p>Recently, <%= link_to "Matt Ball has argued that animal advocates should focus on getting people to reduce their chicken consumption in order to have the most impact", "http://www.mattball.org/2015/08/understanding-numbers-for-better.html" %>, but the same argument may apply to fish/shellfish, and on a much larger scale. It seems like the amount of sea-life killed for food is an oft-ignored topic, even within vegan circles. Two possible factors that could influence this phenomenon are: 1) the only numbers available for marine animals killed per year are estimates based on the total weights of fish caught/farmed, and 2) those estimates are not widely publicized. However, if the numbers used in this post are accurate, then at the very least we should seek to make them more well known.
+<ul>
+	<li>The U.S. fish/shellfish numbers used in this post are <%= link_to "based on the work of Harish of the Counting Animals blog", "http://countinganimals.com/how-many-animals-does-a-vegetarian-save/" %> (see <i>Table 4</i>)</li>
+	<li>For world-wide numbers, <%= link_to "see fishcount.org.uk's estimates", "http://fishcount.org.uk/fish-count-estimates" %></li>
+</ul>
+</p>
+
+<hr />
+
+<h3>Sources</h3>
+
+<p>
+All data, sources, and calculations used in this post can be found here:
+<ul>
+	<li><%= link_to "Data: #{current_page.data.title}", "/data/impact" %></li>
+</ul>
+</p>
+
+<script type="text/javascript">
+function drawChart() {
+  var fulldata = google.visualization.arrayToDataTable([
+    ['Type', 'Parent', 'Number Killed'],
+    ['Animals Killed', null, null],
+    ['Egg Industry', 'Animals Killed', null],
+    ['Spent Layer Hens', 'Egg Industry', <%=data.slaughter.usa.chickens.layers.total_2014%>],
+    ['Male Chicks',      'Egg Industry', <%=data.slaughter.usa.chickens.layers.male_chicks.total_2014%>],
+    ['Non-Chicken Meat Industries', 'Animals Killed', null],
+    ['Turkeys', 'Non-Chicken Meat Industries', <%=data.slaughter.usa.turkeys.total_2014%>],
+    ['Ducks',   'Non-Chicken Meat Industries', <%=data.slaughter.usa.ducks.total_2014%>],
+    ['Sheep', 'Non-Chicken Meat Industries', null],
+    ['Mature Sheep',   'Sheep', <%=(data.slaughter.usa.sheep.total_2014 - data.slaughter.usa.sheep.lambs.total_2014)%>],
+    ['Lambs',   'Sheep', <%=data.slaughter.usa.sheep.lambs.total_2014%>],
+    ['Cattle',   'Non-Chicken Meat Industries', null],
+    ['Dairy Cows', 'Cattle', <%=data.slaughter.usa.cattle.dairy_cows.total_2014%>],
+    ['Beef Cattle', 'Cattle', <%=data.slaughter.usa.cattle.beef_cattle.total_2014%>],
+    ['Veal Calves', 'Cattle', <%=data.slaughter.usa.cattle.veal_calves.total_2014%>],
+    ['Pigs',   'Non-Chicken Meat Industries', <%=data.slaughter.usa.hogs.total_2014%>],
+  ]);
+
+  fulltree = new google.visualization.TreeMap(document.getElementById('treemap_full'));
+
+  fulltree.draw(fulldata, {
+    highlightOnMouseOver: true,
+    maxDepth: 2,
+    maxPostDepth: 10,
+    minHighlightColor: '#8c6bb1',
+    midHighlightColor: '#A56BB1',
+    maxHighlightColor: '#726BB1',
+    maxColor: '#FFCACA',
+    midColor: '#D3EFFF',
+    minColor: '#FFEFAF',
+    headerColor: '#CCCCCC',
+    headerHeight: 30,
+    fontColor: 'black',
+    showScale: false,
+    generateTooltip: function(row, size, value) {
+      return '<div style="background:#eee; padding:10px; border:1px solid #ddd">' + fulldata.getValue(row, 0) + ':<br/>' + size.withDelimiter() + ' killed in 2014</div>';
+    }
+  });
+
+  var landdata = google.visualization.arrayToDataTable([
+    ['Type', 'Parent', 'Number Killed'],
+    ['Animals Killed', null, null],
+    ['Chicken Meat Industry', 'Animals Killed', null],
+    ['Egg Industry', 'Animals Killed', null],
+    ['Non-Chicken Meat Industries', 'Animals Killed', null],
+    ['Broiler Chickens', 'Chicken Meat Industry', <%=data.slaughter.usa.chickens.young.total_inspected_2014%>],
+    ['Spent Layer Hens', 'Egg Industry', <%=data.slaughter.usa.chickens.layers.total_2014%>],
+    ['Male Chicks',      'Egg Industry', <%=data.slaughter.usa.chickens.layers.male_chicks.total_2014%>],
+    ['Turkeys', 'Non-Chicken Meat Industries', <%=data.slaughter.usa.turkeys.total_2014%>],
+    ['Ducks',   'Non-Chicken Meat Industries', <%=data.slaughter.usa.ducks.total_2014%>],
+    ['Sheep', 'Non-Chicken Meat Industries', null],
+    ['Mature Sheep',   'Sheep', <%=(data.slaughter.usa.sheep.total_2014 - data.slaughter.usa.sheep.lambs.total_2014)%>],
+    ['Lambs',   'Sheep', <%=data.slaughter.usa.sheep.lambs.total_2014%>],
+    ['Cattle',   'Non-Chicken Meat Industries', null],
+    ['Dairy Cows', 'Cattle', <%=data.slaughter.usa.cattle.dairy_cows.total_2014%>],
+    ['Beef Cattle', 'Cattle', <%=data.slaughter.usa.cattle.beef_cattle.total_2014%>],
+    ['Veal Calves', 'Cattle', <%=data.slaughter.usa.cattle.veal_calves.total_2014%>],
+    ['Pigs',   'Non-Chicken Meat Industries', <%=data.slaughter.usa.hogs.total_2014%>],
+  ]);
+
+  landtree = new google.visualization.TreeMap(document.getElementById('treemap_land'));
+
+  landtree.draw(landdata, {
+    highlightOnMouseOver: true,
+    maxDepth: 1,
+    maxPostDepth: 10,
+    minHighlightColor: '#8c6bb1',
+    midHighlightColor: '#A56BB1',
+    maxHighlightColor: '#726BB1',
+    maxColor: '#FFE5CA',
+    midColor: '#D3EFFF',
+    minColor: '#FFEFAF',
+    headerColor: '#CCCCCC',
+    headerHeight: 30,
+    fontColor: 'black',
+    showScale: false,
+    generateTooltip: function(row, size, value) {
+      return '<div style="background:#eee; padding:10px; border:1px solid #ddd">' + landdata.getValue(row, 0) + ':<br/>' + size.withDelimiter() + ' killed in 2014</div>';
+    }
+  });
+
+  var alldata = google.visualization.arrayToDataTable([
+    ['Type', 'Parent', 'Number Killed'],
+    ['Animals Killed', null, null],
+    ['Fishing Industry', 'Animals Killed', null],
+    ['Chicken Meat Industry', 'Animals Killed', null],
+    ['Egg Industry', 'Animals Killed', null],
+    ['Non-Chicken Meat Industries', 'Animals Killed', null],
+    ['Fish and Shellfish', 'Fishing Industry', null],
+    ['Finfishes', 'Fish and Shellfish', <%=data.slaughter.usa.sealife.finfishes.total_2013%>],
+    ['Shellfish', 'Fish and Shellfish', <%=data.slaughter.usa.sealife.shellfish.total_2013%>],
+    ['"Feed Fish"', 'Fish and Shellfish', <%=data.slaughter.usa.sealife.feed_fish.total_2013%>],
+    ['Bycatch', 'Fish and Shellfish', <%=data.slaughter.usa.sealife.bycatch.total_2013%>],
+    ['Broiler Chickens', 'Chicken Meat Industry', <%=data.slaughter.usa.chickens.young.total_inspected_2014%>],
+    ['Spent Layer Hens', 'Egg Industry', <%=data.slaughter.usa.chickens.layers.total_2014%>],
+    ['Male Chicks',      'Egg Industry', <%=data.slaughter.usa.chickens.layers.male_chicks.total_2014%>],
+    ['Turkeys', 'Non-Chicken Meat Industries', <%=data.slaughter.usa.turkeys.total_2014%>],
+    ['Ducks',   'Non-Chicken Meat Industries', <%=data.slaughter.usa.ducks.total_2014%>],
+    ['Sheep', 'Non-Chicken Meat Industries', null],
+    ['Mature Sheep',   'Sheep', <%=(data.slaughter.usa.sheep.total_2014 - data.slaughter.usa.sheep.lambs.total_2014)%>],
+    ['Lambs',   'Sheep', <%=data.slaughter.usa.sheep.lambs.total_2014%>],
+    ['Cattle',   'Non-Chicken Meat Industries', null],
+    ['Dairy Cows', 'Cattle', <%=data.slaughter.usa.cattle.dairy_cows.total_2014%>],
+    ['Beef Cattle', 'Cattle', <%=data.slaughter.usa.cattle.beef_cattle.total_2014%>],
+    ['Veal Calves', 'Cattle', <%=data.slaughter.usa.cattle.veal_calves.total_2014%>],
+    ['Pigs',   'Non-Chicken Meat Industries', <%=data.slaughter.usa.hogs.total_2014%>],
+  ]);
+
+  alltree = new google.visualization.TreeMap(document.getElementById('treemap_all'));
+
+  alltree.draw(alldata, {
+    highlightOnMouseOver: true,
+    maxDepth: 1,
+    maxPostDepth: 10,
+    minHighlightColor: '#8c6bb1',
+    midHighlightColor: '#A56BB1',
+    maxHighlightColor: '#726BB1',
+    maxColor: '#CADFFF',
+    midColor: '#D3EFFF',
+    minColor: '#FFEFAF',
+    headerColor: '#CCCCCC',
+    headerHeight: 30,
+    fontColor: 'black',
+    showScale: false,
+    generateTooltip: function(row, size, value) {
+      return '<div style="background:#eee; padding:10px; border:1px solid #ddd">' + alldata.getValue(row, 0) + ':<br/>' + size.withDelimiter() + ' killed in 2014</div>';
+    }
+  });
+}
+
+DeferredGoogleAPI.addCallback(function() {
+  google.load("visualization", "1", {packages:["treemap"], "callback": function() { drawChart(); }});
+});
+</script>

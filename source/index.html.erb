@@ -184,8 +184,8 @@ description: Plainly presenting the case for veganism.
 <% if blog.articles.length > 0 then %>
   <% article = blog.articles.first %>
       <h4 class="blog-title"><%= link_to article.title, article %></h4>
-      <span class="blog-date"><%= article.date.strftime('%B %e, %Y') %></span>
-      <%= article.body %>
+      <span class="blog-date">Posted <%= article.date.strftime('%B %e, %Y') %></span>
+      <%= article.summary %>
       <p><%= link_to 'Read more &raquo;', article %></p>
 <% else %>
       <p><%= partial 'blog/noposts' %></p>

@@ -13,6 +13,9 @@ gem "middleman-blog", "~> 3.5.3"
 # For feed.xml.builder
 gem "builder", "~> 3.0"
 
+# For humanizing numbers
+gem "numeric_humanize"
+
 # For faster file watcher updates on Windows:
 gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw, :x64_mingw]
 

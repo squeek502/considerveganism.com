@@ -416,6 +416,7 @@ img { max-width: 100%; }
 .padded { padding: 0.5em 1.5em; }
 .margined { margin-bottom: 1.5em; }
 .no-margin { margin: 0; }
+.relative { position: relative; }
 
 .padded-page { padding: 1em 1em; }
 
@@ -428,8 +429,8 @@ img { max-width: 100%; }
 h4.blog-title { margin: 0; margin-top: 0.5em; font-size: 1.5em; text-transform: uppercase; }
 .blog-date { margin-bottom: 1.5em; font-style: italic; display: block; }
 .rss-subscribe { float: right; width: 32px; height: 32px; margin: 0.2em; background: #FF8300 url('../images/rss-32.png') no-repeat; }
-
-#disqus_thread { margin-top: 1.5em; }
+.blog-content { }
+#disqus_thread { margin-top: 2.5em; }
 
 /**
 OLD

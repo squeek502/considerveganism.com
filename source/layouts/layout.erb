@@ -14,6 +14,28 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
     <%= stylesheet_link_tag "normalize", "all" %>
     <%= javascript_include_tag  "all", :defer => true %>
+    <% if needs_googlechart then %>
+    <script type="text/javascript">
+    var DeferredGoogleAPI = {
+      callbacks: [],
+      load: function() {
+        var that = this;
+        var gscript = document.createElement('script');
+        gscript.src = 'https://www.google.com/jsapi';
+        gscript.addEventListener("load", function onLoad(params) {
+          gscript.removeEventListener("load", onLoad);
+          for (var i=0; i<that.callbacks.length; i++) {
+            that.callbacks[i]();
+          }
+        });
+        document.body.appendChild(gscript);
+      },
+      addCallback: function(callback) {
+        this.callbacks.push(callback);
+      },
+    }
+    </script>
+    <% end %> 
   </head>
 
   <body class="<%= page_classes %><% if content_for?(:body_classes) %> <%= yield_content :body_classes %><% end %>">
@@ -46,6 +68,9 @@
       ga('create', 'UA-37125148-3', 'auto');
       ga('send', 'pageview');
     </script>
+    <% end %>
+    <% if needs_googlechart then %>
+    <script>DeferredGoogleAPI.load()</script>
     <% end %>
   </body>
 </html>

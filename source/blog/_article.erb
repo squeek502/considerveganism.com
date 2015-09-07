@@ -2,6 +2,7 @@
   <h2 class="blog-title"><%= link_to article.title, article %></h2>
   <span class="blog-date">Posted <%= article.date.strftime('%B %e, %Y') %></span>
   <div class="blog-content">
-    <%= article.body %>
+    <%= article.summary %>
+    <p><%= link_to 'Read more &raquo;', article %></p>
   </div>
 </div>
