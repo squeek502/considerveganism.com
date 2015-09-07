@@ -87,7 +87,7 @@ helpers do
       :facebook => "https://www.facebook.com/sharer/sharer.php?u=#{CGI.escape(url)}",
       :twitter => "https://twitter.com/intent/tweet?url=#{CGI.escape(url)}&text=#{CGI.escape(title)}",
       :googleplus => "https://plus.google.com/share?url=#{CGI.escape(url)}",
-      :tumblr => "https://www.tumblr.com/widgets/share/tool?posttype=link&content=#{CGI.escape(url)}&title=#{CGI.escape(title)}&caption=#{CGI.escape(description)}",
+      :tumblr => "https://www.tumblr.com/widgets/share/tool?posttype=link&content=#{CGI.escape(url)}&canonicalUrl=#{CGI.escape(url)}&title=#{CGI.escape(title)}&caption=#{CGI.escape(description)}",
       :reddit => "https://www.reddit.com/submit?url=#{CGI.escape(url)}&title=#{CGI.escape(title)}",
       :vk => "http://vk.com/share.php?url=#{CGI.escape(url)}"
     }
