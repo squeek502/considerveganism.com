@@ -243,6 +243,7 @@ nav .environment a { border-color: #3d5907; }
 nav .how a { border-color: #5f5510; }
 nav .about a { }
 nav .blog a { border-color: #105f5e; }
+nav .more a { border-color: #fff; }
 nav .intro a:hover, nav .current.intro a { border-color: #004d99; background-color: #369; color: #fff; }
 nav .ethics a:hover, nav .current.ethics a { border-color: #370759; background-color: #60347f; color: #fff; }
 nav .health a:hover, nav .current.health a { border-color: #5f101c; background-color: #732d37; color: #fff; }
@@ -250,6 +251,7 @@ nav .environment a:hover, nav .current.environment a { border-color: #3d5907; ba
 nav .how a:hover, nav .current.how a { border-color: #5f5510; background-color: #736c2d; color: #fff; }
 nav .about a:hover, nav .current.about a { background-color: #333; color: #fff; }
 nav .blog a:hover, nav .current.blog a { border-color: #105f5e; background-color: #2d736f; color: #fff; }
+nav .more a:hover, nav.current.more a { border-color: #fff; background-color: #fff; }
 
 .info-section { padding: 1em; box-sizing: border-box; margin-top: 1em; }
 .info-section p {text-align:justify;}
