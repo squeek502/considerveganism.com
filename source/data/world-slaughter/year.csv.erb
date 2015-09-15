@@ -1,0 +1,12 @@
+---
+layout: false
+---
+"Country Code (ISO3166)","Country",<% slaughter_categories.each do |slaughter_category| %>"<%=slaughter_category%>",<% end %>"Total Head Slaughtered"
+<%
+slaughter_data.each do |country, categories|
+%>
+"<%= fao_to_iso3166_code country %>","<%= country %>",<% 
+  slaughter_categories.each do |slaughter_category|
+    category_total = categories[slaughter_category] ? categories[slaughter_category][:value] : 0
+  %><%= category_total %>,<% end %><%= categories[:total] %>
+<% end %>

@@ -16,9 +16,6 @@ gem "builder", "~> 3.0"
 # For humanizing numbers
 gem "numeric_humanize"
 
-# For charts
-gem "chartkick"
-
 # For ISO3166 country names
 gem "countries"
 

@@ -6,7 +6,7 @@ layout: layout
 <% 
 page_title = "#{current_page.data.title} (#{year})"
 content_for :page_title do page_title end
-content_for :charts_js do javascript_include_tag "//www.google.com/jsapi", "chartkick" end
+uses_googlechart
 
 missing = []
 geo_chart_data = []
@@ -35,6 +35,7 @@ sorted_country_slaughter_data = slaughter_data.sort_by {|country, data| -data[:t
 
 <div class="padded-page relative">
   <h1><%= page_title %></h1>
+  <p><%= link_to "Download Data as .CSV", "/data/world-slaughter/#{year}.csv" %></p>
 
   <% if year > 1961 %>
     <%= link_to "&laquo; Previous year", "/data/world-slaughter/#{year - 1}", :class => "footer-link", :style => "margin-top: 1em; position: absolute; left: 0.5em; top: 0.5em;" %>
@@ -61,10 +62,12 @@ sorted_country_slaughter_data = slaughter_data.sort_by {|country, data| -data[:t
   <div class="padded z-depth-1 margined">
     <h2>Visualizations</h2>
     <h3>Slaughter by Country</h3>
-    <%= geo_chart geo_chart_data, colors: ['#EDE15E', '#610000'], height: "600px", valueLabel: "Head Slaughtered", legend: { :numberFormat => "#,###" }, customTooltip: true %>
+    <div id="geochart" style="max-width: 700px; width: 100%; height: 350px; margin: auto;"></div>
 
     <h3>Slaughter by Species</h3>
-    <%= bar_chart pie_chart_data, library: {}, height: "600px" %>
+    <div class="clearfix">
+    <div id="speciesbar" style="width: 100%; height: 350px;"></div>
+    </div>
   </div>
 
   <div class="padded z-depth-1 margined">
@@ -117,3 +120,49 @@ sorted_country_slaughter_data = slaughter_data.sort_by {|country, data| -data[:t
     <tr style="font-weight: bold;"><td data-title="Country">World</td><% slaughter_categories.each do |slaughter_category| %><td data-title="<%=slaughter_category%>" style="font-size: 85%"><%= number_with_delimiter world_data[slaughter_category] %></td><% end %>
   </tfoot>
 </table>
+
+<script type="text/javascript">
+function drawChart() {
+  var geochartdata = google.visualization.arrayToDataTable([
+    ['Country', 'Head Slaughtered', { role: 'tooltip' }],
+    <%
+    geo_chart_data.each do |country_data|
+      country = country_data[0]
+      total = country_data[1]
+      tooltip = country_data[2]
+    %>
+    [{v: '<%=country[:v]%>', k: '<%=country[:k]%>'}, <%=total%>, '<%=tooltip%>'],
+    <% end %>
+  ]);
+
+  geochart = new google.visualization.GeoChart(document.getElementById('geochart'));
+
+  geochart.draw(geochartdata, {
+    colorAxis: {colors: ['#EDE15E', '#610000']},
+    legend: {numberFormat: "#,###"},
+  });
+
+  speciesBarData = google.visualization.arrayToDataTable([
+    ['Species', 'Head Slaughtered', { role: 'annotation' }, { role: 'tooltip' }],
+    <%
+    pie_chart_data.each do |species, total|
+      species = species.slice(6..-1).capitalize if species.start_with?("Meat, ")
+      percentage = ("%.1f" % (total / world_data[:total].to_f * 100)) + "%"
+    %>
+    ['<%=species%>', <%=total%>, '<%= percentage %>', '<%=species%>: <%=number_with_delimiter total%> slaughtered'],
+    <% end %>
+  ]);
+
+  speciesBarChart = new google.visualization.BarChart(document.getElementById('speciesbar'));
+
+  speciesBarChart.draw(speciesBarData, {
+    hAxis: { title: "Total Head Slaughtered" },
+    legend: { position: "none" },
+    colors: ['#610000'],
+  });
+}
+
+DeferredGoogleAPI.addCallback(function() {
+  google.load("visualization", "1", {packages:["geochart", "corechart"], "callback": function() { drawChart(); }});
+});
+</script>
