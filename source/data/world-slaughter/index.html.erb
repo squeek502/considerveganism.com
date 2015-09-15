@@ -1,14 +1,31 @@
 ---
 title: "Data: World Slaughter Stats"
 ---
+<%
+unique_countries = {}
+@slaughter_data.each do |year, countries|
+  countries.each do |country, data|
+    country_code = fao_to_iso3166_code country
+    unique_countries[country_code] ||= []
+    unique_countries[country_code] << country unless country.in? unique_countries[country_code]
+  end
+end
+
+unique_countries = unique_countries.sort_by {|country_code, countries| countries[0]}
+%>
 
 <h1><%= current_page.data.title %></h1>
 
 <h2>By Year</h2>
-<ul>
+<ul class="float-list clearfix">
 <% for year in 2013.downto 1961 %>
-  <li><%= link_to "#{year}", "/data/world-slaughter/#{year}" %></li>
+  <li><%= link_to "#{year}", "/data/world-slaughter/#{year}", :class => "footer-link margined" %></li>
 <% end %>
 </ul>
 
 <h2>By Country</h2>
+<ul class="float-list clearfix">
+<% unique_countries.each do |country_code, countries| %>
+  <li><%= link_to countries.join(" / "), "/data/world-slaughter/#{country_code.downcase}", :class => "footer-link margined" %></li>
+<% end %>
+</ul>

@@ -65,22 +65,22 @@ end
 # World slaughter data
 ###
 load "#{config[:data_dir]}/process_data.rb"
-slaughter_data, slaughter_categories, world_data = process_fao_slaughter_data()
+@slaughter_data, @slaughter_categories, @world_data = process_fao_slaughter_data()
 first_year = 1961
 last_year = 2013
 
 for year in first_year..last_year
   proxy("/data/world-slaughter/#{year}/index.html", "/data/world-slaughter/year.html", :locals => { 
     :year => year, 
-    :slaughter_data => slaughter_data[year], 
-    :slaughter_categories => slaughter_categories[year], 
-    :world_data => world_data[year]
+    :slaughter_data => @slaughter_data[year], 
+    :slaughter_categories => @slaughter_categories[year], 
+    :world_data => @world_data[year]
     }, :ignore => true)
   proxy("/data/world-slaughter/#{year}.csv", "/data/world-slaughter/year.csv", :locals => { 
     :year => year, 
-    :slaughter_data => slaughter_data[year], 
-    :slaughter_categories => slaughter_categories[year], 
-    :world_data => world_data[year]
+    :slaughter_data => @slaughter_data[year], 
+    :slaughter_categories => @slaughter_categories[year], 
+    :world_data => @world_data[year]
     }, :ignore => true)
 end
 

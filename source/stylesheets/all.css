@@ -350,6 +350,8 @@ img.vk { background:  rgb(69,102,142) !important; }
 .text-center { text-align: center; }
 .pull-left { float: left; }
 .pull-right { float: right; }
+.float-list { list-style: none; }
+.float-list li { float: left; }
 
 code {
   font-family: monospace;

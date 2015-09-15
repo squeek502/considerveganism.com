@@ -34,7 +34,7 @@ sorted_country_slaughter_data = slaughter_data.sort_by {|country, data| -data[:t
 %>
 
 <div class="padded-page relative">
-  <h1><%= page_title %></h1>
+  <h1><%= page_title %> <%= link_to "&#9651;", "/data/world-slaughter", :style => "font-size: 0.75em; margin-left: .5em; text-decoration: none;", :title => "World Slaughter Data Index" %></h1>
   <p><%= link_to "Download Data as .CSV", "/data/world-slaughter/#{year}.csv" %></p>
 
   <% if year > 1961 %>
