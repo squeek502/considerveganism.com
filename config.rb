@@ -65,7 +65,7 @@ end
 # World slaughter data
 ###
 load "#{config[:data_dir]}/process_data.rb"
-load "#{config[:helpers_dir]}/fao_country_codes.rb"
+require "lib/fao_country_codes.rb"
 helpers FaoCountryCodes
 @slaughter_data, @slaughter_categories, @world_data = process_fao_slaughter_data()
 first_year = 1961
