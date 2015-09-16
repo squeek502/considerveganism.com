@@ -51,7 +51,7 @@ sorted_country_slaughter_data = slaughter_data.sort_by {|country, data| -data[:t
     <% if year > 1961 %>
         <li><%= link_to "&laquo; Previous year", "/data/world-slaughter/#{year - 1}", :class => "footer-link", :title => "Previous Year's Data" %></li>
     <% end %>
-        <li><%= link_to "&#9195; World Slaughter Data Index", "/data/world-slaughter", :class => "footer-link", :title => "World Slaughter Data Index" %></li>
+        <li><%= link_to "World Slaughter Data Index", "/data/world-slaughter", :class => "footer-link", :title => "World Slaughter Data Index" %></li>
     <% if year < 2013 %>
         <li><%= link_to "Next year &raquo;", "/data/world-slaughter/#{year + 1}", :class => "footer-link", :title => "Next Year's Data" %></li>
     <% end %>
