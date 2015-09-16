@@ -41,8 +41,26 @@ end
 %>
 
 <div class="padded-page relative">
-  <h1><%= page_title %> <%= link_to "&#9651;", "/data/world-slaughter", :style => "font-size: 0.75em; margin-left: .5em; text-decoration: none;", :title => "World Slaughter Data Index" %></h1>
-  <p><%= link_to "Download Data as .CSV", "/data/world-slaughter/#{country_code.downcase}.csv" %></p>
+  <h1><%= page_title %></h1>
+
+  <div class="padded z-depth-1 margined clearfix">
+    <div class="pull-left">
+      <ul class="float-list clearfix">
+        <li><%= link_to "&#128202; Download Data as .CSV", "/data/world-slaughter/#{country_code.downcase}.csv", :class => "footer-link" %></li>
+      </ul>
+    </div>
+    <div class="pull-right">
+      <ul class="float-list clearfix">
+    <% if prev_country %>
+        <li><%= link_to "&laquo; Previous country", "/data/world-slaughter/#{prev_country.downcase}", :class => "footer-link", :title => "Previous Country's Data" %></li>
+    <% end %>
+        <li><%= link_to "&#9195; World Slaughter Data Index", "/data/world-slaughter", :class => "footer-link", :title => "World Slaughter Data Index" %></li>
+    <% if next_country %>
+        <li><%= link_to "Next country &raquo;", "/data/world-slaughter/#{next_country.downcase}", :class => "footer-link", :title => "Next Country's Data" %></li>
+    <% end %>
+      </ul>
+    </div>
+  </div>
 
   <div class="padded z-depth-1 margined">
     <h2>At a glance</h2>

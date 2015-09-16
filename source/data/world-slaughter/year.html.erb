@@ -34,15 +34,26 @@ sorted_country_slaughter_data = slaughter_data.sort_by {|country, data| -data[:t
 %>
 
 <div class="padded-page relative">
-  <h1><%= page_title %> <%= link_to "&#9651;", "/data/world-slaughter", :style => "font-size: 0.75em; margin-left: .5em; text-decoration: none;", :title => "World Slaughter Data Index" %></h1>
-  <p><%= link_to "Download Data as .CSV", "/data/world-slaughter/#{year}.csv" %></p>
+  <h1><%= page_title %></h1>
 
-  <% if year > 1961 %>
-    <%= link_to "&laquo; Previous year", "/data/world-slaughter/#{year - 1}", :class => "footer-link", :style => "margin-top: 1em; position: absolute; left: 0.5em; top: 0.5em;" %>
-  <% end %>
-  <% if year < 2013 %>
-    <%= link_to "Next year &raquo;", "/data/world-slaughter/#{year + 1}", :class => "footer-link", :style => "margin-top: 1em; position: absolute; right: 0.5em; top: 0.5em;" %>
-  <% end %>
+  <div class="padded z-depth-1 margined clearfix">
+    <div class="pull-left">
+      <ul class="float-list clearfix">
+        <li><%= link_to "&#128202; Download Data as .CSV", "/data/world-slaughter/#{year}.csv", :class => "footer-link" %></li>
+      </ul>
+    </div>
+    <div class="pull-right">
+      <ul class="float-list clearfix">
+    <% if year > 1961 %>
+        <li><%= link_to "&laquo; Previous year", "/data/world-slaughter/#{year - 1}", :class => "footer-link", :title => "Previous Year's Data" %></li>
+    <% end %>
+        <li><%= link_to "&#9195; World Slaughter Data Index", "/data/world-slaughter", :class => "footer-link", :title => "World Slaughter Data Index" %></li>
+    <% if year < 2013 %>
+        <li><%= link_to "Next year &raquo;", "/data/world-slaughter/#{year + 1}", :class => "footer-link", :title => "Next Year's Data" %></li>
+    <% end %>
+      </ul>
+    </div>
+  </div>
 
   <div class="padded z-depth-1 margined">
     <h2>At a glance</h2>

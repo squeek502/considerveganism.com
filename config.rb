@@ -107,7 +107,9 @@ unique_countries.each do |country_code, countries|
   end
 end
 
+slaughter_data_country_codes = slaughter_data_by_country.keys
 slaughter_data_by_country.each do |country_code, country_data|
+  country_code_index = slaughter_data_country_codes.index country_code
   locals = { 
     :countries => unique_countries[country_code],
     :country_code => country_code, 
@@ -115,6 +117,8 @@ slaughter_data_by_country.each do |country_code, country_data|
     :slaughter_categories => @slaughter_categories, 
     :world_data => @world_data
   }
+  locals[:next_country] = slaughter_data_country_codes[country_code_index + 1] if country_code_index < slaughter_data_country_codes.length
+  locals[:prev_country] = slaughter_data_country_codes[country_code_index - 1] if country_code_index > 0
   proxy("/data/world-slaughter/#{country_code.downcase}/index.html", "/data/world-slaughter/country.html", :locals => locals, :ignore => true)
   proxy("/data/world-slaughter/#{country_code.downcase}.csv", "/data/world-slaughter/country.csv", :locals => locals, :ignore => true)
 end
