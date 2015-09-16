@@ -474,6 +474,7 @@ img { max-width: 100%; }
 .margined { margin-bottom: 1.5em; }
 .no-margin { margin: 0; }
 .relative { position: relative; }
+.indent { padding-left: 2em; }
 
 .padded-page { padding: 1em 1em; }
 

@@ -16,6 +16,11 @@ unique_countries = unique_countries.sort_by {|country_code, countries| countries
 
 <h1><%= current_page.data.title %></h1>
 
+<h2>Source</h2>
+
+<p>All data comes from <%= link_to "Food and Agriculture Organization of the United Nations", "http://faostat.fao.org/" %>. The pages listed below are generated from the CSV file obtained from:</p><p class="indent"><%= link_to "FAOSTAT > Download Data / Production / Livestock Primary", "http://faostat3.fao.org/download/Q/QL/E" %><br/><i>Regions</i>: 'World > (List)'; <i>Items Aggregated</i>: 'Meat, Total > (List)'; <i>Elements</i>: 'Producing Animals/Slaughtered'; <i>Years</i>: 'Select All'</p>
+<%= link_to "&#128202; Download Full Dataset (.CSV File)", "/data/world-slaughter/fao-slaughter-data.csv", class: "footer-link margined", style: "margin-left: 0;" %>
+
 <h2>By Year</h2>
 <ul class="float-list clearfix">
 <% for year in 2013.downto 1961 %>
