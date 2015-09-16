@@ -65,23 +65,58 @@ end
 # World slaughter data
 ###
 load "#{config[:data_dir]}/process_data.rb"
+load "#{config[:helpers_dir]}/fao_country_codes.rb"
+helpers FaoCountryCodes
 @slaughter_data, @slaughter_categories, @world_data = process_fao_slaughter_data()
 first_year = 1961
 last_year = 2013
 
 for year in first_year..last_year
-  proxy("/data/world-slaughter/#{year}/index.html", "/data/world-slaughter/year.html", :locals => { 
+  locals = { 
     :year => year, 
     :slaughter_data => @slaughter_data[year], 
     :slaughter_categories => @slaughter_categories[year], 
     :world_data => @world_data[year]
-    }, :ignore => true)
-  proxy("/data/world-slaughter/#{year}.csv", "/data/world-slaughter/year.csv", :locals => { 
-    :year => year, 
-    :slaughter_data => @slaughter_data[year], 
-    :slaughter_categories => @slaughter_categories[year], 
-    :world_data => @world_data[year]
-    }, :ignore => true)
+  }
+  proxy("/data/world-slaughter/#{year}/index.html", "/data/world-slaughter/year.html", :locals => locals, :ignore => true)
+  proxy("/data/world-slaughter/#{year}.csv", "/data/world-slaughter/year.csv", :locals => locals, :ignore => true)
+end
+
+unique_countries = {}
+@slaughter_data.each do |year, countries|
+  countries.each do |country, data|
+    country_code = fao_to_iso3166_code country
+    unique_countries[country_code] ||= []
+    unique_countries[country_code] << country unless country.in? unique_countries[country_code]
+  end
+end
+
+slaughter_data_by_country = {}
+unique_countries.each do |country_code, countries|
+  for year in first_year..last_year do
+    matching_country_names = @slaughter_data[year].keys & countries
+    if not matching_country_names.any? then
+      next
+    end
+    year_data = {}
+    matching_country_names.each do |matching_country_name|
+      year_data[matching_country_name] = @slaughter_data[year][matching_country_name]
+    end
+    slaughter_data_by_country[country_code] ||= {}
+    slaughter_data_by_country[country_code][year] = year_data
+  end
+end
+
+slaughter_data_by_country.each do |country_code, country_data|
+  locals = { 
+    :countries => unique_countries[country_code],
+    :country_code => country_code, 
+    :slaughter_data => country_data, 
+    :slaughter_categories => @slaughter_categories, 
+    :world_data => @world_data
+  }
+  proxy("/data/world-slaughter/#{country_code.downcase}/index.html", "/data/world-slaughter/country.html", :locals => locals, :ignore => true)
+  proxy("/data/world-slaughter/#{country_code.downcase}.csv", "/data/world-slaughter/country.csv", :locals => locals, :ignore => true)
 end
 
 ###

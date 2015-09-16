@@ -1,0 +1,14 @@
+---
+layout: false
+---
+"Year","Country Code (ISO3166)","Country",<% slaughter_categories[2013].each do |slaughter_category| %>"<%=slaughter_category%>",<% end %>"Total Head Slaughtered"
+<%
+slaughter_data.each do |year, country_data|
+  country_data.each do |country, categories|
+%>
+<%=year%>,"<%= country_code %>","<%= country %>",<% 
+  slaughter_categories[2013].each do |slaughter_category|
+    category_total = categories[slaughter_category] ? categories[slaughter_category][:value] : 0
+  %><%= category_total %>,<% end %><%= categories[:total] %>
+  <% end %>
+<% end %>

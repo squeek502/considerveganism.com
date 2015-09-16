@@ -1,0 +1,148 @@
+---
+title: "Data: World Slaughter Stats"
+layout: layout
+---
+
+<% 
+country = countries.join(" / ")
+page_title = "#{current_page.data.title} (#{country})"
+content_for :page_title do page_title end
+uses_googlechart
+
+all_species_labels = []
+def to_species_label(fao_label)
+  fao_label.slice(6..-1).capitalize if fao_label.start_with?("Meat, ")
+end
+species_chart_data = {}
+slaughter_data.each do |year, country_data|
+  country_name, categories = country_data.first
+  species_chart_data[year] = {}
+  categories.each do |species, total|
+    next if species == :total
+    species_label = to_species_label species
+    all_species_labels << species_label unless species_label.in? all_species_labels
+    total = total[:value]
+    species_chart_data[year][species_label] = total
+  end
+end
+
+all_species_labels.each do |species_label|
+  species_total = 0
+  species_chart_data.each do |year, data|
+    data[species_label] ||= 0
+    species_total += data[species_label]
+  end
+  if species_total == 0 then
+    species_chart_data.each do |year, data|
+      data.delete species_label
+    end
+  end
+end
+%>
+
+<div class="padded-page relative">
+  <h1><%= page_title %> <%= link_to "&#9651;", "/data/world-slaughter", :style => "font-size: 0.75em; margin-left: .5em; text-decoration: none;", :title => "World Slaughter Data Index" %></h1>
+  <p><%= link_to "Download Data as .CSV", "/data/world-slaughter/#{country_code.downcase}.csv" %></p>
+
+  <div class="padded z-depth-1 margined">
+    <h2>At a glance</h2>
+    <p style="font-size: 2em; background: #640000; color: #fff; padding: 0.25em .5em; font-style: italic; display: inline-block;"><%= number_with_delimiter slaughter_data[slaughter_data.keys.last].values[0][:total] %> land animals slaughtered in <%=slaughter_data.keys.last%></p>
+  </div>
+
+  <div class="padded z-depth-1 margined">
+    <h2>Visualizations</h2>
+    <h3>Total Slaughter by Species</h3>
+    <div class="clearfix">
+    <div id="speciesbar" style="width: 100%; height: 400px;"></div>
+    </div>
+  </div>
+
+  <div class="padded z-depth-1 margined">
+    <h2>Data</h2>
+    <table>
+      <caption>Slaughter Totals By Year &mdash; <%= country %></caption>
+      <thead>
+        <tr><th>Year</th><th>Total Head Slaughtered</th></tr>
+      </thead>
+      <tbody>
+      <% slaughter_data.each do |year, country_data| 
+          country, data = country_data.first
+      %>
+        <tr>
+          <td data-title="Year"><%= year %></td>
+          <% slaughter_total = data ? data[:total] || 0 : 0 %>
+          <td data-title="Total Head Slaughtered"><%= number_with_delimiter slaughter_total %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<table>
+  <caption>Slaughter Totals By Year and Species &mdash; <%=country%></caption>
+  <thead>
+    <tr><th rowspan="2">Year</th><th colspan="<%= slaughter_categories[slaughter_data.keys.last].length %>">Head Slaughtered</th></tr>
+    <tr><% slaughter_categories[slaughter_data.keys.last].each do |slaughter_category| %><th><%=slaughter_category%></th><% end %></tr>
+  </thead>
+  <tbody>
+  <%
+  slaughter_data.each do |year, country_data|
+    country, categories = country_data.first
+  %>
+    <tr>
+      <td data-title="Year"><%= year %></td>
+      <% 
+      slaughter_categories[slaughter_data.keys.last].each do |slaughter_category|
+        category_total = categories[slaughter_category] ? categories[slaughter_category][:value] : 0
+      %>
+      <td data-title="<%= slaughter_category %>" style="font-size: 85%"><%= number_with_delimiter category_total %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%
+chartColors = {
+  "Cattle" => "#b82e2e", 
+  "Pig" => "#dd4477",
+  "Duck" => "#0099c6",
+  "Turkey" => "#66aa00",
+  "Chicken" => "#990099",
+  "Sheep" => "#ff9900",
+  "Goat" => "#dc3912",
+  "Goose and guinea fowl" => "#04670a",
+  "Rabbit" => "#316395",
+  "Bird nes" => "#777777",
+  "Goat" => "#009188",
+  "Buffalo" => "#889100",
+  "Camel and other camelids" => "#cec826",
+  "Horse" => "#ce26b0",
+  "Other rodents" => "#363636",
+  "Ass and mule" => "#a48d4f",
+}
+%>
+<script type="text/javascript">
+function drawChart() {
+  speciesBarData = google.visualization.arrayToDataTable([
+    ['Year', <%= species_chart_data[species_chart_data.keys.last].keys.sort.map {|species| "'#{species}'"}.join(", ") %>],
+    <% species_chart_data.each do |year, categories| %>
+    ['<%=year%>', <%= categories.keys.sort.map {|species| categories[species]}.join(", ") %>],
+    <% end %>
+  ]);
+
+  speciesBarChart = new google.visualization.ColumnChart(document.getElementById('speciesbar'));
+
+  speciesBarChart.draw(speciesBarData, {
+    isStacked: true,
+    vAxis: { title: "Total Head Slaughtered" },
+    series: [<%= species_chart_data[species_chart_data.keys.last].keys.sort.select {|species| chartColors[species]}.map {|species| "{ color: '#{chartColors[species]}' }"}.join(", ") %>],
+    chartArea: {top:'5%', height:'80%'}
+  });
+}
+
+DeferredGoogleAPI.addCallback(function() {
+  google.load("visualization", "1", {packages:["corechart"], "callback": function() { drawChart(); }});
+});
+</script>

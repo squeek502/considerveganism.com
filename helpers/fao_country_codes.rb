@@ -17,7 +17,7 @@ module FaoCountryCodes
     "CS" => "Czechoslovakia",
     "YU" => "Yugoslavia",
     "BU" => "Burma",
-    "??" => "Unknown",
+    "BE" => "Belgium",
     "PC" => "Pacific Islands Trust Territory",
   }
   FAO_TO_ALPHA2 = {
@@ -241,7 +241,7 @@ module FaoCountryCodes
     "Ethiopia PDR" => "ET",
     "Pacific Islands Trust Territory" => "PC",
     "USSR" => "RU",
-    "Belgium-Luxembourg" => "??",
+    "Belgium-Luxembourg" => "BE", # FAOSTAT seems to treat Belgium and Luxembourg as a single country pre-2000
   }
   def fao_to_iso3166_code(country)
     raise "code for #{country} not found" unless FaoCountryCodes::FAO_TO_ALPHA2[country]
