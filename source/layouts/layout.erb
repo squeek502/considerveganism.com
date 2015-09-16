@@ -17,8 +17,19 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
     <%= stylesheet_link_tag "normalize", "all" %>
     <%= javascript_include_tag  "all", :defer => true %>
+    <script>
+    var afterScriptLoad = {
+      callbacks: [],
+      do: function(callback) {
+        this.callbacks.push(callback);
+      },
+      exec: function() {
+        for (var i=0; i<this.callbacks.length; i++) {
+          this.callbacks[i]();
+        }
+      }
+    }
     <% if needs_googlechart then %>
-    <script type="text/javascript">
     var DeferredGoogleAPI = {
       callbacks: [],
       load: function() {
@@ -37,8 +48,8 @@
         this.callbacks.push(callback);
       },
     }
-    </script>
     <% end %>
+    </script>
   </head>
 
   <body class="<%= page_classes %><% if content_for?(:body_classes) %> <%= yield_content :body_classes %><% end %>">

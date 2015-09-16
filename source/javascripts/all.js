@@ -84,6 +84,10 @@ function findAndRaiseCurrentSection() {
 }
 
 function ready() {
+	if (afterScriptLoad) {
+		afterScriptLoad.exec();
+	}
+
 	var stickyHeader = document.getElementById("sticky-header"),
 		stickyHeaderHeight = stickyHeader.offsetHeight,
 		scrollLast = 0;
