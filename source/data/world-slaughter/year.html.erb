@@ -131,7 +131,7 @@ function drawChart() {
       total = country_data[1]
       tooltip = country_data[2]
     %>
-    [{v: '<%=country[:v]%>', k: '<%=country[:k]%>'}, <%=total%>, '<%=tooltip%>'],
+    [<%=country.to_json%>, <%=total%>, '<%=tooltip%>'],
     <% end %>
   ]);
 
@@ -158,7 +158,8 @@ function drawChart() {
   speciesBarChart.draw(speciesBarData, {
     hAxis: { title: "Total Head Slaughtered" },
     legend: { position: "none" },
-    colors: ['#610000'],
+    colors: ['#760808'],
+    chartArea: {top:'5%', height:'80%'}
   });
 }
 
