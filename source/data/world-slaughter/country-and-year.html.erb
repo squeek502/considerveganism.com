@@ -1,0 +1,30 @@
+---
+title: "Data: World Slaughter Stats"
+layout: layout
+---
+
+<% 
+country = countries.join(" / ")
+page_title = "#{current_page.data.title} (#{country}, #{year})"
+content_for :page_title do page_title end
+uses_googlechart
+%>
+
+<div class="padded-page relative">
+  <h1><%= page_title %></h1>
+
+  <div class="padded z-depth-1 margined clearfix">
+    <div class="pull-left">
+      <ul class="float-list clearfix">
+        <li><%= link_to "&#128202; Download Data as .CSV", "/data/world-slaughter/#{country_code.downcase}-#{year}.csv", :class => "footer-link" %></li>
+      </ul>
+    </div>
+    <div class="pull-right">
+      <ul class="float-list clearfix">
+        <li><%= link_to "All #{country} Data", "/data/world-slaughter/#{country_code.downcase}", :class => "footer-link" %></li>
+        <li><%= link_to "World Slaughter Data Index", "/data/world-slaughter", :class => "footer-link", :title => "World Slaughter Data Index" %></li>
+        <li><%= link_to "All #{year} Data", "/data/world-slaughter/#{year}", :class => "footer-link" %></li>
+      </ul>
+    </div>
+  </div>
+</div>

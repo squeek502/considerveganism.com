@@ -122,6 +122,19 @@ slaughter_data_by_country.each do |country_code, country_data|
   }
   proxy("/data/world-slaughter/#{country_code.downcase}/index.html", "/data/world-slaughter/country.html", :locals => locals, :ignore => true)
   proxy("/data/world-slaughter/#{country_code.downcase}.csv", "/data/world-slaughter/country.csv", :locals => locals, :ignore => true)
+
+  country_data.each do |year, year_data|
+    locals = {
+      :year => year,
+      :countries => unique_countries[country_code],
+      :country_code => country_code,
+      :slaughter_data => year_data,
+      :slaughter_categories => @slaughter_categories,
+      :world_data => @world_data,
+    }
+    proxy("/data/world-slaughter/#{country_code.downcase}/#{year}/index.html", "/data/world-slaughter/country-and-year.html", :locals => locals, :ignore => true)
+    proxy("/data/world-slaughter/#{country_code.downcase}-#{year}.csv", "/data/world-slaughter/country-and-year.csv", :locals => locals, :ignore => true)
+  end
 end
 
 ###
