@@ -19,7 +19,15 @@ end
 
 page "data/*", :layout => :data_layout
 
-set :domain, 'http://considerveganism.com'
+# Used for generating absolute URLs
+set :protocol, "http://"
+set :host, "considerveganism.com"
+set :port, 80
+
+configure :development do
+  set :host, Middleman::PreviewServer.host || "localhost"
+  set :port, Middleman::PreviewServer.port
+end
 
 ###
 # Blog settings
@@ -54,11 +62,10 @@ end
 
 page "/feed.xml", layout: false
 
+set :feed_url, "http://feeds.feedburner.com/ConsiderVeganism"
+
 configure :development do
   set :feed_url, "/feed.xml"
-end
-configure :build do
-  set :feed_url, "http://feeds.feedburner.com/ConsiderVeganism"
 end
 
 ###
@@ -67,8 +74,16 @@ end
 
 # Methods defined in the helpers block are available in templates
 helpers do
+  def host_with_port
+    [host, optional_port].compact.join(':')
+  end
+
+  def optional_port
+    port unless (port.to_i == 80 or port.to_i == 443)
+  end
+
   def absolute_url(relative_url)
-    config[:domain] + "/" + (relative_url[0] == '/' ? relative_url[1..-1] : relative_url)
+    protocol + host_with_port + "/" + (relative_url[0] == '/' ? relative_url[1..-1] : relative_url)
   end
 
   def share_image_to(external_url, internal_url, title, description)
