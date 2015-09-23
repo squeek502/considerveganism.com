@@ -117,4 +117,12 @@ helpers do
   def uses_googlechart()
     @should_include_googlechart = true
   end
+
+  def as_erb(string=nil)
+    if block_given?
+      (Tilt['erb'].new {yield}).render self
+    else
+      (Tilt['erb'].new {string}).render self
+    end
+  end
 end

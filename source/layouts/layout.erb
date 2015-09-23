@@ -8,8 +8,8 @@
     <% if current_page.data.description %>
     <meta name="description" content="<%= current_page.data.description %>" />
     <% end %>
-    <meta property="og:image" content="<%= current_page.data.og_image ? current_page.data.og_image : absolute_url("/images/opengraph_default.jpg") %>" />
-    <meta name="twitter:image" content="<%= current_page.data.og_image ? current_page.data.og_image : absolute_url("/images/opengraph_default.jpg") %>">
+    <meta property="og:image" content="<%= current_page.data.og_image ? as_erb(current_page.data.og_image) : absolute_url("/images/opengraph_default.jpg") %>" />
+    <meta name="twitter:image" content="<%= current_page.data.og_image ? as_erb(current_page.data.og_image) : absolute_url("/images/opengraph_default.jpg") %>">
     <meta property="fb:admins" content="657503019" />
 
     <link rel="alternate" type="application/rss+xml" title="Consider Veganism" href="<%= config.feed_url %>" />
