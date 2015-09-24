@@ -29,6 +29,9 @@ configure :development do
   set :port, Middleman::PreviewServer.port
 end
 
+# Allow nesting markdown within html
+set :markdown, parse_block_html: true
+
 ###
 # Blog settings
 ###
