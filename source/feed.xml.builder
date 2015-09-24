@@ -1,6 +1,6 @@
 xml.instruct!
 xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
-  site_url = config.domain
+  site_url = absolute_url ""
   xml.title "Consider Veganism"
   xml.subtitle sitemap.find_resource_by_path('/index.html').data.description
   xml.id URI.join(site_url, blog.options.prefix.to_s)
