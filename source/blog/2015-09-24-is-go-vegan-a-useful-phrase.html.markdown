@@ -2,7 +2,7 @@
 title: Is 'Go Vegan' a useful phrase?
 date: 2015-09-24 00:50 UTC
 tags:
-og_image: <%=absolute_url url_for "/blog/2015-09-24-is-go-vegan-a-useful-phrase/question_mark.jpg"%>
+og_image: <%=absolute_url url_for "/blog/2015-09-24-is-go-vegan-a-useful-phrase/question_mark.png"%>
 ---
 
 If we only have the opportunity to present a single, short phrase to someone in the hopes that they will adopt a vegan lifestyle in the future, what phrase should be used? It seems that the vegan movement has decided on '*Go Vegan*', which can be found on many pro-vegan bumper stickers, shirts, and graphics that currently exist.
