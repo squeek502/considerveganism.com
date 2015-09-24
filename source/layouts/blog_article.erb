@@ -2,7 +2,7 @@
   <% article = current_article %>
   <div class="margined">
 	  <h1 class="blog-title"><%= link_to article.title, article %></h1>
-	  <span class="blog-date">Posted <%= article.date.strftime('%B %e, %Y') %></span>
+	  <span class="blog-date">Posted <%= article.date.strftime('%B %e, %Y') %><% if article.data.author %> by <%= article.data.author %><% end %></span>
   </div>
   <div class="highlight padded z-depth-1 clearfix blog-content">
   	<%= article.body %>
