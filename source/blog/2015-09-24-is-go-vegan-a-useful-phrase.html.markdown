@@ -37,8 +37,8 @@ I'm sure there are many possible alternatives that would be more effective, but 
 
 The second point is especially important: by leaving the decision in the other persons hands completely, we are proving that we have faith in the strength of our own arguments. I personally think that the arguments for veganism are so strong that simply getting people to seriously consider veganism is almost an end goal in and of itself. That is, the more they look into it, the more likely they are to go vegan. 
 
-I place confidence in this idea because I believe veganism is not being adopted as quickly as it should be due to the prevelance of misinformation and misconceptions about what veganism is, and not due to a widespread, conscious rejection of vegan ethics. In fact, most people likely already accept the ethical premise from which veganism logically follows&mdash;it is unethical to cause unnecessary suffering to animals&mdash;so, by simply getting people to consider [the argument](/#ethics), we might find that they will (perhaps begrudgingly) see its merits.
+I place confidence in this idea because I believe veganism is not being adopted as quickly as it should be due to the prevalence of misinformation and misconceptions about what veganism is, and not due to a widespread, conscious rejection of vegan ethics. In fact, most people likely already accept the ethical premise from which veganism logically follows&mdash;it is unethical to cause unnecessary suffering to animals&mdash;so, by simply getting people to consider [the argument](/#ethics), we might find that they will (perhaps begrudgingly) see its merits.
 
 ---
 
-Note: There are some instances where I think '*Go Vegan*' *is* appropriate. For example, in the popular "Hail Seitan, Go Vegan" joke ("Hail Seitan, Consider Veganism" is a jarring juxtaposition of tone).
+Note: There are some instances where I think '*Go Vegan*' *is* appropriate. For example, in the popular "Hail Seitan, Go Vegan" joke ("Hail Seitan, Consider Veganism" is a rather jarring juxtaposition of tone).
