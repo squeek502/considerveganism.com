@@ -8,10 +8,6 @@ set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
-configure :development do
-  activate :livereload, :host => '127.0.0.1'
-end
-
 configure :build do
   activate :minify_css
   activate :minify_javascript
@@ -22,11 +18,11 @@ page "data/*", :layout => :data_layout
 # Used for generating absolute URLs
 set :protocol, "http://"
 set :host, "considerveganism.com"
-set :port, 80
+set :port, 80 unless development?
 
 configure :development do
-  set :host, Middleman::PreviewServer.host || "localhost"
-  set :port, Middleman::PreviewServer.port
+  (activate :livereload, :host => '127.0.0.1') if defined? Middleman::PreviewServer
+  set :host, "localhost"
 end
 
 # Allow nesting markdown within html
