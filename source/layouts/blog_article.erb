@@ -7,13 +7,21 @@
   <div class="highlight padded z-depth-1 clearfix blog-content">
   	<%= article.body %>
   </div>
-  <div class="share-links text-center">
-    Share this post to:
-    <ul class="share-links-list">
-      <% share_link_to(absolute_url(article.url), article.title, article.title).each do |site, link| %>
-      <li><%= link_to (image_tag ("#{site}-24.png"), :class => site), link %></li>
-      <% end %>
-    </ul>
+  <div class="clearfix">
+    <div class="share-links pull-right">
+      Subscribe:
+      <ul class="share-links-list">
+        <li><%= link_to (image_tag ("rss-24.png"), :class => "rss"), config.feed_url %></li>
+      </ul>
+    </div>
+    <div class="share-links pull-left">
+      Share this post to:
+      <ul class="share-links-list">
+        <% share_link_to(absolute_url(article.url), article.title, article.title).each do |site, link| %>
+        <li><%= link_to (image_tag ("#{site}-24.png"), :class => site), link %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
   <div id="disqus_thread"><p><a href="javascript:loadDisqus()">Load Comments...</a></p></div>
   <script type="text/javascript">
