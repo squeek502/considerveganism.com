@@ -418,6 +418,7 @@ img { max-width: 100%; }
 
 .highlight { background: rgba(255,255,255,.1); }
 .padded { padding: 0.5em 1.5em; }
+.padded-barely { padding: 0.1em .25em; }
 .margined { margin-bottom: 1.5em; }
 .no-margin { margin: 0; }
 .relative { position: relative; }
