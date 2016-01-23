@@ -19,3 +19,5 @@ Some good sources:
  * [USDA Economics, Statistics and Market Information System](http://usda.mannlib.cornell.edu/MannUsda/homepage.do) (the [NASS](http://usda.mannlib.cornell.edu/MannUsda/browseAgency.do?agency=nass) reports in particular)
  * [FAOSTAT](http://faostat.fao.org) for world-wide data (use [Download Data](http://faostat3.fao.org/download/Q/QL/E) or [the classic site](http://faostat.fao.org/site/569/default.aspx#ancor))
  * [EPA Ag 101](http://www2.epa.gov/agriculture/agriculture-ag-101)
+ * [Eurostat](http://ec.europa.eu/eurostat/web/agriculture/overview)
+ * [CBS StatLine (Netherlands)](http://opendata.cbs.nl/Dataportaal/?_la=en&_catalog=CBS)
