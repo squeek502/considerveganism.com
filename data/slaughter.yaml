@@ -243,3 +243,24 @@ usa:
         - September: 24169000
         - October: 26380000
         - November: 23850000
+
+tragedies:
+  sources: !omap
+  - 'Yale Law School Avalon Project': 'http://avalon.law.yale.edu/20th_century/mp10.asp'
+  - '9/11 Commission Executive Summary': 'http://www.9-11commission.gov/report/911Report_Exec.pdf'
+  - 'National World War 2 Museum': 'http://www.nationalww2museum.org/learn/education/for-students/ww2-history/ww2-by-the-numbers/world-wide-deaths.html'
+  - 'University of Michigan Study': 'http://www.tandfonline.com/doi/abs/10.1080/13623699.2010.535279'
+  - 'National Hurricane Center': 'http://www.nhc.noaa.gov/data/tcr/AL122005_Katrina.pdf'
+  - 'United States Holocaust Memorial Museum': 'https://www.ushmm.org/wlc/en/media_nm.php?ModuleId=10005143&MediaId=3372'
+  hiroshima:
+    total: 66000 
+  nine_eleven:
+    total: 3000
+  wwii:
+    total: 60000000
+  haiti_earthquake:
+    total: 158679
+  hurricane_katrina:
+    total: 1833
+  holocaust:
+    total: 6000000
