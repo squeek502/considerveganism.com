@@ -179,11 +179,11 @@ description: Plainly presenting the case for veganism.
 
 <section id="blog" class="section-container dark clearfix z-depth-2">
   <h2 class="section-header">Blog</h2>
-  <div id="latest-blog-post" class="content-container clearfix">
-    <h3>Latest Blog Post</h3>
+  <div id="featured-blog-post" class="content-container clearfix">
+    <h3>Featured Blog Post</h3>
     <div class="padded margined highlight z-depth-1">
 <% if blog.articles.length > 0 then %>
-  <% article = blog.articles.first %>
+  <% article = blog.articles.find { |article| article.title == "Which dietary changes have the most impact?" } %>
       <h4 class="blog-title"><%= link_to article.title, article %></h4>
       <span class="blog-date">Posted <%= article.date.strftime('%B %e, %Y') %></span>
       <%= article.summary %>
