@@ -2,7 +2,7 @@
   <% article = current_article %>
   <div class="margined">
 	  <h1 class="blog-title"><%= link_to article.title, article %></h1>
-	  <span class="blog-date">Posted <%= article.date.strftime('%B %e, %Y') %><% if article.data.author %> by <%= article.data.author %><% end %></span>
+	  <span class="blog-date">Posted <%= article.date.strftime('%B %e, %Y') %><% if article.data.author %> by <%= article.data.author %><% end %><% if article.data.last_updated %>. <%= link_to "Last updated " + last_modified(article.source_file).strftime('%B %e, %Y'), (git_history article.source_file) %><% end %></span>
   </div>
   <div class="highlight padded z-depth-1 clearfix blog-content">
   	<%= article.body %>

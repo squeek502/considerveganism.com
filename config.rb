@@ -124,4 +124,18 @@ helpers do
       (Tilt['erb'].new {string}).render self
     end
   end
+
+  def relative_to_root(source_file)
+    source_path = Pathname.new source_file
+    root_path = Pathname.new root
+    source_path.relative_path_from root_path
+  end
+
+  def git_history(source_file)
+    "https://github.com/squeek502/considerveganism.com/commits/master/#{relative_to_root source_file}"
+  end
+
+  def last_modified(source_file)
+    Date.parse(`git log -1 --format="%ad" -- #{relative_to_root source_file}`.strip)
+  end
 end
