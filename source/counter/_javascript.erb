@@ -23,17 +23,41 @@ window.addEventListener('DOMContentLoaded',function(){
     "camels": <%=(data.slaughter.world.camels.total_2013+data.slaughter.world.camelids.total_2013)%>,
   };
 
+  var milestones = [
+	{title: "Hurricane Katrina", count: <%=data.slaughter.tragedies.hurricane_katrina%>},
+	{title: "9/11", count: <%=data.slaughter.tragedies.nine_eleven%>},
+	{title: "Hiroshima", count: <%=data.slaughter.tragedies.hiroshima%>},
+	{title: "Haiti", count: <%=data.slaughter.tragedies.haiti_earthquake%>},
+	{title: "Holocaust", count: <%=data.slaughter.tragedies.holocaust%>},
+	{title: "WWII", count: <%=data.slaughter.tragedies.wwii%>}
+  ];
+  var currentMilestone = [ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 ];
+  var pageLoad = Date.now();
+
   var secondsPerYear = 365 * 24 * 60 * 60;
   var interval = 1000/ updatesPerSecond;
   var count = 0, start = new Date().getTime();
 
   function update(intervalCount) {
+	var i = 0;
     for (var subset in animalsKilledPerYear) {
       var numKilled = animalsKilledPerYear[subset];
       var countElement = document.getElementById("akc-" + subset);
-      if (countElement) {
-        countElement.innerHTML = Math.round(intervalCount * (numKilled/secondsPerYear) / updatesPerSecond).toLocaleString();
-      }
+	  var killCount = Math.round(intervalCount * (numKilled/secondsPerYear) / updatesPerSecond);
+	  if (countElement) {
+        countElement.innerHTML = killCount.toLocaleString();
+	  }
+      if (milestones[currentMilestone[i] + 1] != null){
+		if (killCount > milestones[currentMilestone[i] + 1].count){
+	      currentMilestone[i]++;
+	      var time = Date.now() - pageLoad;
+	      var seconds = time/1000;
+		  var milestoneElement = document.getElementById("akc-" + subset + "-milestone");
+		  if (milestoneElement)
+			  milestoneElement.innerHTML = '- equivalent of ' +  milestones[currentMilestone[i]].title + ' every ' +  seconds.toString() + ' seconds';
+		}
+	  }
+	  i++;
     }
   }
 
