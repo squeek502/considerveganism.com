@@ -97,7 +97,7 @@ GEM
       tilt (~> 1.4.1)
     padrino-support (0.12.5)
       activesupport (>= 3.1)
-    rack (1.6.4)
+    rack (1.6.11)
     rack-livereload (0.3.16)
       rack
     rack-test (0.6.3)
@@ -146,4 +146,4 @@ DEPENDENCIES
   wdm (~> 0.1.0)
 
 BUNDLED WITH
-   1.10.6
+   1.12.5
