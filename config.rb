@@ -16,12 +16,12 @@ end
 page "data/*", :layout => :data_layout
 
 # Used for generating absolute URLs
-set :protocol, "http://"
+set :protocol, "https://"
 set :host, "considerveganism.com"
-set :port, 80 unless development?
 
 configure :development do
   (activate :livereload, :host => '127.0.0.1') if defined? Middleman::PreviewServer
+  set :protocol, "http://"
   set :host, "localhost"
 end
 
@@ -74,15 +74,15 @@ end
 # Methods defined in the helpers block are available in templates
 helpers do
   def host_with_port
-    [host, optional_port].compact.join(':')
+    [config[:host], optional_port].compact.join(':')
   end
 
   def optional_port
-    port unless (port.to_i == 80 or port.to_i == 443)
+    config[:port] unless (config[:port].to_i == 80 or config[:port].to_i == 443)
   end
 
   def absolute_url(relative_url)
-    protocol + host_with_port + "/" + (relative_url[0] == '/' ? relative_url[1..-1] : relative_url)
+    config[:protocol] + host_with_port + "/" + (relative_url[0] == '/' ? relative_url[1..-1] : relative_url)
   end
 
   def share_image_to(external_url, internal_url, title, description)

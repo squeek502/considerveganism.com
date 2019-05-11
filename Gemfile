@@ -2,13 +2,13 @@
 # the following line to use "http://" instead
 source 'https://rubygems.org'
 
-gem "middleman", "~>3.3.11"
+gem "middleman", "~> 4.2"
 
 # Live-reloading plugin
-gem "middleman-livereload", "~> 3.1.0"
+gem "middleman-livereload"
 
 # blog plugin
-gem "middleman-blog", "~> 3.5.3"
+gem "middleman-blog", "~> 4.0"
 
 # For feed.xml.builder
 gem "builder", "~> 3.0"
@@ -17,10 +17,13 @@ gem "builder", "~> 3.0"
 gem "numeric_humanize"
 
 # For faster file watcher updates on Windows:
-gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw, :x64_mingw]
+gem "wdm", "~> 0.1", :platforms => [:mswin, :mingw, :x64_mingw]
 
 # Windows does not come with time zone data
 gem "tzinfo-data", platforms: [:mswin, :mingw, :jruby, :x64_mingw]
 
+# For article.summary
+gem "nokogiri"
+
 # To avoid missing Javascript runtime errors
-gem "therubyracer", platforms: [:ruby]
+gem "duktape", platforms: [:ruby]
