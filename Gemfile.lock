@@ -17,15 +17,18 @@ GEM
     concurrent-ruby (1.1.5)
     contracts (0.13.0)
     dotenv (2.7.2)
+    duktape (2.3.0.0)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
+    eventmachine (1.2.7)
     eventmachine (1.2.7-x64-mingw32)
     eventmachine (1.2.7-x86-mingw32)
     execjs (2.7.0)
     fast_blank (1.0.0)
     fastimage (2.1.5)
+    ffi (1.10.0)
     ffi (1.10.0-x64-mingw32)
     ffi (1.10.0-x86-mingw32)
     haml (5.0.4)
@@ -83,9 +86,11 @@ GEM
       rack-livereload (~> 0.3.15)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
-    nokogiri (1.10.3-x64-mingw32)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
-    nokogiri (1.10.3-x86-mingw32)
+    nokogiri (1.10.4-x64-mingw32)
+      mini_portile2 (~> 2.4.0)
+    nokogiri (1.10.4-x86-mingw32)
       mini_portile2 (~> 2.4.0)
     numeric_humanize (0.0.0)
     padrino-helpers (0.13.3.4)
@@ -120,6 +125,7 @@ GEM
     wdm (0.1.1)
 
 PLATFORMS
+  ruby
   x64-mingw32
   x86-mingw32
 
