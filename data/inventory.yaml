@@ -1,7 +1,7 @@
 usa:
   cattle:
     sources: !omap
-    - 'Cattle, 01.30.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1017'
+    - 'Cattle, 01.30.2015 (NASS)': 'https://usda.library.cornell.edu/concern/publications/h702q636h'
     dairy_cows:
       total_2014: 9207600
       total_2015: 9306900

@@ -50,7 +50,7 @@ world:
 usa:
   cattle:
     sources: !omap
-    - 'Livestock Slaughter Annual Summary, 04.27.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1097'
+    - 'Livestock Slaughter Annual Summary, 04.27.2015 (NASS)': 'https://usda.library.cornell.edu/concern/publications/r207tp32d'
     total_2014: 30268300
     total_2013: 32564800
     total_inspected_2014: 29684100
@@ -70,7 +70,7 @@ usa:
 
   hogs:
     sources: !omap
-    - 'Livestock Slaughter Annual Summary, 04.27.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1097'
+    - 'Livestock Slaughter Annual Summary, 04.27.2015 (NASS)': 'https://usda.library.cornell.edu/concern/publications/r207tp32d'
     total_2014: 106957700
     total_2013: 112160500
     total_farm_2014: 82000
@@ -81,7 +81,7 @@ usa:
 
   sheep:
     sources: !omap
-    - 'Livestock Slaughter Annual Summary, 04.27.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1097'
+    - 'Livestock Slaughter Annual Summary, 04.27.2015 (NASS)': 'https://usda.library.cornell.edu/concern/publications/r207tp32d'
     total_2014: 2404000
     total_2013: 2412200
     total_farm_2014: 94500
@@ -99,7 +99,7 @@ usa:
 
   goats:
     sources: !omap
-    - 'Livestock Slaughter Annual Summary, 04.27.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1097'
+    - 'Livestock Slaughter Annual Summary, 04.27.2015 (NASS)': 'https://usda.library.cornell.edu/concern/publications/r207tp32d'
     total_commercial_2014: 634000
     total_commercial_2013: 689200
     total_inspected_2014: 486500
@@ -107,7 +107,7 @@ usa:
 
   bison:
     sources: !omap
-    - 'Livestock Slaughter Annual Summary, 04.27.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1097'
+    - 'Livestock Slaughter Annual Summary, 04.27.2015 (NASS)': 'https://usda.library.cornell.edu/concern/publications/r207tp32d'
     total_commercial_2014: 60300
     total_commercial_2013: 57200
     total_inspected_2014: 51700
@@ -115,13 +115,13 @@ usa:
 
   turkeys:
     sources: !omap
-    - 'Poultry Slaughter Annual Summary, 02.25.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497'
+    - 'Poultry Slaughter Annual Summary, 02.25.2015 (NASS)': 'https://usda.library.cornell.edu/concern/publications/pg15bd88s'
     total_2014: 236617000
     total_2013: 239404000
 
   ducks:
     sources: !omap
-    - 'Poultry Slaughter Annual Summary, 02.25.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497'
+    - 'Poultry Slaughter Annual Summary, 02.25.2015 (NASS)': 'https://usda.library.cornell.edu/concern/publications/pg15bd88s'
     total_2014: 26368000
     total_2013: 24575000
 
@@ -146,22 +146,22 @@ usa:
 
   chickens:
     sources: !omap
-    - 'Poultry Slaughter Annual Summary, 02.25.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497'
+    - 'Poultry Slaughter Annual Summary, 02.25.2015 (NASS)': 'https://usda.library.cornell.edu/concern/publications/pg15bd88s'
     total_inspected_2014: 8666662000
     total_inspected_2013: 8648756000
     young:
       sources: !omap
-      - 'Poultry Slaughter Annual Summary, 02.25.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497'
+      - 'Poultry Slaughter Annual Summary, 02.25.2015 (NASS)': 'https://usda.library.cornell.edu/concern/publications/pg15bd88s'
       total_inspected_2014: 8522427000
       total_inspected_2013: 8503750000
     mature:
       sources: !omap
-      - 'Poultry Slaughter Annual Summary, 02.25.2015 (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1497'
+      - 'Poultry Slaughter Annual Summary, 02.25.2015 (NASS)': 'https://usda.library.cornell.edu/concern/publications/pg15bd88s'
       total_inspected_2014: 144235000
       total_inspected_2013: 145006000
     layers:
       sources: !omap
-      - 'Chickens and Eggs Annual Summary, 02.26.2015_correction (NASS)': 'http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1509'
+      - 'Chickens and Eggs Annual Summary, 02.26.2015_correction (NASS)': 'https://usda.library.cornell.edu/concern/publications/1v53jw96n'
       sold:
         by_month_2014: !omap
         - December: 14156000
